@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,6 +13,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'editarperfiltrabajador_model.dart';
 export 'editarperfiltrabajador_model.dart';
+import 'package:http/http.dart' as http;
 
 class EditarperfiltrabajadorWidget extends StatefulWidget {
   const EditarperfiltrabajadorWidget({Key? key}) : super(key: key);
@@ -24,10 +29,15 @@ class _EditarperfiltrabajadorWidgetState
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  String _userName = '';  // Variable para almacenar el nombre de usuario
+
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => EditarperfiltrabajadorModel());
+
+    // Decodificar el token y obtener el nombre
+    _getUserNameFromToken();
 
     _model.nombreEditarPerfilTrabajadorController ??=
         TextEditingController(text: 'Mijael Raul');
@@ -52,6 +62,42 @@ class _EditarperfiltrabajadorWidgetState
     _model.sexoEditarPerfilTrabajadorController ??=
         TextEditingController(text: 'Masculino');
     _model.sexoEditarPerfilTrabajadorFocusNode ??= FocusNode();
+  }
+
+
+    // Función para obtener el nombre de usuario desde el token
+  Future<void> _getUserNameFromToken() async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+
+    if (token != null) {
+      final parts = token.split('.');
+      if (parts.length == 3) {
+        final payload = json.decode(
+            utf8.decode(base64Url.decode(base64Url.normalize(parts[1]))));
+        if (payload is Map) {
+          final codigo =
+              payload['codigo']; // Asegúrate de usar la clave correcta
+          print('Código extraído del token: $codigo');
+          // Realiza una solicitud a la API para buscar a la persona por código
+          final apiUrl =
+              'https://nest-pi-postgres-v2.onrender.com/api/v1/personas/searchByCode/$codigo';
+          final response = await http.get(Uri.parse(apiUrl));
+
+          if (response.statusCode == 200) {
+            final personaData = json.decode(response.body);
+            final nombre =
+                personaData['nombre']; // Asegúrate de usar la clave correcta
+            final apellidoPaterno = personaData['apellidoPaterno'];
+            final apellidoMaterno = personaData['apellidoMaterno'];
+
+            setState(() {
+              _userName = '$nombre $apellidoPaterno $apellidoMaterno'; //Los nombres
+            });
+          }
+        }
+      }
+    }
   }
 
   @override
@@ -173,7 +219,7 @@ class _EditarperfiltrabajadorWidgetState
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: Text(
-                    'Jhossep Samuel\nLlactahuaman Cabrera',
+                    '$_userName',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).headlineSmall.override(
                           fontFamily: 'Readex Pro',
