@@ -29,7 +29,7 @@ class _EditarperfiltrabajadorWidgetState
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  String _userName = '';  // Variable para almacenar el nombre de usuario
+  String _userName = ''; // Variable para almacenar el nombre de usuario
 
   @override
   void initState() {
@@ -39,33 +39,68 @@ class _EditarperfiltrabajadorWidgetState
     // Decodificar el token y obtener el nombre
     _getUserNameFromToken();
 
-    _model.nombreEditarPerfilTrabajadorController ??=
-        TextEditingController(text: 'Mijael Raul');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      fetchProfileData().then((profileData) {
+        setState(() {
+          _model.nombreEditarPerfilTrabajadorController ??=
+              TextEditingController(text: profileData['nombre']);
+          _model.apellidoPEditarPerilTrabajadorController ??=
+              TextEditingController(text: profileData['apellidoPaterno']);
+          _model.apellidoMEditarPerfilTrabajadorController ??=
+              TextEditingController(text: profileData['apellidoMaterno']);
+          _model.telefonoEditarPerfilTrabajadorController1 ??=
+              TextEditingController(text: profileData['correo']);
+          _model.telefonoEditarPerfilTrabajadorController2 ??=
+              TextEditingController(text: profileData['numeroCelular'] ?? '');
+          _model.sexoEditarPerfilTrabajadorController ??=
+              TextEditingController(text: profileData['sexo'] ?? '');
+        });
+      });
+    });
+
     _model.nombreEditarPerfilTrabajadorFocusNode ??= FocusNode();
-
-    _model.apellidoPEditarPerilTrabajadorController ??=
-        TextEditingController(text: 'Aliaga');
     _model.apellidoPEditarPerilTrabajadorFocusNode ??= FocusNode();
-
-    _model.apellidoMEditarPerfilTrabajadorController ??=
-        TextEditingController(text: 'Ricaldi');
     _model.apellidoMEditarPerfilTrabajadorFocusNode ??= FocusNode();
-
-    _model.telefonoEditarPerfilTrabajadorController1 ??=
-        TextEditingController(text: 'mijael.aliaga@upeu.edu.pe');
     _model.telefonoEditarPerfilTrabajadorFocusNode1 ??= FocusNode();
-
-    _model.telefonoEditarPerfilTrabajadorController2 ??=
-        TextEditingController(text: '902470567');
     _model.telefonoEditarPerfilTrabajadorFocusNode2 ??= FocusNode();
-
-    _model.sexoEditarPerfilTrabajadorController ??=
-        TextEditingController(text: 'Masculino');
     _model.sexoEditarPerfilTrabajadorFocusNode ??= FocusNode();
   }
 
+  //Funcion para traer nombre
+  Future<Map<String, dynamic>> fetchProfileData() async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
 
-    // Función para obtener el nombre de usuario desde el token
+    if (token != null) {
+      final parts = token.split('.');
+      if (parts.length == 3) {
+        final payload = json.decode(
+            utf8.decode(base64Url.decode(base64Url.normalize(parts[1]))));
+        if (payload is Map) {
+          final codigo =
+              payload['codigo']; // Asegúrate de usar la clave correcta
+          print('Código extraído del token: $codigo');
+          // Realiza una solicitud a la API para buscar a la persona por código
+          final apiUrl =
+              'https://nest-pi-postgres-v2.onrender.com/api/v1/personas/searchByCode/$codigo';
+          final response = await http.get(Uri.parse(apiUrl));
+
+          if (response.statusCode == 200) {
+            // Si el servidor devuelve una respuesta OK, parseamos el JSON.
+            return json.decode(response.body);
+          } else {
+            // Si el servidor devuelve una respuesta que no es OK, lanzamos una excepción.
+            throw Exception('Error al cargar el perfil de usuario');
+          }
+        }
+      }
+    }
+
+    // Si no se pudo obtener un token, lanzamos una excepción.
+    throw Exception('No se pudo obtener el token');
+  }
+
+  // Función para obtener el nombre de usuario desde el token
   Future<void> _getUserNameFromToken() async {
     final storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
@@ -92,7 +127,8 @@ class _EditarperfiltrabajadorWidgetState
             final apellidoMaterno = personaData['apellidoMaterno'];
 
             setState(() {
-              _userName = '$nombre $apellidoPaterno $apellidoMaterno'; //Los nombres
+              _userName =
+                  '$nombre $apellidoPaterno $apellidoMaterno'; //Los nombres
             });
           }
         }

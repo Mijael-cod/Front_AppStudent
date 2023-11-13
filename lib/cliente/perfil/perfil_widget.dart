@@ -26,7 +26,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  String _userName = '';  // Variable para almacenar el nombre de usuario
+  String _userName = ''; // Variable para almacenar el nombre de usuario
 
   @override
   void initState() {
@@ -36,26 +36,65 @@ class _PerfilWidgetState extends State<PerfilWidget> {
     // Decodificar el token y obtener el nombre
     _getUserNameFromToken();
 
-    _model.nombrePerfilController ??=
-        TextEditingController(text: 'Mijael Raul');
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      fetchProfileData().then((profileData) {
+        setState(() {
+          _model.nombrePerfilController ??=
+              TextEditingController(text: profileData['nombre']);
+          _model.apellidoPPerfilController ??=
+              TextEditingController(text: profileData['apellidoPaterno']);
+          _model.apellidoMPerfilController ??=
+              TextEditingController(text: profileData['apellidoMaterno']);
+          _model.emailPerfilController ??=
+              TextEditingController(text: profileData['correo']);
+          _model.telefonoPerfilController ??=
+              TextEditingController(text: profileData['numeroCelular'] ?? '');
+          _model.sexoPerfilController ??=
+              TextEditingController(text: profileData['sexo'] ?? '');
+        });
+      });
+    });
+
     _model.nombrePerfilFocusNode ??= FocusNode();
-
-    _model.apellidoPPerfilController ??= TextEditingController(text: 'Aliaga ');
     _model.apellidoPPerfilFocusNode ??= FocusNode();
-
-    _model.apellidoMPerfilController ??= TextEditingController(text: 'Ricaldi');
     _model.apellidoMPerfilFocusNode ??= FocusNode();
-
-    _model.emailPerfilController ??=
-        TextEditingController(text: 'mijael.aliaga@upeu.edu.pe');
     _model.emailPerfilFocusNode ??= FocusNode();
-
-    _model.telefonoPerfilController ??=
-        TextEditingController(text: '902470567');
     _model.telefonoPerfilFocusNode ??= FocusNode();
-
-    _model.sexoPerfilController ??= TextEditingController(text: 'Masculino');
     _model.sexoPerfilFocusNode ??= FocusNode();
+  }
+
+  //Funcion para traer nombre
+  Future<Map<String, dynamic>> fetchProfileData() async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+
+    if (token != null) {
+      final parts = token.split('.');
+      if (parts.length == 3) {
+        final payload = json.decode(
+            utf8.decode(base64Url.decode(base64Url.normalize(parts[1]))));
+        if (payload is Map) {
+          final codigo =
+              payload['codigo']; // Asegúrate de usar la clave correcta
+          print('Código extraído del token: $codigo');
+          // Realiza una solicitud a la API para buscar a la persona por código
+          final apiUrl =
+              'https://nest-pi-postgres-v2.onrender.com/api/v1/personas/searchByCode/$codigo';
+          final response = await http.get(Uri.parse(apiUrl));
+
+          if (response.statusCode == 200) {
+            // Si el servidor devuelve una respuesta OK, parseamos el JSON.
+            return json.decode(response.body);
+          } else {
+            // Si el servidor devuelve una respuesta que no es OK, lanzamos una excepción.
+            throw Exception('Error al cargar el perfil de usuario');
+          }
+        }
+      }
+    }
+
+    // Si no se pudo obtener un token, lanzamos una excepción.
+    throw Exception('No se pudo obtener el token');
   }
 
   // Función para obtener el nombre de usuario desde el token
@@ -85,7 +124,8 @@ class _PerfilWidgetState extends State<PerfilWidget> {
             final apellidoMaterno = personaData['apellidoMaterno'];
 
             setState(() {
-              _userName = '$nombre $apellidoPaterno $apellidoMaterno'; //Los nombres
+              _userName =
+                  '$nombre $apellidoPaterno $apellidoMaterno'; //Los nombres
             });
           }
         }
