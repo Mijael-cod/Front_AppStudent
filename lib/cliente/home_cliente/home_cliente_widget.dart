@@ -29,7 +29,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
     with TickerProviderStateMixin {
   late HomeClienteModel _model;
 
-  String _userName = '';  // Variable para almacenar el nombre de usuario
+  String _userName = ''; // Variable para almacenar el nombre de usuario
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -137,7 +137,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
     _model = createModel(context, () => HomeClienteModel());
 
     // Decodificar el token y obtener el nombre
-    _getUserNameFromToken();    
+    _getUserNameFromToken();
 
     _model.tabBarController = TabController(
       vsync: this,
