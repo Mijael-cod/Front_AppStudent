@@ -58,7 +58,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
     _model.sexoPerfilFocusNode ??= FocusNode();
   }
 
-    // Función para obtener el nombre de usuario desde el token
+  // Función para obtener el nombre de usuario desde el token
   Future<void> _getUserNameFromToken() async {
     final storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
