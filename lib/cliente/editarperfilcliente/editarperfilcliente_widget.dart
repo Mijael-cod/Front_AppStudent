@@ -23,6 +23,8 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  String _userName = '';  // Variable para almacenar el nombre de usuario
+
   @override
   void initState() {
     super.initState();
