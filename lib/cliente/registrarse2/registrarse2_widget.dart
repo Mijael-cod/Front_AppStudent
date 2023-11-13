@@ -1,3 +1,6 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:proyecto/cliente/login/login_widget.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -7,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'registrarse2_model.dart';
 export 'registrarse2_model.dart';
+import 'package:http/http.dart' as http;
 
 class Registrarse2Widget extends StatefulWidget {
   const Registrarse2Widget({Key? key}) : super(key: key);
@@ -19,6 +23,66 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
   late Registrarse2Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  Future<bool> passwordsMatch() async {
+    final storage = FlutterSecureStorage();
+
+    final password1 = _model.passwordRegistrarseController.text;
+    final password2 = _model.passwordRegistrarseRepiController.text;
+
+    if (password1 == password2 &&
+        password1.length >= 6 &&
+        password2.length >= 6) {
+      String email = _model.emailRegistrarseController.text;
+      String telefono = _model.telefonoRegistrarseController.text;
+
+      // Crear un mapa con los nuevos datos
+      Map<String, String> newUserData = {
+        'correo': email,
+        'numeroCelular': telefono,
+        'password':
+            password1, // Usamos password1 o password2 ya que son iguales
+      };
+
+      // Leer los datos existentes del almacenamiento seguro
+      String? existingUserDataJson = await storage.read(key: 'userData');
+
+      // Convertir la cadena JSON a un mapa
+      Map<String, dynamic> existingUserData =
+          existingUserDataJson != null ? jsonDecode(existingUserDataJson) : {};
+
+      // Combinar los mapas
+      existingUserData..addAll(newUserData);
+
+      // Convertir el mapa resultante a una cadena JSON
+      String combinedUserDataJson = jsonEncode(existingUserData);
+
+      // Imprimir el JSON combinado
+      print('JSON combinado: $combinedUserDataJson');
+
+      // Crear la solicitud POST
+      var response = await http.post(
+        Uri.parse(
+            'https://nest-pi-postgres-v2.onrender.com/api/v1/auth/register'), // Reemplaza con la URL de tu API
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: combinedUserDataJson,
+      );
+
+      if (response.statusCode == 201) {
+        // Si el servidor devuelve una respuesta OK, parseamos el JSON.
+        print('Datos enviados con éxito');
+      } else {
+        // Si el servidor devuelve una respuesta que no es OK, lanzamos una excepción.
+        print('Error al enviar los datos: ${response.statusCode}');
+      }
+
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   @override
   void initState() {
@@ -516,7 +580,71 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                     12.0, 5.0, 0.0, 5.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    context.pushNamed('Login');
+                                    bool passwordsMatchResult =
+                                        await passwordsMatch();
+
+                                    if (passwordsMatchResult) {
+                                      // Las contraseñas coinciden, puedes continuar con el registro
+                                      // Agrega aquí la lógica para continuar con el registro.
+                                      // Luego, para navegar a la siguiente página (Registrarse2Widget):
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => LoginWidget(),
+                                        ),
+                                      );
+                                    } else {
+                                      // Muestra las alertas según las validaciones fallidas
+                                      if (_model.passwordRegistrarseController
+                                                  .text.length <
+                                              6 &&
+                                          _model.passwordRegistrarseRepiController
+                                                  .text.length <
+                                              6) {
+                                        // Contraseña menor a 6 caracteres
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title:
+                                                  Text('Contraseña muy corta'),
+                                              content: Text(
+                                                  'La contraseña debe tener al menos 6 caracteres.'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.of(context)
+                                                        .pop(); // Cierra el cuadro de diálogo
+                                                  },
+                                                  child: Text('OK'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      } else {
+                                        // Contraseñas no coinciden
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  'Contraseñas incorrectas'),
+                                              content: Text(
+                                                  'Las contraseñas no coinciden. Por favor, verifica las contraseñas e inténtalo de nuevo.'),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () {
+                                                    Navigator.of(context)
+                                                        .pop(); // Cierra el cuadro de diálogo
+                                                  },
+                                                  child: Text('OK'),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      }
+                                    }
                                   },
                                   text: 'Registrarse',
                                   options: FFButtonOptions(

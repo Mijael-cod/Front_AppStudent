@@ -1,3 +1,9 @@
+import 'dart:convert';
+
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:proyecto/cliente/registrarse2/registrarse2_widget.dart';
+import 'package:proyecto/models/login.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -7,6 +13,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'registrarse1_model.dart';
 export 'registrarse1_model.dart';
+import 'package:http/http.dart' as http;
 
 class Registrarse1Widget extends StatefulWidget {
   const Registrarse1Widget({Key? key}) : super(key: key);
@@ -19,6 +26,33 @@ class _Registrarse1WidgetState extends State<Registrarse1Widget> {
   late Registrarse1Model _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  bool areAllFieldsFilled() {
+    return _model.codigoRegistrarseController.text.isNotEmpty &&
+        _model.nombreRegistrarseController.text.isNotEmpty &&
+        _model.apellidopRegistrarseController.text.isNotEmpty &&
+        _model.apellidomRegistrarseController.text.isNotEmpty &&
+        _model.sexoRegistrarseController.text.isNotEmpty;
+  }
+
+  Future<void> fetchPersonaByCodigo(String codigo) async {
+    final url = Uri.parse(
+        'https://backend-appstudent.onrender.com/api/v1/persona/searchByCode/$codigo');
+    final response = await http.get(url);
+
+    if (response.statusCode == 200) {
+      final jsonData = json.decode(response.body);
+      _model.codigoRegistrarseController.text = jsonData['codigoPersona'];
+      _model.nombreRegistrarseController.text = jsonData['nombrePersona'];
+      _model.apellidopRegistrarseController.text = jsonData['apellidoPaterno'];
+      _model.apellidomRegistrarseController.text = jsonData['apellidoMaterno'];
+      _model.sexoRegistrarseController.text = 
+          'No especificado'; // Agrega aquí el campo correspondiente
+    } else {
+      print('Error al buscar la persona por código.');
+      // Puedes mostrar un mensaje de error al usuario si lo deseas.
+    }
+  }
 
   @override
   void initState() {
@@ -233,7 +267,11 @@ class _Registrarse1WidgetState extends State<Registrarse1Widget> {
                                 children: [
                                   FFButtonWidget(
                                     onPressed: () {
-                                      print('BotonUsuario pressed ...');
+                                      final codigo = _model
+                                          .codigoRegistrarseController.text;
+                                      if (codigo.isNotEmpty) {
+                                        fetchPersonaByCodigo(codigo);
+                                      }
                                     },
                                     text: '',
                                     icon: Icon(
@@ -599,9 +637,45 @@ class _Registrarse1WidgetState extends State<Registrarse1Widget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 16.0),
                             child: FFButtonWidget(
-                              onPressed: () async {
-                                context.pushNamed('registrarse2');
-                              },
+                              onPressed: areAllFieldsFilled()
+                                  ? () async {
+                                      final storage = FlutterSecureStorage();
+                                      // Crear una instancia de UserData con los valores actuales
+                                      final userData = Login(
+                                        codigo: _model
+                                            .codigoRegistrarseController.text,
+                                        nombre: _model
+                                            .nombreRegistrarseController.text,
+                                        apellidoPaterno: _model
+                                            .apellidopRegistrarseController
+                                            .text,
+                                        apellidoMaterno: _model
+                                            .apellidomRegistrarseController
+                                            .text,
+                                        sexo: _model
+                                            .sexoRegistrarseController.text,
+                                      );
+
+                                      // Convertir el objeto UserData a JSON
+                                      final userDataJson = userData.toJson();
+
+                                      // Imprimir el JSON
+                                      print('JSON guardado: $userDataJson');
+
+                                      // Guardar el JSON en el almacenamiento seguro
+                                      await storage.write(
+                                          key: 'userData',
+                                          value: jsonEncode(userDataJson));
+
+                                      // Luego, para navegar a la siguiente página (Registrarse2Widget):
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              Registrarse2Widget(),
+                                        ),
+                                      );
+                                    }
+                                  : null,
                               text: 'Continuar',
                               options: FFButtonOptions(
                                 width: 320.0,
