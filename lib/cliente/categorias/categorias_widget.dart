@@ -12,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'categorias_model.dart';
 export 'categorias_model.dart';
+import 'package:http/http.dart' as http;
 
 class CategoriasWidget extends StatefulWidget {
   const CategoriasWidget({Key? key}) : super(key: key);
@@ -20,9 +21,28 @@ class CategoriasWidget extends StatefulWidget {
   _CategoriasWidgetState createState() => _CategoriasWidgetState();
 }
 
+Future<List<String>> fetchCategories() async {
+  final response = await http.get(Uri.parse(
+      'https://nest-pi-postgres-v2.onrender.com/api/v1/especialidad/'));
+
+  if (response.statusCode == 200) {
+    // Si el servidor devuelve una respuesta OK, parseamos el JSON.
+    List<dynamic> jsonResponse = jsonDecode(response.body);
+    List<String> categories = jsonResponse
+        .where((item) => item['categoria']['nombre'] == 'Materias')
+        .map<String>((item) => item['nombre'])
+        .toList();
+    return categories;
+  } else {
+    // Si el servidor devuelve una respuesta que no es OK, lanzamos una excepción.
+    throw Exception('Error al cargar las categorías');
+  }
+}
+
 class _CategoriasWidgetState extends State<CategoriasWidget>
     with TickerProviderStateMixin {
   late CategoriasModel _model;
+  late Future<List<String>> futureCategories;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -317,6 +337,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
   @override
   void initState() {
     super.initState();
+    futureCategories = fetchCategories();
+
     _model = createModel(context, () => CategoriasModel());
 
     _model.tabBarController = TabController(
@@ -446,434 +468,105 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                               shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 12.0, 0.0, 0.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed('buscartrabajador');
-                                    },
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 79.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 7.0,
-                                            color: Color(0x32171717),
-                                            offset: Offset(0.0, 3.0),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 12.0, 12.0, 12.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 0.0, 0.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'Matematica',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyLarge,
-                                                    ),
+                                FutureBuilder<List<String>>(
+                                  future: futureCategories,
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      List<String> categories = snapshot.data!;
+                                      return Column(
+                                        children: categories.map((category) {
+                                          return Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 12.0, 0.0, 0.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                    'buscartrabajador');
+                                              },
+                                              child: Container(
+                                                width: double.infinity,
+                                                height: 79.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  boxShadow: [
+                                                    BoxShadow(
+                                                      blurRadius: 7.0,
+                                                      color: Color(0x32171717),
+                                                      offset: Offset(0.0, 3.0),
+                                                    )
                                                   ],
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12.0),
+                                                  border: Border.all(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .alternate,
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'containerOnPageLoadAnimation1']!),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 12.0, 0.0, 0.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed('buscartrabajador');
-                                    },
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 79.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 7.0,
-                                            color: Color(0x32171717),
-                                            offset: Offset(0.0, 3.0),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 12.0, 12.0, 12.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 0.0, 0.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  5.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        'Fisica',
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyLarge,
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(12.0, 12.0,
+                                                          12.0, 12.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment.end,
+                                                    children: [
+                                                      Expanded(
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .center,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Text(
+                                                                category,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLarge,
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'containerOnPageLoadAnimation2']!),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 12.0, 0.0, 0.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed('buscartrabajador');
-                                    },
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 79.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 7.0,
-                                            color: Color(0x32171717),
-                                            offset: Offset(0.0, 3.0),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 12.0, 12.0, 12.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 0.0, 0.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'Ciencia',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyLarge,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'containerOnPageLoadAnimation3']!),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 12.0, 0.0, 0.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed('buscartrabajador');
-                                    },
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 79.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 7.0,
-                                            color: Color(0x32171717),
-                                            offset: Offset(0.0, 3.0),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 12.0, 12.0, 12.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 0.0, 0.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'Historia',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyLarge,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'containerOnPageLoadAnimation4']!),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 12.0, 0.0, 0.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed('buscartrabajador');
-                                    },
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 70.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 7.0,
-                                            color: Color(0x32171717),
-                                            offset: Offset(0.0, 3.0),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 12.0, 12.0, 12.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 0.0, 0.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'Comunicación',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyLarge,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'containerOnPageLoadAnimation5']!),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 12.0, 0.0, 0.0),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed('buscartrabajador');
-                                    },
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 70.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        boxShadow: [
-                                          BoxShadow(
-                                            blurRadius: 7.0,
-                                            color: Color(0x32171717),
-                                            offset: Offset(0.0, 3.0),
-                                          )
-                                        ],
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                        ),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 12.0, 12.0, 12.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Expanded(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 0.0, 0.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      'Idiomas',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyLarge,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ).animateOnPageLoad(animationsMap[
-                                      'containerOnPageLoadAnimation6']!),
+                                          );
+                                        }).toList(),
+                                      );
+                                    } else if (snapshot.hasError) {
+                                      return Text("${snapshot.error}");
+                                    }
+
+                                    // Por defecto, muestra un spinner de carga.
+                                    return CircularProgressIndicator();
+                                  },
                                 ),
                               ],
                             ),
