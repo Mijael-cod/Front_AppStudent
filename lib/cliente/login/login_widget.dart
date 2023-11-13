@@ -1,3 +1,7 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:proyecto/cliente/roles/roles_widget.dart';
+import 'package:proyecto/services/login.service.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -358,8 +362,50 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     12.0, 10.0, 0.0, 16.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    context.pushNamed('roles');
+                                    final codigo =
+                                        _model.codigoLoginController.text;
+                                    final password =
+                                        _model.contraLoginController.text;
+
+                                    final loginService = LoginService();
+                                    final token = await loginService.login(
+                                        codigo, password);
+
+                                    if (token != null) {
+                                      final storage = FlutterSecureStorage();
+                                      await storage.write(
+                                          key: 'token', value: token);
+
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => RolesWidget(),
+                                        ),
+                                      );
+                                    } else {
+                                      // Manejo de error de inicio de sesión
+                                      showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Text(
+                                                'Credenciales incorrectas'),
+                                            content: Text(
+                                                'Por favor, verifica tu código y contraseña e intenta de nuevo.'),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () {
+                                                  Navigator.of(context)
+                                                      .pop(); // Cierra el cuadro de diálogo
+                                                },
+                                                child: Text('OK'),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    }
                                   },
+                                  
                                   text: 'Login',
                                   options: FFButtonOptions(
                                     width: 320.0,

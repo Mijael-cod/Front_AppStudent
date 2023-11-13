@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -12,6 +16,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_cliente_model.dart';
 export 'home_cliente_model.dart';
+import 'package:http/http.dart' as http;
 
 class HomeClienteWidget extends StatefulWidget {
   const HomeClienteWidget({Key? key}) : super(key: key);
@@ -23,6 +28,8 @@ class HomeClienteWidget extends StatefulWidget {
 class _HomeClienteWidgetState extends State<HomeClienteWidget>
     with TickerProviderStateMixin {
   late HomeClienteModel _model;
+
+  String _userName = '';  // Variable para almacenar el nombre de usuario
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -129,6 +136,9 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
     super.initState();
     _model = createModel(context, () => HomeClienteModel());
 
+    // Decodificar el token y obtener el nombre
+    _getUserNameFromToken();    
+
     _model.tabBarController = TabController(
       vsync: this,
       length: 2,
@@ -140,6 +150,41 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
           !anim.applyInitialState),
       this,
     );
+  }
+
+  // Función para obtener el nombre de usuario desde el token
+  Future<void> _getUserNameFromToken() async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+
+    if (token != null) {
+      final parts = token.split('.');
+      if (parts.length == 3) {
+        final payload = json.decode(
+            utf8.decode(base64Url.decode(base64Url.normalize(parts[1]))));
+        if (payload is Map) {
+          final codigo =
+              payload['codigo']; // Asegúrate de usar la clave correcta
+          print('Código extraído del token: $codigo');
+          // Realiza una solicitud a la API para buscar a la persona por código
+          final apiUrl =
+              'https://nest-pi-postgres-v2.onrender.com/api/v1/personas/searchByCode/$codigo';
+          final response = await http.get(Uri.parse(apiUrl));
+
+          if (response.statusCode == 200) {
+            final personaData = json.decode(response.body);
+            final nombre =
+                personaData['nombre']; // Asegúrate de usar la clave correcta
+            final apellidoPaterno = personaData['apellidoPaterno'];
+            final apellidoMaterno = personaData['apellidoMaterno'];
+
+            setState(() {
+              _userName = '$nombre'; //Aca va nombre y apellido que se mostrará
+            });
+          }
+        }
+      }
+    }
   }
 
   @override
@@ -223,7 +268,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 30.0, 30.0, 0.0),
                               child: Text(
-                                'Hola, Mijael Raul Aliaga Ricaldi',
+                                'Hola, $_userName',
                                 textAlign: TextAlign.center,
                                 style: FlutterFlowTheme.of(context)
                                     .headlineMedium
