@@ -29,6 +29,7 @@ class HometrabajadorWidget extends StatefulWidget {
 class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
     with TickerProviderStateMixin {
   late HometrabajadorModel _model;
+  late List<dynamic> data = []; // Inicializar con una lista vacía
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -165,7 +166,24 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
     );
   }
 
-    // Función para obtener el nombre de usuario desde el token
+  //Funcion para listar las solicitudes pendientes
+  Future<List<dynamic>> fetchData(String codigoPersona) async {
+    final response = await http.get(
+      Uri.parse(
+          'https://nestjs-pi-postgres.onrender.com/api/v1/solicitud/pendientes/$codigoPersona'),
+    );
+
+    if (response.statusCode == 200) {
+      // La solicitud fue exitosa, analiza los datos JSON
+      List<dynamic> data = json.decode(response.body);
+      return data;
+    } else {
+      // Si la solicitud no fue exitosa, lanza una excepción
+      throw Exception('Error al cargar los datos');
+    }
+  }
+
+  // Función para obtener el nombre de usuario desde el token
   Future<void> _getUserNameFromToken() async {
     final storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
@@ -179,6 +197,22 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
           final codigo =
               payload['codigo']; // Asegúrate de usar la clave correcta
           print('Código extraído del token: $codigo');
+
+          // Asigna el valor de codigo a codigoPersona
+          String codigoPersona =
+              codigo; // Reemplaza el tipo de dato según sea necesario
+
+          // Realiza una solicitud a la API con el códigoPersona
+          fetchData(codigoPersona).then((result) {
+            setState(() {
+              data = result;
+              print(result);
+            });
+          }).catchError((error) {
+            // Maneja el error, por ejemplo, muestra un mensaje de error.
+            print('Error: $error');
+          });
+
           // Realiza una solicitud a la API para buscar a la persona por código
           final apiUrl =
               'https://nestjs-pi-postgres.onrender.com/api/v1/personas/searchByCode/$codigo';
