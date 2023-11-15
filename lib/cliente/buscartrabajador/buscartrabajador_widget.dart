@@ -1,3 +1,5 @@
+import 'package:proyecto/models/trabajador.dart';
+
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -12,6 +14,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'buscartrabajador_model.dart';
 export 'buscartrabajador_model.dart';
+
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class BuscartrabajadorWidget extends StatefulWidget {
   const BuscartrabajadorWidget({Key? key}) : super(key: key);
@@ -33,6 +38,17 @@ class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
 
     _model.buscarTrabajadorController ??= TextEditingController(text: 'que');
     _model.buscarTrabajadorFocusNode ??= FocusNode();
+  }
+
+  Future<List<Trabajador>> fetchTrabajadores() async {
+    final response = await http.get(Uri.parse('https://nestjs-pi-postgres.onrender.com/api/v1/habilidad-personas'));
+
+    if (response.statusCode == 200) {
+      List jsonResponse = json.decode(response.body);
+      return jsonResponse.map((item) => Trabajador.fromJson(item)).toList();
+    } else {
+      throw Exception('Failed to load trabajadores');
+    }
   }
 
   @override

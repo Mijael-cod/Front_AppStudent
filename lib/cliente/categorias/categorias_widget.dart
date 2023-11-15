@@ -23,7 +23,7 @@ class CategoriasWidget extends StatefulWidget {
 
 Future<List<String>> fetchCategories() async {
   final response = await http.get(Uri.parse(
-      'https://nest-pi-postgres-v2.onrender.com/api/v1/especialidad/'));
+      'https://nestjs-pi-postgres.onrender.com/api/v1/especialidad'));
 
   if (response.statusCode == 200) {
     // Si el servidor devuelve una respuesta OK, parseamos el JSON.
@@ -41,7 +41,7 @@ Future<List<String>> fetchCategories() async {
 
 Future<List<String>> fetchCategories2() async {
   final response = await http.get(Uri.parse(
-      'https://nest-pi-postgres-v2.onrender.com/api/v1/especialidad/'));
+      'https://nestjs-pi-postgres.onrender.com/api/v1/especialidad'));
 
   if (response.statusCode == 200) {
     // Si el servidor devuelve una respuesta OK, parseamos el JSON.
@@ -59,7 +59,7 @@ Future<List<String>> fetchCategories2() async {
 
 Future<List<String>> fetchCategories3() async {
   final response = await http.get(Uri.parse(
-      'https://nest-pi-postgres-v2.onrender.com/api/v1/especialidad/'));
+      'https://nestjs-pi-postgres.onrender.com/api/v1/especialidad'));
 
   if (response.statusCode == 200) {
     // Si el servidor devuelve una respuesta OK, parseamos el JSON.

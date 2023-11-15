@@ -81,7 +81,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
           print('Código extraído del token: $codigo');
           // Realiza una solicitud a la API para buscar a la persona por código
           final apiUrl =
-              'https://nest-pi-postgres-v2.onrender.com/api/v1/personas/searchByCode/$codigo';
+              'https://nestjs-pi-postgres.onrender.com/api/v1/personas/searchByCode/$codigo';
           final response = await http.get(Uri.parse(apiUrl));
 
           if (response.statusCode == 200) {
@@ -115,7 +115,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
           print('Código extraído del token: $codigo');
           // Realiza una solicitud a la API para buscar a la persona por código
           final apiUrl =
-              'https://nest-pi-postgres-v2.onrender.com/api/v1/personas/searchByCode/$codigo';
+              'https://nestjs-pi-postgres.onrender.com/api/v1/personas/searchByCode/$codigo';
           final response = await http.get(Uri.parse(apiUrl));
 
           if (response.statusCode == 200) {
