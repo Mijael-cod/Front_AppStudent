@@ -1,12 +1,32 @@
 class Trabajador {
   final int id;
+  final Persona persona;
+  final Habilidad habilidad;
+
+  Trabajador({
+    required this.id,
+    required this.persona,
+    required this.habilidad,
+  });
+
+  factory Trabajador.fromJson(Map<String, dynamic> json) {
+    return Trabajador(
+      id: json['id'],
+      persona: Persona.fromJson(json['persona']),
+      habilidad: Habilidad.fromJson(json['habilidad']),
+    );
+  }
+}
+
+class Persona {
+  final int id;
   final String nombre;
   final String apellidoPaterno;
   final String apellidoMaterno;
   final String correo;
   final String numeroCelular;
 
-  Trabajador({
+  Persona({
     required this.id,
     required this.nombre,
     required this.apellidoPaterno,
@@ -15,14 +35,51 @@ class Trabajador {
     required this.numeroCelular,
   });
 
-  factory Trabajador.fromJson(Map<String, dynamic> json) {
-    return Trabajador(
+  factory Persona.fromJson(Map<String, dynamic> json) {
+    return Persona(
       id: json['id'],
-      nombre: json['persona']['nombre'],
-      apellidoPaterno: json['persona']['apellidoPaterno'],
-      apellidoMaterno: json['persona']['apellidoMaterno'],
-      correo: json['persona']['correo'],
-      numeroCelular: json['persona']['numeroCelular'],
+      nombre: json['nombre'],
+      apellidoPaterno: json['apellidoPaterno'],
+      apellidoMaterno: json['apellidoMaterno'],
+      correo: json['correo'],
+      numeroCelular: json['numeroCelular'],
+    );
+  }
+}
+
+class Especialidad {
+  final int id;
+  final String nombre;
+
+  Especialidad({
+    required this.id,
+    required this.nombre,
+  });
+
+  factory Especialidad.fromJson(Map<String, dynamic> json) {
+    return Especialidad(
+      id: json['id'],
+      nombre: json['nombre'],
+    );
+  }
+}
+
+class Habilidad {
+  final int id;
+  final String nombre;
+  final Especialidad especialidad;
+
+  Habilidad({
+    required this.id,
+    required this.nombre,
+    required this.especialidad,
+  });
+
+  factory Habilidad.fromJson(Map<String, dynamic> json) {
+    return Habilidad(
+      id: json['id'],
+      nombre: json['nombre'],
+      especialidad: Especialidad.fromJson(json['especialidad']),
     );
   }
 }
