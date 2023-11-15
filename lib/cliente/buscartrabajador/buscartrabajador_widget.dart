@@ -175,253 +175,102 @@ class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
                       .asValidator(context),
                 ),
               ),
-              Expanded(
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 0.0),
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    scrollDirection: Axis.vertical,
-                    children: [
+Expanded(
+  child: FutureBuilder<List<Trabajador>>(
+    future: fetchTrabajadores(),
+    builder: (BuildContext context, AsyncSnapshot<List<Trabajador>> snapshot) {
+      if (snapshot.connectionState == ConnectionState.waiting) {
+        return Center(child: CircularProgressIndicator());
+      } else if (snapshot.hasError) {
+        return Center(child: Text('Error: ${snapshot.error}'));
+      } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+        return Center(child: Text('No hay datos disponibles.'));
+      } else {
+        return ListView.builder(
+          itemCount: snapshot.data!.length,
+          itemBuilder: (BuildContext context, int index) {
+            Trabajador trabajador = snapshot.data![index];
 
-
-
-FutureBuilder<List<Trabajador>>(
-  future: fetchTrabajadores(),
-  builder: (BuildContext context, AsyncSnapshot<List<Trabajador>> snapshot) {
-    if (snapshot.hasData) {
-      return ListView.builder(
-        itemCount: snapshot.data!.length,
-        itemBuilder: (BuildContext context, int index) {
-          Trabajador trabajador = snapshot.data![index];
-          return Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 1.0),
-            child: Container(
-              width: 100.0,
-              decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 0.0,
-                    color: FlutterFlowTheme.of(context).lineColor,
-                    offset: Offset(0.0, 1.0),
-                  )
-                ],
-              ),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(40.0),
-                        child: Image.asset(
-                          'assets/images/blank-profile-picture-973460_1280.png',
-                          width: 60.0,
-                          height: 60.0,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
+            return Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 0.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 0.0,
+                      color: FlutterFlowTheme.of(context).lineColor,
+                      offset: Offset(0.0, 1.0),
                     ),
-                    Expanded(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              '${trabajador.persona.nombre} ${trabajador.persona.apellidoPaterno} ${trabajador.persona.apellidoMaterno}',
-                              style: FlutterFlowTheme.of(context).titleMedium.override(
-                                fontFamily: 'Readex Pro',
-                                color: Colors.black,
-                                fontSize: 16.0,
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 5.0, 0.0, 0.0),
-                                  child: Text(
-                                    '${trabajador.habilidad.nombre}',
-                                    style: FlutterFlowTheme.of(context).bodyMedium,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          // Aquí puedes agregar el widget de calificación
-                        ],
-                      ),
-                    ),
-                    // Aquí puedes agregar el botón de flecha
                   ],
                 ),
-              ),
-            ),
-          );
-        },
-      );
-    } else if (snapshot.hasError) {
-      return Text('${snapshot.error}');
-    }
-
-    // Por defecto, muestra un loading spinner
-    return CircularProgressIndicator();
-  },
-),
-
-                      
-
-
+                child: ListTile(
+                  contentPadding: EdgeInsets.all(8.0),
+                  leading: ClipRRect(
+                    borderRadius: BorderRadius.circular(40.0),
+                    child: Image.asset(
+                      'assets/images/blank-profile-picture-973460_1280.png',
+                      width: 60.0,
+                      height: 60.0,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  title: Text(
+                    '${trabajador.persona.nombre} ${trabajador.persona.apellidoPaterno} ${trabajador.persona.apellidoMaterno}',
+                    style: FlutterFlowTheme.of(context).titleMedium.override(
+                      fontFamily: 'Readex Pro',
+                      color: Colors.black,
+                      fontSize: 16.0,
+                    ),
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${trabajador.habilidad.nombre}',
+                        style: FlutterFlowTheme.of(context).bodyMedium,
+                      ),
                       Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 1.0, 0.0, 1.0),
-                        child: Container(
-                          width: 100.0,
-                          decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 0.0,
-                                color: FlutterFlowTheme.of(context).lineColor,
-                                offset: Offset(0.0, 1.0),
-                              )
-                            ],
+                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 0.0, 0.0),
+                        child: RatingBar.builder(
+                          onRatingUpdate: (newValue) =>
+                              setState(() => _model.ratingBarValue5 = newValue),
+                          itemBuilder: (context, index) => Icon(
+                            Icons.star_rounded,
+                            color: FlutterFlowTheme.of(context).tertiary,
                           ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                8.0, 8.0, 8.0, 8.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 40.0),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(40.0),
-                                    child: Image.asset(
-                                      'assets/images/blank-profile-picture-973460_1280.png',
-                                      width: 60.0,
-                                      height: 60.0,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          'Jose Alfonso Rojas Pereyra',
-                                          style: FlutterFlowTheme.of(context)
-                                              .titleMedium
-                                              .override(
-                                                fontFamily: 'Readex Pro',
-                                                color: Colors.black,
-                                                fontSize: 16.0,
-                                              ),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 4.0, 0.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      12.0, 5.0, 0.0, 0.0),
-                                              child: Text(
-                                                'Tutor de Quechua',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            8.0, 8.0, 0.0, 0.0),
-                                        child: RatingBar.builder(
-                                          onRatingUpdate: (newValue) =>
-                                              setState(() => _model
-                                                  .ratingBarValue2 = newValue),
-                                          itemBuilder: (context, index) => Icon(
-                                            Icons.star_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .tertiary,
-                                          ),
-                                          direction: Axis.horizontal,
-                                          initialRating:
-                                              _model.ratingBarValue2 ??= 3.0,
-                                          unratedColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .accent3,
-                                          itemCount: 5,
-                                          itemSize: 30.0,
-                                          glowColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .tertiary,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Card(
-                                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                                  color: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  elevation: 1.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(40.0),
-                                  ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        4.0, 4.0, 4.0, 4.0),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed('visualizarperfil');
-                                      },
-                                      child: Icon(
-                                        Icons.keyboard_arrow_right_rounded,
-                                        color: Color(0xFF5998D1),
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                          direction: Axis.horizontal,
+                          initialRating: _model.ratingBarValue5 ??= 3.0,
+                          unratedColor: FlutterFlowTheme.of(context).accent3,
+                          itemCount: 5,
+                          itemSize: 30.0,
+                          glowColor: FlutterFlowTheme.of(context).tertiary,
                         ),
                       ),
-
-
                     ],
                   ),
+                  trailing: Icon(
+                    Icons.keyboard_arrow_right_rounded,
+                    color: FlutterFlowTheme.of(context).secondaryText,
+                    size: 24.0,
+                  ),
+                  onTap: () {
+                    // Acción al hacer clic en un elemento de la lista
+                    // Puedes navegar a la página de detalle o realizar otras acciones
+                    context.pushNamed('visualizarperfil');
+                  },
                 ),
-
-
               ),
+            );
+          },
+        );
+      }
+    },
+  ),
+),
+
+
+
             ],
           ),
         ),
