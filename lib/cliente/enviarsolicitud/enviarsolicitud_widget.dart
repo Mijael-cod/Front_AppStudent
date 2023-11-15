@@ -1,3 +1,9 @@
+import 'dart:convert';
+
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:proyecto/cliente/home_cliente/home_cliente_widget.dart';
+import 'package:proyecto/models/trabajador.dart';
+
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -11,6 +17,8 @@ import 'package:provider/provider.dart';
 import 'enviarsolicitud_model.dart';
 export 'enviarsolicitud_model.dart';
 
+import 'package:http/http.dart' as http;
+
 class EnviarsolicitudWidget extends StatefulWidget {
   const EnviarsolicitudWidget({Key? key}) : super(key: key);
 
@@ -21,15 +29,94 @@ class EnviarsolicitudWidget extends StatefulWidget {
 class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
   late EnviarsolicitudModel _model;
 
+  Persona? persona;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final storage = FlutterSecureStorage();
+  String? codigoPersona;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => EnviarsolicitudModel());
 
+    loadCodigoPersona();
+
     _model.comentarSolicitudController ??= TextEditingController();
     _model.comentarSolicitudFocusNode ??= FocusNode();
+  }
+
+  Future<Map<String, dynamic>> loadCodigoPersona() async {
+    codigoPersona = await storage.read(key: 'codigoPersona');
+
+    if (codigoPersona != null) {
+      final apiUrl =
+          'https://nestjs-pi-postgres.onrender.com/api/v1/personas/searchByCode/$codigoPersona';
+      final response = await http.get(Uri.parse(apiUrl));
+
+      if (response.statusCode == 200) {
+        // Si el servidor devuelve una respuesta OK, parseamos el JSON
+        Map<String, dynamic> jsonPersona = jsonDecode(response.body);
+        // Asignamos los datos de la persona a la variable de estado
+        setState(() {
+          persona = Persona.fromJson(jsonPersona);
+        });
+        return jsonPersona; // Devolvemos el jsonPersona
+      } else {
+        // Si la respuesta no es OK, lanzamos un error
+        throw Exception('Failed to load persona');
+      }
+    }
+    return {}; // Devolvemos un Map vacío si codigoPersona es null
+  }
+
+  Future<void> enviarSolicitud(
+      String mensaje, String codigoPersonaDestino) async {
+    // Obtenemos el token
+    String? token = await storage.read(key: 'token');
+
+    if (token != null) {
+      // Decodificamos el token
+      List<String> parts = token.split('.');
+      if (parts.length != 3) {
+        throw Exception('Invalid token');
+      }
+
+      var payload =
+          jsonDecode(utf8.decode(base64.decode(base64.normalize(parts[1]))));
+      String? codigoPersona = payload[
+          'codigo']; // Asume que el código de la persona está en la propiedad 'codigo' del payload
+
+      if (codigoPersona != null) {
+        final apiUrl =
+            'https://nestjs-pi-postgres.onrender.com/api/v1/solicitud/';
+
+        // Creamos el cuerpo de la solicitud
+        final body = {
+          'mensaje': mensaje,
+          'contratador': codigoPersona,
+          'trabajador': codigoPersonaDestino,
+        };
+
+        // Hacemos la solicitud POST
+        final response = await http.post(
+          Uri.parse(apiUrl),
+          headers: {"Content-Type": "application/json"},
+          body: jsonEncode(body),
+        );
+
+        if (response.statusCode == 201) {
+          // Si el servidor devuelve una respuesta OK, la solicitud se envió correctamente
+          print('Solicitud enviada correctamente');
+        } else {
+          // Si la respuesta no es OK, lanzamos un error
+          print('Response status: ${response.statusCode}');
+          print('Response body: ${response.body}');
+          throw Exception('Failed to send solicitud');
+        }
+      }
+    }
   }
 
   @override
@@ -130,7 +217,7 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Jhossep Samuel\nLlactahuaman Cabrera',
+                            '${persona?.nombre} \n${persona?.apellidoPaterno} ${persona?.apellidoMaterno}',
                             style: FlutterFlowTheme.of(context)
                                 .titleLarge
                                 .override(
@@ -234,8 +321,42 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                       padding:
                           EdgeInsetsDirectional.fromSTEB(70.0, 8.0, 16.0, 8.0),
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('BotonEnviar pressed ...');
+                        onPressed: () async {
+                          String mensaje =
+                              _model.comentarSolicitudController.text;
+                          Map<String, dynamic> personaDestino =
+                              await loadCodigoPersona();
+                          String codigoPersonaDestino = personaDestino[
+                              'codigo']; // Obtén el código de la persona destino
+
+                          Map<String, dynamic> solicitudInfo = {
+                            'mensaje': mensaje,
+                            'codigoPersona': await storage.read(
+                                key:
+                                    'contratador'), // Asume que este es el código de la persona que envía la solicitud
+                            'codigoPersonaDestino': codigoPersonaDestino,
+                          };
+
+                          print(
+                              'Información de la solicitud: ${jsonEncode(solicitudInfo)}');
+
+                     try {
+  await enviarSolicitud(mensaje, codigoPersonaDestino);
+  print('BotonEnviar pressed ...');
+
+  // Limpia el mensaje del Secure Storage
+  await storage.delete(key: 'codigoPersona');
+
+  // Redirige al usuario al HomeClienteWidget
+  Navigator.pushReplacement(
+    context,
+    MaterialPageRoute(builder: (context) => HomeClienteWidget()),
+  );
+} catch (e, s) {
+  print('Error al enviar la solicitud: $e');
+  print('Stack trace: $s');
+  // Aquí puedes mostrar un mensaje al usuario para informarle que la solicitud no se pudo enviar
+}
                         },
                         text: 'Enviar',
                         options: FFButtonOptions(

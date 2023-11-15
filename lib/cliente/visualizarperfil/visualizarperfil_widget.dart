@@ -1,4 +1,5 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:proyecto/index.dart';
 import 'package:proyecto/models/trabajador.dart';
 
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -40,27 +41,27 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
     loadCodigoPersona();
   }
 
-Future<void> loadCodigoPersona() async {
-  codigoPersona = await storage.read(key: 'codigoPersona');
+  Future<void> loadCodigoPersona() async {
+    codigoPersona = await storage.read(key: 'codigoPersona');
 
-  if (codigoPersona != null) {
-    final apiUrl =
-        'https://nestjs-pi-postgres.onrender.com/api/v1/personas/searchByCode/$codigoPersona';
-    final response = await http.get(Uri.parse(apiUrl));
+    if (codigoPersona != null) {
+      final apiUrl =
+          'https://nestjs-pi-postgres.onrender.com/api/v1/personas/searchByCode/$codigoPersona';
+      final response = await http.get(Uri.parse(apiUrl));
 
-    if (response.statusCode == 200) {
-      // Si el servidor devuelve una respuesta OK, parseamos el JSON
-      Map<String, dynamic> jsonPersona = jsonDecode(response.body);
-      // Asignamos los datos de la persona a la variable de estado
-      setState(() {
-        persona = Persona.fromJson(jsonPersona);
-      });
-    } else {
-      // Si la respuesta no es OK, lanzamos un error
-      throw Exception('Failed to load persona');
+      if (response.statusCode == 200) {
+        // Si el servidor devuelve una respuesta OK, parseamos el JSON
+        Map<String, dynamic> jsonPersona = jsonDecode(response.body);
+        // Asignamos los datos de la persona a la variable de estado
+        setState(() {
+          persona = Persona.fromJson(jsonPersona);
+        });
+      } else {
+        // Si la respuesta no es OK, lanzamos un error
+        throw Exception('Failed to load persona');
+      }
     }
   }
-}
 
   @override
   void dispose() {
@@ -805,7 +806,12 @@ Future<void> loadCodigoPersona() async {
                                   80.0, 20.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
-                                  context.pushNamed('enviarsolicitud');
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          EnviarsolicitudWidget(),
+                                    ),
+                                  );
                                 },
                                 text: 'Solicitar',
                                 options: FFButtonOptions(
