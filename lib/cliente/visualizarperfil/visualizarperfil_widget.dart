@@ -1,3 +1,6 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:proyecto/models/trabajador.dart';
+
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,6 +13,8 @@ import 'package:provider/provider.dart';
 import 'visualizarperfil_model.dart';
 export 'visualizarperfil_model.dart';
 
+import 'package:http/http.dart' as http;
+
 class VisualizarperfilWidget extends StatefulWidget {
   const VisualizarperfilWidget({Key? key}) : super(key: key);
 
@@ -20,18 +25,46 @@ class VisualizarperfilWidget extends StatefulWidget {
 class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
   late VisualizarperfilModel _model;
 
+  Persona? persona;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final storage = FlutterSecureStorage();
+  String? codigoPersona;
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => VisualizarperfilModel());
+
+    loadCodigoPersona();
   }
+
+Future<void> loadCodigoPersona() async {
+  codigoPersona = await storage.read(key: 'codigoPersona');
+
+  if (codigoPersona != null) {
+    final apiUrl =
+        'https://nestjs-pi-postgres.onrender.com/api/v1/personas/searchByCode/$codigoPersona';
+    final response = await http.get(Uri.parse(apiUrl));
+
+    if (response.statusCode == 200) {
+      // Si el servidor devuelve una respuesta OK, parseamos el JSON
+      Map<String, dynamic> jsonPersona = jsonDecode(response.body);
+      // Asignamos los datos de la persona a la variable de estado
+      setState(() {
+        persona = Persona.fromJson(jsonPersona);
+      });
+    } else {
+      // Si la respuesta no es OK, lanzamos un error
+      throw Exception('Failed to load persona');
+    }
+  }
+}
 
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 
@@ -131,7 +164,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: Text(
-                    'Jhossep Samuel \nllactahuaman Cabrera',
+                    '${persona?.nombre} \n${persona?.apellidoPaterno} ${persona?.apellidoMaterno}',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).headlineSmall.override(
                           fontFamily: 'Readex Pro',

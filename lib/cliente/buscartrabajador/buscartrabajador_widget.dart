@@ -1,3 +1,4 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:proyecto/models/trabajador.dart';
 
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -254,11 +255,19 @@ Expanded(
                     color: FlutterFlowTheme.of(context).secondaryText,
                     size: 24.0,
                   ),
-                  onTap: () {
+
+                  onTap: () async {
                     // Acción al hacer clic en un elemento de la lista
                     // Puedes navegar a la página de detalle o realizar otras acciones
+
+                    // Guardar el código de la persona en el almacenamiento seguro
+                    final storage = FlutterSecureStorage();
+                    await storage.write(key: 'codigoPersona', value: trabajador.persona.codigo.toString());
+
                     context.pushNamed('visualizarperfil');
                   },
+
+
                 ),
               ),
             );
