@@ -29,7 +29,7 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
   late Habilidades2Model _model;
   final _storage = FlutterSecureStorage();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
+  String _userName = '';
   List<dynamic> habilidades = []; // Declara esta lista en la clase
 
   final animationsMap = {
@@ -170,28 +170,52 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
 
   // Obtener la especialidad guardada en FlutterSecureStorage
   Future<String?> obtenerEspecialidadGuardada() async {
-    return await _storage.read(key: 'especialidad');
+    try {
+      return await _storage.read(key: 'especialidad');
+    } catch (e) {
+      print('Error al obtener la especialidad: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+              'Error al obtener la especialidad. Por favor, inténtalo de nuevo.'),
+          duration: Duration(seconds: 3),
+        ),
+      );
+      return null;
+    }
   }
 
   // Obtener las habilidades según la especialidad de la API
   Future<List<dynamic>> obtenerHabilidadesPorEspecialidad(
       String especialidad) async {
-    final url = Uri.parse(
-        'https://nestjs-pi-postgres.onrender.com/api/v1/habilidades/por-especialidad/$especialidad');
-
     try {
-      final response = await http.get(url);
+      final url = Uri.parse(
+          'https://nestjs-pi-postgres.onrender.com/api/v1/habilidades/por-especialidad/$especialidad');
 
-      if (response.statusCode == 200) {
-        final jsonData = json.decode(response.body);
-        List<dynamic> habilidades = jsonData['habilidades'];
-        return habilidades;
-      } else {
-        print('Error al cargar las habilidades: ${response.statusCode}');
+      try {
+        final response = await http.get(url);
+
+        if (response.statusCode == 200) {
+          final jsonData = json.decode(response.body);
+          List<dynamic> habilidades = jsonData['habilidades'];
+          return habilidades;
+        } else {
+          print('Error al cargar las habilidades: ${response.statusCode}');
+          return [];
+        }
+      } catch (e) {
+        print('Error: $e');
         return [];
       }
     } catch (e) {
-      print('Error: $e');
+      print('Error al cargar las habilidades: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+              'Error al cargar las habilidades. Por favor, inténtalo de nuevo.'),
+          duration: Duration(seconds: 3),
+        ),
+      );
       return [];
     }
   }
@@ -200,7 +224,7 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
   void initState() {
     super.initState();
     _model = createModel(context, () => Habilidades2Model());
-
+    _getUserNameFromToken();
     // Obtener la especialidad guardada al iniciar la página
     obtenerEspecialidadGuardada().then((especialidadGuardada) {
       if (especialidadGuardada != null) {
@@ -227,6 +251,104 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
           !anim.applyInitialState),
       this,
     );
+  }
+
+  // Función para obtener el nombre de usuario desde el token
+  Future<void> _getUserNameFromToken() async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+
+    if (token != null) {
+      final parts = token.split('.');
+      if (parts.length == 3) {
+        final payload = json.decode(
+            utf8.decode(base64Url.decode(base64Url.normalize(parts[1]))));
+        if (payload is Map) {
+          final codigo =
+              payload['codigo']; // Asegúrate de usar la clave correcta
+          print('Código extraído del token: $codigo');
+
+          // Asigna el valor de codigo a codigoPersona
+          String codigoPersona =
+              codigo; // Reemplaza el tipo de dato según sea necesario
+
+          // Realiza una solicitud a la API para buscar a la persona por código
+          final apiUrl =
+              'https://nestjs-pi-postgres.onrender.com/api/v1/personas/searchByCode/$codigo';
+          final response = await http.get(Uri.parse(apiUrl));
+
+          if (response.statusCode == 200) {
+            final personaData = json.decode(response.body);
+            final nombre = personaData['nombre'];
+
+            setState(() {
+              _userName = '$nombre'; //Aca va nombre y apellido que se mostrará
+            });
+          }
+        }
+      }
+    }
+  }
+
+  Future<void> agregarHabilidad(String habilidad) async {
+    // Crear los datos para la solicitud POST
+    final datos = {
+      'persona': _userName,
+      'habilidad': habilidad,
+    };
+
+    // Imprimir el JSON antes de enviarlo a la API
+    print('JSON enviado a la API: ${json.encode(datos)}');
+
+    // Realizar la solicitud POST
+    final response = await http.post(
+      Uri.parse(
+          'https://nestjs-pi-postgres.onrender.com/api/v1/habilidad-personas'),
+      body: json.encode(datos),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    );
+
+    // Si la solicitud se realizó correctamente, actualizar la lista de habilidades
+    if (response.statusCode == 201) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Habilidad Agregada'),
+            content: Text('Habilidad agregada satisfactoriamente!'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('Aceptar'),
+              ),
+            ],
+          );
+        },
+      );
+    } else if (response.statusCode == 400) {
+      // En caso de BadRequest (código 400), mostrar una alerta
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Habilidad duplicada'),
+            content: Text('Esta habilidad ya ha sido seleccionada.'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('Aceptar'),
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   @override
@@ -301,6 +423,8 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
                   padding: EdgeInsets.zero,
                   scrollDirection: Axis.vertical,
                   children: habilidades.map((habilidad) {
+                    print(
+                        'Tipo de habilidad[\'nombre\']: ${habilidad['nombre'].runtimeType}');
                     return Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 5.0),
@@ -360,7 +484,13 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
                                         0.0, 5.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () {
-                                        print('AgregarHabilidad pressed ...');
+                                        final index = habilidades.indexOf(
+                                            habilidad); // Get the index of the selected habilidad
+                                        final habilidadNombre = habilidad[
+                                            'nombre']; // Get the habilidad name from the selected habilidad
+                                        agregarHabilidad(
+                                          habilidadNombre,
+                                        ); // Pass the index and habilidad name to agregarHabilidad
                                       },
                                       text: '+',
                                       options: FFButtonOptions(

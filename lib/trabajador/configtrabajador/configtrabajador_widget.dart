@@ -1,3 +1,5 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -273,6 +275,12 @@ class _ConfigtrabajadorWidgetState extends State<ConfigtrabajadorWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    final storage = FlutterSecureStorage();
+                    // Elimina el token al presionar el botón
+                    await storage.delete(key: 'token');
+                    await storage
+                        .deleteAll(); // Esto eliminará todos los valores del secureStorage
+
                     context.pushNamed('Login');
                   },
                   child: Container(
