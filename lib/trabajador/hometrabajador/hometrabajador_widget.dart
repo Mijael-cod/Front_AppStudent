@@ -29,6 +29,7 @@ class HometrabajadorWidget extends StatefulWidget {
 class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
     with TickerProviderStateMixin {
   late HometrabajadorModel _model;
+
   late List<dynamic> data = []; // Inicializar con una lista vacía
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -220,8 +221,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
 
           if (response.statusCode == 200) {
             final personaData = json.decode(response.body);
-            final nombre =
-                personaData['nombre']; // Asegúrate de usar la clave correcta
+            final nombre = personaData['nombre']; // Asegúrate de usar la clave correcta
             final apellidoPaterno = personaData['apellidoPaterno'];
             final apellidoMaterno = personaData['apellidoMaterno'];
 
