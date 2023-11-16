@@ -176,110 +176,122 @@ class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
                       .asValidator(context),
                 ),
               ),
-Expanded(
-  child: FutureBuilder<List<Trabajador>>(
-    future: fetchTrabajadores(),
-    builder: (BuildContext context, AsyncSnapshot<List<Trabajador>> snapshot) {
-      if (snapshot.connectionState == ConnectionState.waiting) {
-        return Center(child: CircularProgressIndicator());
-      } else if (snapshot.hasError) {
-        return Center(child: Text('Error: ${snapshot.error}'));
-      } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-        return Center(child: Text('No hay datos disponibles.'));
-      } else {
-        return ListView.builder(
-          itemCount: snapshot.data!.length,
-          itemBuilder: (BuildContext context, int index) {
-            Trabajador trabajador = snapshot.data![index];
+              Expanded(
+                child: FutureBuilder<List<Trabajador>>(
+                  future: fetchTrabajadores(),
+                  builder: (BuildContext context,
+                      AsyncSnapshot<List<Trabajador>> snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(child: CircularProgressIndicator());
+                    } else if (snapshot.hasError) {
+                      return Center(child: Text('Error: ${snapshot.error}'));
+                    } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                      return Center(child: Text('No hay datos disponibles.'));
+                    } else {
+                      return ListView.builder(
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          Trabajador trabajador = snapshot.data![index];
 
-            return Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 0.0),
-              child: Container(
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).secondaryBackground,
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 0.0,
-                      color: FlutterFlowTheme.of(context).lineColor,
-                      offset: Offset(0.0, 1.0),
-                    ),
-                  ],
-                ),
-                child: ListTile(
-                  contentPadding: EdgeInsets.all(8.0),
-                  leading: ClipRRect(
-                    borderRadius: BorderRadius.circular(40.0),
-                    child: Image.asset(
-                      'assets/images/blank-profile-picture-973460_1280.png',
-                      width: 60.0,
-                      height: 60.0,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  title: Text(
-                    '${trabajador.persona.nombre} ${trabajador.persona.apellidoPaterno} ${trabajador.persona.apellidoMaterno}',
-                    style: FlutterFlowTheme.of(context).titleMedium.override(
-                      fontFamily: 'Readex Pro',
-                      color: Colors.black,
-                      fontSize: 16.0,
-                    ),
-                  ),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${trabajador.habilidad.nombre}',
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 0.0, 0.0),
-                        child: RatingBar.builder(
-                          onRatingUpdate: (newValue) =>
-                              setState(() => _model.ratingBarValue5 = newValue),
-                          itemBuilder: (context, index) => Icon(
-                            Icons.star_rounded,
-                            color: FlutterFlowTheme.of(context).tertiary,
-                          ),
-                          direction: Axis.horizontal,
-                          initialRating: _model.ratingBarValue5 ??= 3.0,
-                          unratedColor: FlutterFlowTheme.of(context).accent3,
-                          itemCount: 5,
-                          itemSize: 30.0,
-                          glowColor: FlutterFlowTheme.of(context).tertiary,
-                        ),
-                      ),
-                    ],
-                  ),
-                  trailing: Icon(
-                    Icons.keyboard_arrow_right_rounded,
-                    color: FlutterFlowTheme.of(context).secondaryText,
-                    size: 24.0,
-                  ),
+                          return Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                8.0, 8.0, 8.0, 0.0),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                boxShadow: [
+                                  BoxShadow(
+                                    blurRadius: 0.0,
+                                    color:
+                                        FlutterFlowTheme.of(context).lineColor,
+                                    offset: Offset(0.0, 1.0),
+                                  ),
+                                ],
+                              ),
+                              child: ListTile(
+                                contentPadding: EdgeInsets.all(8.0),
+                                leading: ClipRRect(
+                                  borderRadius: BorderRadius.circular(40.0),
+                                  child: Image.asset(
+                                    'assets/images/blank-profile-picture-973460_1280.png',
+                                    width: 60.0,
+                                    height: 60.0,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                title: Text(
+                                  '${trabajador.persona.nombre} ${trabajador.persona.apellidoPaterno} ${trabajador.persona.apellidoMaterno}',
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        color: Colors.black,
+                                        fontSize: 16.0,
+                                      ),
+                                ),
+                                subtitle: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '${trabajador.habilidad.nombre}',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          8.0, 8.0, 0.0, 0.0),
+                                      child: RatingBar.builder(
+                                        onRatingUpdate: (newValue) => setState(
+                                            () => _model.ratingBarValue5 =
+                                                newValue),
+                                        itemBuilder: (context, index) => Icon(
+                                          Icons.star_rounded,
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                        ),
+                                        direction: Axis.horizontal,
+                                        initialRating:
+                                            _model.ratingBarValue5 ??= 3.0,
+                                        unratedColor:
+                                            FlutterFlowTheme.of(context)
+                                                .accent3,
+                                        itemCount: 5,
+                                        itemSize: 30.0,
+                                        glowColor: FlutterFlowTheme.of(context)
+                                            .tertiary,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                trailing: Icon(
+                                  Icons.keyboard_arrow_right_rounded,
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  size: 24.0,
+                                ),
+                                onTap: () async {
+                                  // Acción al hacer clic en un elemento de la lista
+                                  // Puedes navegar a la página de detalle o realizar otras acciones
 
-                  onTap: () async {
-                    // Acción al hacer clic en un elemento de la lista
-                    // Puedes navegar a la página de detalle o realizar otras acciones
+                                  // Guardar el código de la persona en el almacenamiento seguro
+                                  final storage = FlutterSecureStorage();
+                                  await storage.write(
+                                      key: 'codigoPersona',
+                                      value:
+                                          trabajador.persona.codigo.toString());
 
-                    // Guardar el código de la persona en el almacenamiento seguro
-                    final storage = FlutterSecureStorage();
-                    await storage.write(key: 'codigoPersona', value: trabajador.persona.codigo.toString());
-
-                    context.pushNamed('visualizarperfil');
+                                  context.pushNamed('visualizarperfil');
+                                },
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    }
                   },
-
-
                 ),
               ),
-            );
-          },
-        );
-      }
-    },
-  ),
-),
-
-
-
             ],
           ),
         ),
