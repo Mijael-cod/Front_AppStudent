@@ -1,3 +1,5 @@
+import 'package:proyecto/index.dart';
+
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -10,6 +12,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'habilidades1_copy_model.dart';
 export 'habilidades1_copy_model.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class Habilidades1CopyWidget extends StatefulWidget {
   const Habilidades1CopyWidget({Key? key}) : super(key: key);
@@ -20,13 +25,64 @@ class Habilidades1CopyWidget extends StatefulWidget {
 
 class _Habilidades1CopyWidgetState extends State<Habilidades1CopyWidget> {
   late Habilidades1CopyModel _model;
+  final _storage = FlutterSecureStorage();
+
+  List<String> categorias = [];
+
+  List<String> especialidades = [];
+  String selectedCategoria = '';
+
+// Función para obtener las categorías desde la API
+  Future<List<String>> obtenerCategorias() async {
+    final response = await http.get(
+        Uri.parse('https://nestjs-pi-postgres.onrender.com/api/v1/categoria'));
+
+    if (response.statusCode == 200) {
+      // Decodificar la respuesta JSON
+      final List<dynamic> categoriasJson = json.decode(response.body);
+
+      // Mapear el JSON para obtener solo los nombres de las categorías
+      final List<String> nombresCategorias = categoriasJson
+          .map((categoria) => categoria['nombre'] as String)
+          .toList();
+      print(nombresCategorias);
+      return nombresCategorias;
+    } else {
+      throw Exception('Error al cargar las categorías');
+    }
+  }
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+    obtenerCategorias().then((listaCategorias) {
+      setState(() {
+        categorias = listaCategorias;
+      });
+    }).catchError((error) {
+      print('Error: $error');
+    });
     _model = createModel(context, () => Habilidades1CopyModel());
+  }
+
+  // Función para obtener especialidades según la categoría seleccionada
+  Future<void> obtenerEspecialidades(String categoriaSeleccionada) async {
+    final response = await http.get(Uri.parse(
+        'https://nestjs-pi-postgres.onrender.com/api/v1/especialidad/searchByCategory/$categoriaSeleccionada'));
+
+    if (response.statusCode == 200) {
+      final especialidadesJson = json.decode(response.body)['especialidad'];
+
+      setState(() {
+        especialidades = especialidadesJson
+            .map<String>((especialidad) => especialidad['nombre'] as String)
+            .toList();
+      });
+    } else {
+      throw Exception('Error al cargar las especialidades');
+    }
   }
 
   @override
@@ -94,9 +150,16 @@ class _Habilidades1CopyWidgetState extends State<Habilidades1CopyWidget> {
                     child: FlutterFlowDropDown<String>(
                       controller: _model.selectCategoriaValueController ??=
                           FormFieldController<String>(null),
-                      options: ['Materias', 'Hogar', 'Manualidades'],
-                      onChanged: (val) =>
-                          setState(() => _model.selectCategoriaValue = val),
+                      options: categorias.isNotEmpty
+                          ? categorias
+                          : [
+                              'Cargando...'
+                            ], // Utiliza las categorías obtenidas de la API o muestra "Cargando..." mientras se cargan
+                      onChanged: (val) => setState(() {
+                        selectedCategoria = val ?? '';
+                        // Llamar función para obtener las especialidades según la categoría seleccionada
+                        obtenerEspecialidades(selectedCategoria);
+                      }),
                       width: 300.0,
                       height: 60.0,
                       textStyle:
@@ -129,14 +192,9 @@ class _Habilidades1CopyWidgetState extends State<Habilidades1CopyWidget> {
                     child: FlutterFlowDropDown<String>(
                       controller: _model.selectEspecialidadValueController ??=
                           FormFieldController<String>(null),
-                      options: [
-                        'Matematica',
-                        'Fisica',
-                        'Ciencias',
-                        'Historia',
-                        'Comunicación',
-                        'Idiomas'
-                      ],
+                      options: especialidades.isNotEmpty
+                          ? especialidades
+                          : ['Selecciona una categoría primero'],
                       onChanged: (val) =>
                           setState(() => _model.selectEspecialidadValue = val),
                       width: 300.0,
@@ -182,7 +240,22 @@ class _Habilidades1CopyWidgetState extends State<Habilidades1CopyWidget> {
                                 90.0, 40.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
-                                context.pushNamed('habilidades2');
+                                if (_model.selectEspecialidadValue != null &&
+                                    _model
+                                        .selectEspecialidadValue!.isNotEmpty) {
+                                  // Guardar la especialidad seleccionada en Secure Storage
+                                  await _storage.write(
+                                      key: 'especialidad',
+                                      value: _model.selectEspecialidadValue);
+
+                                  // Navegar a la siguiente pantalla (habilidades2)
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          Habilidades2Widget(),
+                                    ),
+                                  );
+                                }
                               },
                               text: 'Aceptar',
                               options: FFButtonOptions(
