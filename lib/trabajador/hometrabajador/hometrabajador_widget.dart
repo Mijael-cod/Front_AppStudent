@@ -523,7 +523,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                                     const BorderRadius
                                                                         .all(
                                                                         Radius.circular(
-                                                                            5)),
+                                                                            12)),
                                                                 color: Colors
                                                                     .white,
                                                                 border:
@@ -536,6 +536,9 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                               ),
                                                               child: Column(
                                                                 children: [
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          20),
                                                                   SizedBox(
                                                                     width: double
                                                                         .infinity,
@@ -554,16 +557,134 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                                               .grey
                                                                               .shade600,
                                                                           borderRadius:
-                                                                              BorderRadius.all(Radius.circular(200)),
+                                                                              const BorderRadius.all(
+                                                                            Radius.circular(200),
+                                                                          ),
                                                                         ),
+                                                                        child: Image.network("https://firebasestorage.googleapis.com/v0/b/py-helpstudent-vi.appspot.com/o/usuarios%2FPERFIL.png?alt=media&token=829020d2-303b-4f96-8e4e-fb3b7e637954"),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height: 10,
+                                                                  ),
+                                                                  Image.network(
+                                                                      "assets/images/e-color.png",
+                                                                      width:
+                                                                          40),
+                                                                  const SizedBox(
+                                                                    height: 10,
+                                                                  ),
+                                                                  Text(
+                                                                    p['contratador']
+                                                                        [
+                                                                        'nombre'],
+                                                                    style:
+                                                                        const TextStyle(
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                    ),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height: 10,
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
+                                                                        .symmetric(
+                                                                        horizontal:
+                                                                            80),
+                                                                    child:
+                                                                        Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height: 1,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Colors
+                                                                            .grey
+                                                                            .shade400,
                                                                       ),
                                                                     ),
                                                                   ),
                                                                   const SizedBox(
                                                                       height:
-                                                                          10),
+                                                                          30),
                                                                   Text(p[
                                                                       'mensaje']),
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          30),
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
+                                                                        .symmetric(
+                                                                        horizontal:
+                                                                            80),
+                                                                    child:
+                                                                        Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height: 1,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Colors
+                                                                            .grey
+                                                                            .shade400,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          20),
+                                                                  Row(
+                                                                    children: [
+                                                                      const SizedBox(
+                                                                          width:
+                                                                              30),
+                                                                      Expanded(
+                                                                        child:
+                                                                            ElevatedButton(
+                                                                          onPressed:
+                                                                              () {},
+                                                                          style:
+                                                                              ElevatedButton.styleFrom(
+                                                                            shape:
+                                                                                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                          ),
+                                                                          child:
+                                                                              Text("Aceptar"),
+                                                                        ),
+                                                                      ),
+                                                                      const SizedBox(
+                                                                          width:
+                                                                              20),
+                                                                      Expanded(
+                                                                        child:
+                                                                            ElevatedButton(
+                                                                          onPressed:
+                                                                              () {},
+                                                                          style:
+                                                                              ElevatedButton.styleFrom(
+                                                                            backgroundColor:
+                                                                                Colors.white,
+                                                                            shape:
+                                                                                RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                                                                          ),
+                                                                          child:
+                                                                              Text(
+                                                                            "Cancelar",
+                                                                            style:
+                                                                                TextStyle(color: Colors.grey.shade500),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                      const SizedBox(
+                                                                          width:
+                                                                              30),
+                                                                    ],
+                                                                  )
                                                                 ],
                                                               ),
                                                             );
