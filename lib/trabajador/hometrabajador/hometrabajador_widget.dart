@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:proyecto/alertas/alertas.dart';
 
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -34,6 +35,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  String codigoperso = '';
   String _userName = ''; // Variable para almacenar el nombre de usuario
 
   final animationsMap = {
@@ -168,6 +170,27 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
   }
 
   //Funcion para listar las solicitudes pendientes
+  Future<dynamic> UpdateState(String estado, int id) async {
+    final response = await http.patch(
+      Uri.parse(
+          'https://nestjs-pi-postgres.onrender.com/api/v1/solicitud/actualizarEstado/$id'),
+      headers: {},
+      body: {
+        "nuevoEstado": estado,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      // La solicitud fue exitosa, analiza los datos JSON
+      final dataResult = json.decode(response.body);
+      return dataResult;
+    } else {
+      // Si la solicitud no fue exitosa, lanza una excepción
+      throw Exception('Error al cargar los datos');
+    }
+  }
+
+  //Funcion para listar las solicitudes pendientes
   Future<List<dynamic>> fetchData(String codigoPersona) async {
     final response = await http.get(
       Uri.parse(
@@ -178,6 +201,9 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
       // La solicitud fue exitosa, analiza los datos JSON
       final dataResult = json.decode(response.body);
       final datita = List<dynamic>.from(dataResult);
+      setState(() {
+        data = datita;
+      });
       data = datita;
       print("Resul/");
       print(data);
@@ -204,8 +230,9 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
           print('Código extraído del token: $codigo');
 
           // Asigna el valor de codigo a codigoPersona
-          String codigoPersona =
-              codigo; // Reemplaza el tipo de dato según sea necesario
+          String codigoPersona = codigo;
+          // Reemplaza el tipo de dato según sea necesario
+          codigoperso = codigoPersona;
 
           // Realiza una solicitud a la API con el códigoPersona
           fetchData(codigoPersona).then((result) {
@@ -481,16 +508,6 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                                 12.0,
                                                                 16.0,
                                                                 12.0),
-                                                    child: ListView(),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                16.0,
-                                                                12.0,
-                                                                16.0,
-                                                                12.0),
                                                     child: GridView.builder(
                                                       gridDelegate:
                                                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -505,6 +522,9 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                           (BuildContext context,
                                                               index) {
                                                         dynamic p = data[index];
+                                                        int calificacion = p[
+                                                                'contratador']
+                                                            ['calificacion'];
 
                                                         // Verificar que 'p' sea un mapa y que contenga 'mensaje'
                                                         if (p is Map<String,
@@ -561,17 +581,53 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                                             Radius.circular(200),
                                                                           ),
                                                                         ),
-                                                                        child: Image.network("https://firebasestorage.googleapis.com/v0/b/py-helpstudent-vi.appspot.com/o/usuarios%2FPERFIL.png?alt=media&token=829020d2-303b-4f96-8e4e-fb3b7e637954"),
+                                                                        child: Image.network(
+                                                                            "https://firebasestorage.googleapis.com/v0/b/py-helpstudent-vi.appspot.com/o/usuarios%2FPERFIL.png?alt=media&token=829020d2-303b-4f96-8e4e-fb3b7e637954"),
                                                                       ),
                                                                     ),
                                                                   ),
                                                                   const SizedBox(
-                                                                    height: 10,
+                                                                    height: 20,
                                                                   ),
-                                                                  Image.network(
-                                                                      "assets/images/e-color.png",
-                                                                      width:
-                                                                          40),
+                                                                  SizedBox(
+                                                                    width: double
+                                                                        .infinity,
+                                                                    height: 40,
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: const EdgeInsets
+                                                                          .symmetric(
+                                                                          horizontal:
+                                                                              80),
+                                                                      child: GridView.builder(
+                                                                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                            crossAxisCount:
+                                                                                5,
+                                                                            crossAxisSpacing:
+                                                                                0,
+                                                                            mainAxisSpacing:
+                                                                                0,
+                                                                            mainAxisExtent:
+                                                                                25,
+                                                                          ),
+                                                                          itemCount: 5,
+                                                                          itemBuilder: (BuildContext context, index) {
+                                                                            String
+                                                                                cali =
+                                                                                "assets/images/e-color.png";
+
+                                                                            if (p['contratador']['calificacion'] >=
+                                                                                (index + 1)) {
+                                                                              cali = "assets/images/e-color.png";
+                                                                            } else {
+                                                                              cali = "assets/images/e-sincolor.png";
+                                                                            }
+                                                                            print("ESTE ES EL MENSAJE $cali $index $calificacion ");
+                                                                            return Image.asset(cali,
+                                                                                width: 40);
+                                                                          }),
+                                                                    ),
+                                                                  ),
                                                                   const SizedBox(
                                                                     height: 10,
                                                                   ),
@@ -586,6 +642,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                                       fontWeight:
                                                                           FontWeight
                                                                               .bold,
+                                                                      // decoration: TextDecoration.lineThrough  //Esto sirve para ponerle rayita al texto
                                                                     ),
                                                                   ),
                                                                   const SizedBox(
@@ -647,7 +704,18 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                                         child:
                                                                             ElevatedButton(
                                                                           onPressed:
-                                                                              () {},
+                                                                              () async {
+                                                                            await UpdateState("pendientes",
+                                                                                p['id']);
+                                                                            await fetchData(codigoperso);
+                                                                            ScaffoldMessenger.of(context)
+                                                                              ..hideCurrentSnackBar()
+                                                                              ..showSnackBar(
+                                                                                successToastAlertDialog(
+                                                                                  "Se ha aceptado tu solicitud por ser seguidor de Reyna :D...!!!",
+                                                                                ),
+                                                                              );
+                                                                          },
                                                                           style:
                                                                               ElevatedButton.styleFrom(
                                                                             shape:
@@ -664,7 +732,18 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                                         child:
                                                                             ElevatedButton(
                                                                           onPressed:
-                                                                              () {},
+                                                                              () async {
+                                                                            await UpdateState("cancelado",
+                                                                                p['id']);
+                                                                            await fetchData(codigoperso);
+                                                                            ScaffoldMessenger.of(context)
+                                                                              ..hideCurrentSnackBar()
+                                                                              ..showSnackBar(
+                                                                                errorToastAlertDialog(
+                                                                                  "Se ha cancelado tu solicitud por ser seguidor de Reyna :D...!!!",
+                                                                                ),
+                                                                              );
+                                                                          },
                                                                           style:
                                                                               ElevatedButton.styleFrom(
                                                                             backgroundColor:
@@ -695,6 +774,16 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                         return Container();
                                                       },
                                                     ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                16.0,
+                                                                12.0,
+                                                                16.0,
+                                                                12.0),
+                                                    child: Container(),
                                                   ),
                                                 ],
                                               ),
