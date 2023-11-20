@@ -29,6 +29,7 @@ class BuscartrabajadorWidget extends StatefulWidget {
 class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
     with TickerProviderStateMixin {
   late BuscartrabajadorModel _model;
+  String _codigoPersona = "";
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -42,18 +43,43 @@ class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
   }
 
   Future<List<Trabajador>> fetchTrabajadores() async {
-    final response = await http.get(Uri.parse(
-        'https://nestjs-pi-postgres.onrender.com/api/v1/habilidad-personas'));
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
 
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
+    if (token != null) {
+      final parts = token.split('.');
+      if (parts.length == 3) {
+        final payload = json.decode(
+          utf8.decode(base64Url.decode(base64Url.normalize(parts[1]))),
+        );
+        if (payload is Map) {
+          final codigo = payload['codigo'];
+          print('Código extraído del token: $codigo');
 
-    if (response.statusCode == 200) {
-      List jsonResponse = json.decode(response.body);
-      return jsonResponse.map((item) => Trabajador.fromJson(item)).toList();
-    } else {
-      throw Exception('Failed to load trabajadores');
+          final url =
+              'https://nestjs-pi-postgres.onrender.com/api/v1/habilidad-personas/except/$codigo';
+          final response = await http.get(Uri.parse(url));
+
+          print('Response status: ${response.statusCode}');
+          print('Response body: ${response.body}');
+
+          if (response.statusCode == 200) {
+            Map<String, dynamic> jsonResponse = json.decode(response.body);
+            if (jsonResponse.containsKey('skills')) {
+              List skills = jsonResponse['skills'];
+              return skills.map((item) => Trabajador.fromJson(item)).toList();
+            } else {
+              throw Exception('Response does not contain the expected data');
+            }
+          } else {
+            throw Exception('Failed to load trabajadores');
+          }
+        }
+      }
     }
+    // Manejar el caso donde el token no está presente o no es válido
+    // Puede retornar una lista vacía o manejar otro comportamiento según sea necesario
+    return [];
   }
 
   @override
