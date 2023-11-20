@@ -194,7 +194,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
   Future<List<dynamic>> fetchData(String codigoPersona) async {
     final response = await http.get(
       Uri.parse(
-          'https://nestjs-pi-postgres.onrender.com/api/v1/solicitud/pendientes/$codigoPersona'),
+          'https://nestjs-pi-postgres.onrender.com/api/v1/solicitud/en-espera/$codigoPersona'),
     );
 
     if (response.statusCode == 200) {
