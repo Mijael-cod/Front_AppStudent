@@ -26,6 +26,8 @@ class Persona {
   final String correo;
   final String numeroCelular;
   final String codigo;
+  final String foto;
+  final int calificacion;
 
   Persona({
     required this.id,
@@ -35,6 +37,8 @@ class Persona {
     required this.correo,
     required this.numeroCelular,
     required this.codigo,
+    required this.foto,
+    required this.calificacion,
   });
 
   factory Persona.fromJson(Map<String, dynamic> json) {
@@ -46,6 +50,8 @@ class Persona {
       correo: json['correo'],
       numeroCelular: json['numeroCelular'],
       codigo: json['codigo'],
+      foto: json['foto'],
+      calificacion: json['calificacion'],
     );
   }
 }

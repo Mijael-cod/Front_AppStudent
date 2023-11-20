@@ -29,7 +29,6 @@ class BuscartrabajadorWidget extends StatefulWidget {
 class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
     with TickerProviderStateMixin {
   late BuscartrabajadorModel _model;
-  String _codigoPersona = "";
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -219,6 +218,9 @@ class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
                         itemBuilder: (BuildContext context, int index) {
                           Trabajador trabajador = snapshot.data![index];
 
+                          int calificacion = trabajador.persona
+                              .calificacion; // Supongamos que la calificación está almacenada en cada objeto Trabajador
+
                           return Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 8.0, 8.0, 0.0),
@@ -239,11 +241,9 @@ class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
                                 contentPadding: EdgeInsets.all(8.0),
                                 leading: ClipRRect(
                                   borderRadius: BorderRadius.circular(40.0),
-                                  child: Image.asset(
-                                    'assets/images/blank-profile-picture-973460_1280.png',
-                                    width: 60.0,
-                                    height: 60.0,
-                                    fit: BoxFit.cover,
+                                  child: Image.network(
+                                    trabajador.persona
+                                        .foto, // Utiliza la URL de la imagen del trabajador
                                   ),
                                 ),
                                 title: Text(
@@ -264,29 +264,46 @@ class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 8.0, 0.0, 0.0),
-                                      child: RatingBar.builder(
-                                        onRatingUpdate: (newValue) => setState(
-                                            () => _model.ratingBarValue5 =
-                                                newValue),
-                                        itemBuilder: (context, index) => Icon(
-                                          Icons.star_rounded,
-                                          color: FlutterFlowTheme.of(context)
-                                              .tertiary,
+                                    SizedBox(
+                                      width: double.infinity,
+                                      height: 40,
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 80),
+                                        child: GridView.builder(
+                                          gridDelegate:
+                                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 5,
+                                            crossAxisSpacing: 0,
+                                            mainAxisSpacing: 0,
+                                            mainAxisExtent: 25,
+                                          ),
+                                          itemCount: 5,
+                                          itemBuilder:
+                                              (BuildContext context, index) {
+                                            String cali =
+                                                "assets/images/e-color.png";
+
+                                            if (calificacion >= (index + 1)) {
+                                              cali =
+                                                  "assets/images/e-color.png";
+                                            } else {
+                                              cali =
+                                                  "assets/images/e-sincolor.png";
+                                            }
+
+                                            print(
+                                                "ESTE ES EL MENSAJE $cali $index $calificacion ");
+                                            return Image.asset(
+                                              cali,
+                                              width: 40,
+                                            );
+                                          },
                                         ),
-                                        direction: Axis.horizontal,
-                                        initialRating:
-                                            _model.ratingBarValue5 ??= 3.0,
-                                        unratedColor:
-                                            FlutterFlowTheme.of(context)
-                                                .accent3,
-                                        itemCount: 5,
-                                        itemSize: 30.0,
-                                        glowColor: FlutterFlowTheme.of(context)
-                                            .tertiary,
                                       ),
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
                                     ),
                                   ],
                                 ),
