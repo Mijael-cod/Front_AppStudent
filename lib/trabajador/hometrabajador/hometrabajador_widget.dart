@@ -169,7 +169,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
     );
   }
 
-  //Funcion para listar las solicitudes pendientes
+  //Funcion para actualizar las solicitudes "aceptados" o "cancelar"
   Future<dynamic> UpdateState(String estado, int id) async {
     final response = await http.patch(
       Uri.parse(
