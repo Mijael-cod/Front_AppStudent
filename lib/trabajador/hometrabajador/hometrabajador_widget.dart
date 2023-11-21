@@ -171,22 +171,28 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
 
   //Funcion para actualizar las solicitudes "aceptados" o "cancelar"
   Future<dynamic> UpdateState(String estado, int id) async {
-    final response = await http.patch(
-      Uri.parse(
-          'https://nestjs-pi-postgres.onrender.com/api/v1/solicitud/actualizarEstado/$id'),
-      headers: {},
-      body: {
-        "nuevoEstado": estado,
-      },
-    );
+    try {
+      final response = await http.patch(
+        Uri.parse(
+            'https://nestjs-pi-postgres.onrender.com/api/v1/solicitud/actualizar-estado/$id'),
+        headers: {},
+        body: {
+          "nuevoEstado": estado,
+        },
+      );
 
-    if (response.statusCode == 200) {
-      // La solicitud fue exitosa, analiza los datos JSON
-      final dataResult = json.decode(response.body);
-      return dataResult;
-    } else {
-      // Si la solicitud no fue exitosa, lanza una excepción
-      throw Exception('Error al cargar los datos');
+      if (response.statusCode == 200) {
+        // La solicitud fue exitosa, analiza los datos JSON
+        final dataResult = json.decode(response.body);
+        return dataResult;
+      } else {
+        // Si la solicitud no fue exitosa, lanza una excepción
+        throw Exception('Error al cargar los datos');
+      }
+    } catch (e) {
+      // Manejo de errores - puedes imprimir el error o realizar alguna otra acción
+      print('Error en la solicitud HTTP: $e');
+      return null; // O maneja el error de acuerdo a tu lógica
     }
   }
 
@@ -216,52 +222,59 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
 
   // Función para obtener el nombre de usuario desde el token
   Future<void> _getUserNameFromToken() async {
-    final storage = FlutterSecureStorage();
-    final token = await storage.read(key: 'token');
+    try {
+      final storage = FlutterSecureStorage();
+      final token = await storage.read(key: 'token');
 
-    if (token != null) {
-      final parts = token.split('.');
-      if (parts.length == 3) {
-        final payload = json.decode(
-            utf8.decode(base64Url.decode(base64Url.normalize(parts[1]))));
-        if (payload is Map) {
-          final codigo =
-              payload['codigo']; // Asegúrate de usar la clave correcta
-          print('Código extraído del token: $codigo');
+      if (token != null) {
+        final parts = token.split('.');
+        if (parts.length == 3) {
+          final payload = json.decode(
+              utf8.decode(base64Url.decode(base64Url.normalize(parts[1]))));
+          if (payload is Map) {
+            final codigo =
+                payload['codigo']; // Asegúrate de usar la clave correcta
+            print('Código extraído del token: $codigo');
 
-          // Asigna el valor de codigo a codigoPersona
-          String codigoPersona = codigo;
-          // Reemplaza el tipo de dato según sea necesario
-          codigoperso = codigoPersona;
+            // Asigna el valor de codigo a codigoPersona
+            String codigoPersona = codigo;
+            // Reemplaza el tipo de dato según sea necesario
+            codigoperso = codigoPersona;
 
-          // Realiza una solicitud a la API con el códigoPersona
-          fetchData(codigoPersona).then((result) {
-            setState(() {
-              data = result;
+            // Realiza una solicitud a la API con el códigoPersona
+            fetchData(codigoPersona).then((result) {
+              setState(() {
+                data = result;
+              });
+            }).catchError((error) {
+              // Maneja el error, por ejemplo, muestra un mensaje de error.
+              print('Error en fetchData: $error');
             });
-          }).catchError((error) {
-            // Maneja el error, por ejemplo, muestra un mensaje de error.
-            print('Error: $error');
-          });
 
-          // Realiza una solicitud a la API para buscar a la persona por código
-          final apiUrl =
-              'https://nestjs-pi-postgres.onrender.com/api/v1/personas/searchByCode/$codigo';
-          final response = await http.get(Uri.parse(apiUrl));
+            // Realiza una solicitud a la API para buscar a la persona por código
+            final apiUrl =
+                'https://nestjs-pi-postgres.onrender.com/api/v1/personas/searchByCode/$codigo';
+            final response = await http.get(Uri.parse(apiUrl));
 
-          if (response.statusCode == 200) {
-            final personaData = json.decode(response.body);
-            final nombre =
-                personaData['nombre']; // Asegúrate de usar la clave correcta
-            final apellidoPaterno = personaData['apellidoPaterno'];
-            final apellidoMaterno = personaData['apellidoMaterno'];
+            if (response.statusCode == 200) {
+              final personaData = json.decode(response.body);
+              final nombre =
+                  personaData['nombre']; // Asegúrate de usar la clave correcta
+              final apellidoPaterno = personaData['apellidoPaterno'];
+              final apellidoMaterno = personaData['apellidoMaterno'];
 
-            setState(() {
-              _userName = '$nombre'; //Aca va nombre y apellido que se mostrará
-            });
+              setState(() {
+                _userName =
+                    '$nombre'; //Aca va nombre y apellido que se mostrará
+              });
+            }
           }
         }
       }
+    } catch (e) {
+      // Manejo de errores - puedes imprimir el error o realizar alguna otra acción
+      print('Error en _getUserNameFromToken: $e');
+      // Maneja el error según tu lógica
     }
   }
 

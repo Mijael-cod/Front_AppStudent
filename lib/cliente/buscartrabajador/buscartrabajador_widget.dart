@@ -291,9 +291,6 @@ class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
                                               cali =
                                                   "assets/images/e-sincolor.png";
                                             }
-
-                                            print(
-                                                "ESTE ES EL MENSAJE $cali $index $calificacion ");
                                             return Image.asset(
                                               cali,
                                               width: 40,
