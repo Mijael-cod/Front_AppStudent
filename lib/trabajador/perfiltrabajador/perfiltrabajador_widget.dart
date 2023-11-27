@@ -27,12 +27,13 @@ class _PerfiltrabajadorWidgetState extends State<PerfiltrabajadorWidget> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   String _userName = ''; // Variable para almacenar el nombre de usuario
+  String _onlyName = ''; // Variable para almacenar el nombre
+  List<dynamic> habilidadesPersona = [];
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => PerfiltrabajadorModel());
-
     // Decodificar el token y obtener el nombre
     _getUserNameFromToken();
 
@@ -133,10 +134,37 @@ class _PerfiltrabajadorWidgetState extends State<PerfiltrabajadorWidget> {
             setState(() {
               _userName =
                   '$nombre $apellidoPaterno $apellidoMaterno'; //Los nombres
+              print("este es el nombre: " + nombre);
+              getHabilidadesPorPersona(nombre);
             });
           }
         }
       }
+    }
+  }
+
+  Future<List<dynamic>> getHabilidadesPorPersona(String nombrePersona) async {
+    const storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+
+    if (token != null) {
+      final apiUrl = Uri.parse(
+          'https://nestjs-pi-postgres.onrender.com/api/v1/habilidad-personas/por-persona/$nombrePersona');
+      final response = await http.get(
+        apiUrl,
+        headers: {'Authorization': 'Bearer $token'},
+      );
+
+      if (response.statusCode == 200) {
+        List<dynamic> habilidades = json.decode(response.body);
+        habilidadesPersona = habilidades;
+        print(habilidades);
+        return habilidades;
+      } else {
+        throw Exception('Error al cargar las habilidades de la persona');
+      }
+    } else {
+      throw Exception('No se pudo obtener el token');
     }
   }
 
