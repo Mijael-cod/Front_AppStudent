@@ -15,7 +15,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
 
-  await setupPushNotifications();
+  // await setupPushNotifications();
 
   runApp(MyApp());
 }
