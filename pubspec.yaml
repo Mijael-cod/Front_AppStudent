@@ -61,6 +61,7 @@ dependencies:
   http: ^0.13.3
   jwt_decode: 0.3.1
   dio: ^4.0.0
+  flutter_local_notifications: ^16.2.0
 
 
   # The following adds the Cupertino Icons font to your application.
