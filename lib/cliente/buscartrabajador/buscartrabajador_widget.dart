@@ -269,6 +269,9 @@ class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
+
+
+
                                     SizedBox(
                                       width: double.infinity,
                                       height: 40,
@@ -304,6 +307,9 @@ class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
                                         ),
                                       ),
                                     ),
+
+
+                                    
                                     const SizedBox(
                                       height: 10,
                                     ),
