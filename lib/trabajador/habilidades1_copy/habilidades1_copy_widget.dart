@@ -34,8 +34,15 @@ class _Habilidades1CopyWidgetState extends State<Habilidades1CopyWidget> {
 
 // Función para obtener las categorías desde la API
   Future<List<String>> obtenerCategorias() async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+
     final response = await http.get(
-        Uri.parse('https://nestjs-pi-postgres.onrender.com/api/v1/categoria'));
+      Uri.parse('https://nestjs-pi-postgres.onrender.com/api/v1/categoria'),
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+    );
 
     if (response.statusCode == 200) {
       // Decodificar la respuesta JSON
@@ -69,8 +76,16 @@ class _Habilidades1CopyWidgetState extends State<Habilidades1CopyWidget> {
 
   // Función para obtener especialidades según la categoría seleccionada
   Future<void> obtenerEspecialidades(String categoriaSeleccionada) async {
-    final response = await http.get(Uri.parse(
-        'https://nestjs-pi-postgres.onrender.com/api/v1/especialidad/searchByCategory/$categoriaSeleccionada'));
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+
+    final response = await http.get(
+      Uri.parse(
+          'https://nestjs-pi-postgres.onrender.com/api/v1/especialidad/searchByCategory/$categoriaSeleccionada'),
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+    );
 
     if (response.statusCode == 200) {
       final especialidadesJson = json.decode(response.body)['especialidad'];

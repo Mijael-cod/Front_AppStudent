@@ -189,11 +189,37 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
   Future<List<dynamic>> obtenerHabilidadesPorEspecialidad(
       String especialidad) async {
     try {
+      final storage = FlutterSecureStorage();
+      final token = await storage.read(key: 'token');
+      String? codigo;
+
+      if (token != null) {
+        final parts = token.split('.');
+        if (parts.length == 3) {
+          final payload = json.decode(
+            utf8.decode(base64Url.decode(base64Url.normalize(parts[1]))),
+          );
+          if (payload is Map) {
+            codigo = payload['codigo'];
+          }
+        }
+      }
+
+      if (codigo == null) {
+        throw Exception('Código no encontrado');
+      }
+
       final url = Uri.parse(
-          'https://nestjs-pi-postgres.onrender.com/api/v1/habilidades/por-especialidad/$especialidad');
+        'https://nestjs-pi-postgres.onrender.com/api/v1/habilidades/por-especialidad/$especialidad/$codigo',
+      );
 
       try {
-        final response = await http.get(url);
+        final response = await http.get(
+          url,
+          headers: {
+            'Authorization': 'Bearer $token',
+          },
+        );
 
         if (response.statusCode == 200) {
           final jsonData = json.decode(response.body);
@@ -212,7 +238,8 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
-              'Error al cargar las habilidades. Por favor, inténtalo de nuevo.'),
+            'Error al cargar las habilidades. Por favor, inténtalo de nuevo.',
+          ),
           duration: Duration(seconds: 3),
         ),
       );

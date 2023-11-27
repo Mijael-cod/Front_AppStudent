@@ -102,7 +102,10 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
         // Hacemos la solicitud POST
         final response = await http.post(
           Uri.parse(apiUrl),
-          headers: {"Content-Type": "application/json"},
+          headers: {
+            "Content-Type": "application/json",
+            'Authorization': 'Bearer $token',
+          },
           body: jsonEncode(body),
         );
 
@@ -340,23 +343,25 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                           print(
                               'Información de la solicitud: ${jsonEncode(solicitudInfo)}');
 
-                     try {
-  await enviarSolicitud(mensaje, codigoPersonaDestino);
-  print('BotonEnviar pressed ...');
+                          try {
+                            await enviarSolicitud(
+                                mensaje, codigoPersonaDestino);
+                            print('BotonEnviar pressed ...');
 
-  // Limpia el mensaje del Secure Storage
-  await storage.delete(key: 'codigoPersona');
+                            // Limpia el mensaje del Secure Storage
+                            await storage.delete(key: 'codigoPersona');
 
-  // Redirige al usuario al HomeClienteWidget
-  Navigator.pushReplacement(
-    context,
-    MaterialPageRoute(builder: (context) => HomeClienteWidget()),
-  );
-} catch (e, s) {
-  print('Error al enviar la solicitud: $e');
-  print('Stack trace: $s');
-  // Aquí puedes mostrar un mensaje al usuario para informarle que la solicitud no se pudo enviar
-}
+                            // Redirige al usuario al HomeClienteWidget
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeClienteWidget()),
+                            );
+                          } catch (e, s) {
+                            print('Error al enviar la solicitud: $e');
+                            print('Stack trace: $s');
+                            // Aquí puedes mostrar un mensaje al usuario para informarle que la solicitud no se pudo enviar
+                          }
                         },
                         text: 'Enviar',
                         options: FFButtonOptions(

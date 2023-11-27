@@ -11,7 +11,7 @@ class LoginService {
     try {
       final response =
           await http.post(url, body: {'codigo': codigo, 'password': password});
-    print("codigo: " + codigo + "password: " + password);
+          
       if (response.statusCode == 201) {
         final data = json.decode(response.body);
         final token = data['token'];

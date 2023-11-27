@@ -57,7 +57,12 @@ class _BuscartrabajadorWidgetState extends State<BuscartrabajadorWidget>
 
           final url =
               'https://nestjs-pi-postgres.onrender.com/api/v1/habilidad-personas/except/$codigo';
-          final response = await http.get(Uri.parse(url));
+          final response = await http.get(
+            Uri.parse(url),
+            headers: {
+              'Authorization': 'Bearer $token',
+            },
+          );
 
           print('Response status: ${response.statusCode}');
           print('Response body: ${response.body}');

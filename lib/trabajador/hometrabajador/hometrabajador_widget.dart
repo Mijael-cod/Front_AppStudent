@@ -171,11 +171,16 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
 
   //Funcion para actualizar las solicitudes "aceptados" o "cancelar"
   Future<dynamic> UpdateState(String estado, int id) async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+
     try {
       final response = await http.patch(
         Uri.parse(
             'https://nestjs-pi-postgres.onrender.com/api/v1/solicitud/actualizar-estado/$id'),
-        headers: {},
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
         body: {
           "nuevoEstado": estado,
         },
@@ -198,9 +203,15 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
 
   //Funcion para listar las solicitudes pendientes
   Future<List<dynamic>> fetchData(String codigoPersona) async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+
     final response = await http.get(
       Uri.parse(
           'https://nestjs-pi-postgres.onrender.com/api/v1/solicitud/en-espera/$codigoPersona'),
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
     );
 
     if (response.statusCode == 200) {
