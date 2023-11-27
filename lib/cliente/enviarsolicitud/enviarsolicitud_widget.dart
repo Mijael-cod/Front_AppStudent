@@ -144,18 +144,18 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(88.0),
+        preferredSize: const Size.fromHeight(88.0),
         child: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
             child: FlutterFlowIconButton(
               borderColor: Colors.transparent,
               borderRadius: 30.0,
               borderWidth: 1.0,
               buttonSize: 60.0,
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_rounded,
                 color: Color(0xFF5998D1),
                 size: 30.0,
@@ -173,19 +173,19 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
       body: SafeArea(
         top: true,
         child: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                       child: Card(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         color: Colors.white,
@@ -194,13 +194,13 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                           borderRadius: BorderRadius.circular(50.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               2.0, 2.0, 2.0, 2.0),
                           child: Container(
                             width: 40.0,
                             height: 40.0,
                             clipBehavior: Clip.antiAlias,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                             ),
                             child: Image.asset(
@@ -213,7 +213,7 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -250,10 +250,10 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
               ),
               Container(
                 width: double.infinity,
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(25.0, 15.0, 25.0, 12.0),
+                      const EdgeInsetsDirectional.fromSTEB(25.0, 15.0, 25.0, 12.0),
                   child: TextFormField(
                     controller: _model.comentarSolicitudController,
                     focusNode: _model.comentarSolicitudFocusNode,
@@ -271,7 +271,7 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                       hintStyle:
                           FlutterFlowTheme.of(context).labelLarge.override(
                                 fontFamily: 'Inter',
-                                color: Color(0x70929090),
+                                color: const Color(0x70929090),
                                 fontWeight: FontWeight.normal,
                                 fontStyle: FontStyle.italic,
                               ),
@@ -304,7 +304,7 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                         borderRadius: BorderRadius.circular(20.0),
                       ),
                       contentPadding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 12.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 12.0),
                     ),
                     style: FlutterFlowTheme.of(context).bodyLarge,
                     textAlign: TextAlign.justify,
@@ -316,13 +316,13 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(70.0, 8.0, 16.0, 8.0),
+                          const EdgeInsetsDirectional.fromSTEB(70.0, 8.0, 16.0, 8.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           String mensaje =
@@ -367,9 +367,9 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                         options: FFButtonOptions(
                           width: 100.0,
                           height: 32.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -378,7 +378,7 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                                     color: Colors.white,
                                   ),
                           elevation: 2.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -388,7 +388,7 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           context.pop();
@@ -397,14 +397,14 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                         options: FFButtonOptions(
                           width: 100.0,
                           height: 40.0,
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primaryBackground,
                           textStyle: FlutterFlowTheme.of(context).labelMedium,
                           elevation: 0.0,
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
