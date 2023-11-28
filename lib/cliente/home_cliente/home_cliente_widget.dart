@@ -218,9 +218,6 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
     }
   }
 
-
-
-
   //Funcion para actualizar las solicitudes "aceptados" o "cancelar"
   Future<dynamic> UpdateState(String estado, int id) async {
     final storage = FlutterSecureStorage();
@@ -284,7 +281,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
               print('Error en fetchData: $error');
             });
 
-                        // Realiza una solicitud a la API con el códigoPersona
+            // Realiza una solicitud a la API con el códigoPersona
             fetchData2(codigoPersona).then((result) {
               setState(() {
                 data2 = result;
@@ -326,7 +323,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
     return '${dateTime.year}-${dateTime.month}-${dateTime.day}';
   }
 
-    String getFechaFin(Map<String, dynamic> p) {
+  String getFechaFin(Map<String, dynamic> p) {
     DateTime dateTime = DateTime.parse(p['fechaInicio']);
     return '${dateTime.year}-${dateTime.month}-${dateTime.day}';
   }
@@ -1177,13 +1174,6 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                       },
                                                     ),
                                                   ),
-
-
-
-
-
-
-
                                                   Padding(
                                                     padding:
                                                         const EdgeInsetsDirectional
@@ -1202,7 +1192,8 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                       itemBuilder:
                                                           (BuildContext context,
                                                               index) {
-                                                        dynamic p = data2[index];
+                                                        dynamic p =
+                                                            data2[index];
                                                         int calificacion = p[
                                                                 'contratador']
                                                             ['calificacion'];
@@ -1319,13 +1310,21 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     height: 10,
                                                                   ),
                                                                   Text(
-  p['trabajador']['nombre'],
-  style: const TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.bold,
-    decoration: TextDecoration.lineThrough, // Línea a través del texto
-  ),
-),
+                                                                    p['trabajador']
+                                                                        [
+                                                                        'nombre'],
+                                                                    style:
+                                                                        const TextStyle(
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      decoration:
+                                                                          TextDecoration
+                                                                              .lineThrough, // Línea a través del texto
+                                                                    ),
+                                                                  ),
                                                                   const SizedBox(
                                                                     height: 10,
                                                                   ),
@@ -1409,8 +1408,6 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  
-                                                               
                                                                 ],
                                                               ),
                                                             );
@@ -1422,12 +1419,6 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                       },
                                                     ),
                                                   ),
-
-
-
-
-
-
                                                 ],
                                               ),
                                             ),
