@@ -46,8 +46,7 @@ class _Registrarse1WidgetState extends State<Registrarse1Widget> {
       _model.nombreRegistrarseController.text = jsonData['nombrePersona'];
       _model.apellidopRegistrarseController.text = jsonData['apellidoPaterno'];
       _model.apellidomRegistrarseController.text = jsonData['apellidoMaterno'];
-      _model.sexoRegistrarseController.text = 
-          'No especificado'; // Agrega aquí el campo correspondiente
+      _model.sexoRegistrarseController.text = jsonData['sexo']; // Agrega aquí el campo correspondiente
     } else {
       print('Error al buscar la persona por código.');
       // Puedes mostrar un mensaje de error al usuario si lo deseas.
