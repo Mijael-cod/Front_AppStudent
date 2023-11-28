@@ -165,7 +165,7 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
               },
             ),
           ),
-          actions: const[],
+          actions: const [],
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -178,14 +178,15 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(24.0, 12.0, 24.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          0.0, 0.0, 0.0, 40.0),
                       child: Card(
                         clipBehavior: Clip.antiAliasWithSaveLayer,
                         color: Colors.white,
@@ -203,17 +204,26 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                             ),
-                            child: Image.asset(
-                              'assets/images/blank-profile-picture-973460_1280.png',
-                              fit: BoxFit.cover,
+                            child: ClipOval(
+                              child: persona!.foto.isNotEmpty
+                                  ? // Verifica si la persona tiene una foto
+                                  Image.network(
+                                      persona!
+                                          .foto, // Utiliza la URL de la foto de la persona
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Image.asset(
+                                      'assets/images/blank-profile-picture-973460_1280.png', // Si no hay foto, muestra la imagen por defecto
+                                      fit: BoxFit.cover,
+                                    ),
                             ),
                           ),
                         ),
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          12.0, 0.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -252,8 +262,8 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                 width: double.infinity,
                 decoration: const BoxDecoration(),
                 child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(25.0, 15.0, 25.0, 12.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      25.0, 15.0, 25.0, 12.0),
                   child: TextFormField(
                     controller: _model.comentarSolicitudController,
                     focusNode: _model.comentarSolicitudFocusNode,
@@ -303,8 +313,8 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                         ),
                         borderRadius: BorderRadius.circular(20.0),
                       ),
-                      contentPadding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 12.0),
+                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                          16.0, 8.0, 16.0, 12.0),
                     ),
                     style: FlutterFlowTheme.of(context).bodyLarge,
                     textAlign: TextAlign.justify,
@@ -316,13 +326,14 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(70.0, 8.0, 16.0, 8.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          70.0, 8.0, 16.0, 8.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           String mensaje =
@@ -346,7 +357,7 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                           try {
                             await enviarSolicitud(
                                 mensaje, codigoPersonaDestino);
-                            print('BotonEnviar pressed ...');
+                            print('Enviando Solicitud...');
 
                             // Limpia el mensaje del Secure Storage
                             await storage.delete(key: 'codigoPersona');
@@ -387,8 +398,8 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          20.0, 0.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
                           context.pop();
