@@ -165,7 +165,7 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
               },
             ),
           ),
-          actions: [],
+          actions: const[],
           centerTitle: true,
           elevation: 0.0,
         ),
@@ -259,7 +259,7 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                     focusNode: _model.comentarSolicitudFocusNode,
                     onChanged: (_) => EasyDebounce.debounce(
                       '_model.comentarSolicitudController',
-                      Duration(milliseconds: 2000),
+                      const Duration(milliseconds: 2000),
                       () => setState(() {}),
                     ),
                     autofocus: true,

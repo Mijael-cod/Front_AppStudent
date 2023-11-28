@@ -161,18 +161,18 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(88.0),
+          preferredSize: const Size.fromHeight(88.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
             leading: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 60.0,
-                icon: Icon(
+                icon: const Icon(
                   Icons.clear,
                   color: Color(0xFF5998D1),
                   size: 35.0,
@@ -183,13 +183,13 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
               ),
             ),
             title: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 27.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 27.0, 0.0, 0.0),
               child: Text(
                 'Editar perfil',
                 style: FlutterFlowTheme.of(context).headlineMedium,
               ),
             ),
-            actions: [
+            actions: const [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 18.0, 0.0),
                 child: Icon(
@@ -209,12 +209,12 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
-                Container(
+                 Container(
                   height: 135.0,
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
+                        alignment: const AlignmentDirectional(0.00, 1.00),
                         child: Material(
                           color: Colors.transparent,
                           elevation: 0.0,
@@ -233,7 +233,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   4.0, 4.0, 4.0, 4.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(50.0),
@@ -252,7 +252,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: Text(
                     '$_userName',
                     textAlign: TextAlign.center,
@@ -263,7 +263,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: RatingBar.builder(
                     onRatingUpdate: (newValue) =>
                         setState(() => _model.ratingBarValue = newValue),
@@ -283,13 +283,13 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 10.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 130.0, 0.0, 0.0, 0.0),
                             child: FFButtonWidget(
                               onPressed: () async {
@@ -298,9 +298,9 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                               text: 'Editar foto',
                               options: FFButtonOptions(
                                 height: 30.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 0.0),
                                 color:
                                     FlutterFlowTheme.of(context).primaryBtnText,
@@ -311,7 +311,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                                       color: Color(0xFF5998D1),
                                     ),
                                 elevation: 3.0,
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0xFF5998D1),
                                   width: 1.0,
                                 ),
@@ -325,7 +325,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -336,7 +336,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               8.0, 8.0, 8.0, 8.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -347,7 +347,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 10.0, 20.0, 20.0),
                                       child: TextFormField(
                                         controller:
@@ -380,7 +380,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                                                 BorderRadius.circular(20.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Color(0xFF5998D1),
                                               width: 2.0,
                                             ),
@@ -426,14 +426,14 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                                       ),
                                     ),
                                   ),
-                                ].divide(SizedBox(width: 8.0)),
+                                ].divide(const SizedBox(width: 8.0)),
                               ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 20.0),
                                       child: TextFormField(
                                         controller: _model
@@ -466,7 +466,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                                                 BorderRadius.circular(20.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Color(0xFF5998D1),
                                               width: 2.0,
                                             ),
@@ -516,7 +516,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 20.0),
                                   child: TextFormField(
                                     controller:
@@ -546,7 +546,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                                             BorderRadius.circular(20.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0xFF5998D1),
                                           width: 2.0,
                                         ),
@@ -590,7 +590,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -620,7 +620,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                                             BorderRadius.circular(20.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0xFF5998D1),
                                           width: 2.0,
                                         ),
@@ -664,7 +664,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -694,7 +694,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                                             BorderRadius.circular(20.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0xFF5998D1),
                                           width: 2.0,
                                         ),
@@ -739,7 +739,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -768,7 +768,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                                             BorderRadius.circular(20.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0xFF5998D1),
                                           width: 2.0,
                                         ),
@@ -814,7 +814,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 12.0),
                         child: Container(
                           width: double.infinity,
@@ -824,7 +824,7 @@ class _EditarperfilclienteWidgetState extends State<EditarperfilclienteWidget> {
                           ),
                         ),
                       ),
-                    ].divide(SizedBox(height: 12.0)),
+                    ].divide(const SizedBox(height: 12.0)),
                   ),
                 ),
               ],

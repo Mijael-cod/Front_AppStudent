@@ -53,18 +53,18 @@ class _ConfigclienteWidgetState extends State<ConfigclienteWidget> {
         key: scaffoldKey,
         backgroundColor: Colors.white,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(88.0),
+          preferredSize: const Size.fromHeight(88.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
             leading: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 60.0,
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back_rounded,
                   color: Color(0xFF5998D1),
                   size: 32.0,
@@ -75,13 +75,13 @@ class _ConfigclienteWidgetState extends State<ConfigclienteWidget> {
               ),
             ),
             title: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
               child: Text(
                 'Configuración',
                 style: FlutterFlowTheme.of(context).headlineMedium,
               ),
             ),
-            actions: [],
+            actions: const[],
             centerTitle: false,
             elevation: 0.0,
           ),
@@ -93,14 +93,14 @@ class _ConfigclienteWidgetState extends State<ConfigclienteWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 0.0),
                 child: Text(
                   'Cuenta',
                   style: FlutterFlowTheme.of(context).labelLarge,
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -123,14 +123,14 @@ class _ConfigclienteWidgetState extends State<ConfigclienteWidget> {
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.account_circle_outlined,
                             color: Color(0xFF5998D1),
                             size: 24.0,
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'Editar perfil',
@@ -138,7 +138,7 @@ class _ConfigclienteWidgetState extends State<ConfigclienteWidget> {
                               ),
                             ),
                           ),
-                          Align(
+                          const Align(
                             alignment: AlignmentDirectional(0.90, 0.00),
                             child: Icon(
                               Icons.arrow_forward_ios,
@@ -153,7 +153,7 @@ class _ConfigclienteWidgetState extends State<ConfigclienteWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -171,19 +171,19 @@ class _ConfigclienteWidgetState extends State<ConfigclienteWidget> {
                       shape: BoxShape.rectangle,
                     ),
                     child: Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.password_sharp,
                             color: Color(0xFF5998D1),
                             size: 24.0,
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'Cambiar contraseña',
@@ -191,7 +191,7 @@ class _ConfigclienteWidgetState extends State<ConfigclienteWidget> {
                               ),
                             ),
                           ),
-                          Align(
+                          const Align(
                             alignment: AlignmentDirectional(0.90, 0.00),
                             child: Icon(
                               Icons.arrow_forward_ios,
@@ -206,14 +206,14 @@ class _ConfigclienteWidgetState extends State<ConfigclienteWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 0.0, 0.0),
                 child: Text(
                   'General',
                   style: FlutterFlowTheme.of(context).labelLarge,
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -231,19 +231,19 @@ class _ConfigclienteWidgetState extends State<ConfigclienteWidget> {
                       shape: BoxShape.rectangle,
                     ),
                     child: Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.logout_rounded,
                             color: Color(0xFF5998D1),
                             size: 24.0,
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'Cerrar sesión',
@@ -251,7 +251,7 @@ class _ConfigclienteWidgetState extends State<ConfigclienteWidget> {
                               ),
                             ),
                           ),
-                          Align(
+                          const Align(
                             alignment: AlignmentDirectional(0.90, 0.00),
                             child: Icon(
                               Icons.arrow_forward_ios,

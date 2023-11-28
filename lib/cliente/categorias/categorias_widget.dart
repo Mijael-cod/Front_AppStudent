@@ -139,8 +139,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -158,8 +158,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -177,8 +177,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -196,8 +196,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -215,8 +215,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 30.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 30.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -234,8 +234,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -253,8 +253,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -272,8 +272,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -291,8 +291,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -310,8 +310,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -329,8 +329,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -348,8 +348,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -367,8 +367,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 100.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 100.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -423,18 +423,18 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(88.0),
+          preferredSize: const Size.fromHeight(88.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
             leading: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 60.0,
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back_rounded,
                   color: Color(0xFF5998D1),
                   size: 30.0,
@@ -445,13 +445,13 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
               ),
             ),
             title: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
               child: Text(
                 'Categorias',
                 style: FlutterFlowTheme.of(context).titleLarge,
               ),
             ),
-            actions: [],
+            actions: const[],
             centerTitle: false,
             elevation: 0.0,
           ),
@@ -466,11 +466,11 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Column(
                   children: [
                     Align(
-                      alignment: Alignment(0.0, 0),
+                      alignment: const Alignment(0.0, 0),
                       child: TabBar(
                         isScrollable: true,
                         labelColor: FlutterFlowTheme.of(context).primary,
@@ -481,10 +481,10 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                   fontFamily: 'Inter',
                                   fontSize: 16.0,
                                 ),
-                        unselectedLabelStyle: TextStyle(),
+                        unselectedLabelStyle: const TextStyle(),
                         indicatorColor: FlutterFlowTheme.of(context).primary,
                         indicatorWeight: 2.0,
-                        tabs: [
+                        tabs: const [
                           Tab(
                             text: 'Materias',
                           ),
@@ -503,7 +503,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                         controller: _model.tabBarController,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 12.0),
                             child: ListView(
                               padding: EdgeInsets.zero,
@@ -519,7 +519,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                       return Column(
                                         children: categories.map((category) {
                                           return Padding(
-                                            padding:
+                                            padding: const
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 12.0, 0.0, 0.0),
                                             child: InkWell(
@@ -539,7 +539,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryBackground,
-                                                  boxShadow: [
+                                                  boxShadow: const [
                                                     BoxShadow(
                                                       blurRadius: 7.0,
                                                       color: Color(0x32171717),
@@ -556,7 +556,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(12.0, 12.0,
                                                           12.0, 12.0),
                                                   child: Row(
@@ -567,7 +567,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                     children: [
                                                       Expanded(
                                                         child: Padding(
-                                                          padding:
+                                                          padding: const
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       16.0,
@@ -608,14 +608,14 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                     }
 
                                     // Por defecto, muestra un spinner de carga.
-                                    return CircularProgressIndicator();
+                                    return const CircularProgressIndicator();
                                   },
                                 ),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 12.0),
                             child: ListView(
                               padding: EdgeInsets.zero,
@@ -631,7 +631,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                       return Column(
                                         children: categories.map((category) {
                                           return Padding(
-                                            padding:
+                                            padding: const
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 12.0, 0.0, 0.0),
                                             child: InkWell(
@@ -651,7 +651,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryBackground,
-                                                  boxShadow: [
+                                                  boxShadow: const [
                                                     BoxShadow(
                                                       blurRadius: 7.0,
                                                       color: Color(0x32171717),
@@ -668,7 +668,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(12.0, 12.0,
                                                           12.0, 12.0),
                                                   child: Row(
@@ -679,7 +679,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                     children: [
                                                       Expanded(
                                                         child: Padding(
-                                                          padding:
+                                                          padding: const
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       16.0,
@@ -719,14 +719,14 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                       return Text("${snapshot.error}");
                                     }
                                     // Por defecto, muestra un spinner de carga.
-                                    return CircularProgressIndicator();
+                                    return const CircularProgressIndicator();
                                   },
                                 ),
                               ],
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 12.0),
                             child: ListView(
                               padding: EdgeInsets.zero,
@@ -742,7 +742,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                       return Column(
                                         children: categories.map((category) {
                                           return Padding(
-                                            padding:
+                                            padding: const
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 12.0, 0.0, 0.0),
                                             child: InkWell(
@@ -762,7 +762,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryBackground,
-                                                  boxShadow: [
+                                                  boxShadow: const [
                                                     BoxShadow(
                                                       blurRadius: 7.0,
                                                       color: Color(0x32171717),
@@ -779,7 +779,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(12.0, 12.0,
                                                           12.0, 12.0),
                                                   child: Row(
@@ -790,7 +790,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                     children: [
                                                       Expanded(
                                                         child: Padding(
-                                                          padding:
+                                                          padding: const
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       16.0,
@@ -831,7 +831,7 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                     }
 
                                     // Por defecto, muestra un spinner de carga.
-                                    return CircularProgressIndicator();
+                                    return const CircularProgressIndicator();
                                   },
                                 ),
                               ],

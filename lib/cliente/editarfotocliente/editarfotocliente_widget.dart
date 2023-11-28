@@ -57,11 +57,11 @@ class _EditarfotoclienteWidgetState extends State<EditarfotoclienteWidget> {
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
           leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
             child: FlutterFlowIconButton(
               borderRadius: 30.0,
               buttonSize: 60.0,
-              icon: Icon(
+              icon: const Icon(
                 Icons.close_rounded,
                 color: Color(0xFF5998D1),
                 size: 32.0,
@@ -72,7 +72,7 @@ class _EditarfotoclienteWidgetState extends State<EditarfotoclienteWidget> {
             ),
           ),
           title: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
             child: Text(
               'Editar foto',
               style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -81,7 +81,7 @@ class _EditarfotoclienteWidgetState extends State<EditarfotoclienteWidget> {
                   ),
             ),
           ),
-          actions: [],
+          actions: const[],
           centerTitle: false,
           elevation: 0.0,
         ),
@@ -92,7 +92,7 @@ class _EditarfotoclienteWidgetState extends State<EditarfotoclienteWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
                 child: Container(
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -103,7 +103,7 @@ class _EditarfotoclienteWidgetState extends State<EditarfotoclienteWidget> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Padding(
-                        padding:
+                        padding: const
                             EdgeInsetsDirectional.fromSTEB(8.0, 8.0, 8.0, 8.0),
                         child: Container(
                           width: 200.0,
@@ -125,23 +125,23 @@ class _EditarfotoclienteWidgetState extends State<EditarfotoclienteWidget> {
                         ),
                       ),
                       Padding(
-                        padding:
+                        padding: const
                             EdgeInsetsDirectional.fromSTEB(8.0, 16.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () {
                             print('BSubirImagen pressed ...');
                           },
                           text: 'Subir imagen',
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.image_search,
                             size: 25.0,
                           ),
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 44.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
