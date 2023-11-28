@@ -1,3 +1,5 @@
+import 'package:proyecto/cliente/home_cliente/home_cliente_widget.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -50,7 +52,7 @@ class _RolesWidgetState extends State<RolesWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFF5998D1),
+        backgroundColor: const Color(0xFF5998D1),
         body: SafeArea(
           top: true,
           child: Column(
@@ -61,9 +63,9 @@ class _RolesWidgetState extends State<RolesWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
+                    alignment: const AlignmentDirectional(0.00, 0.00),
                     child: Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(0.0, 160.0, 0.0, 0.0),
                       child: Container(
                         width: 120.0,
@@ -77,7 +79,7 @@ class _RolesWidgetState extends State<RolesWidget> {
                           width: 120.0,
                           height: 120.0,
                           clipBehavior: Clip.antiAlias,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             shape: BoxShape.circle,
                           ),
                           child: Image.asset(
@@ -92,7 +94,7 @@ class _RolesWidgetState extends State<RolesWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding:
+                        padding: const
                             EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: Text(
                           'Help student',
@@ -106,7 +108,7 @@ class _RolesWidgetState extends State<RolesWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             30.0, 30.0, 30.0, 0.0),
                         child: Text(
                           'La inteligencia consiste no solo en el conocimiento, sino también en la destreza de aplicar los conocimientos en la práctica',
@@ -119,30 +121,35 @@ class _RolesWidgetState extends State<RolesWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 50.0, 0.0, 16.0),
                         child: FFButtonWidget(
+
                           onPressed: () async {
-                            context.pushNamed('HomeCliente');
+                                       Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: (context) => const HomeClienteWidget(),
+                                        ),
+                                      );
                           },
                           text: 'Cliente',
                           options: FFButtonOptions(
                             width: 300.0,
                             height: 44.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: Colors.white,
                             textStyle:
                                 FlutterFlowTheme.of(context).bodyLarge.override(
                                       fontFamily: 'Fredoka',
-                                      color: Color(0xFF5998D1),
+                                      color: const Color(0xFF5998D1),
                                       letterSpacing: 2.0,
                                       fontWeight: FontWeight.normal,
                                     ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -151,7 +158,7 @@ class _RolesWidgetState extends State<RolesWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             0.0, 20.0, 0.0, 16.0),
                         child: FFButtonWidget(
                           onPressed: () async {
@@ -161,20 +168,20 @@ class _RolesWidgetState extends State<RolesWidget> {
                           options: FFButtonOptions(
                             width: 300.0,
                             height: 44.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: Colors.white,
                             textStyle:
                                 FlutterFlowTheme.of(context).bodyLarge.override(
                                       fontFamily: 'Fredoka',
-                                      color: Color(0xFF5998D1),
+                                      color: const Color(0xFF5998D1),
                                       letterSpacing: 2.0,
                                       fontWeight: FontWeight.normal,
                                     ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

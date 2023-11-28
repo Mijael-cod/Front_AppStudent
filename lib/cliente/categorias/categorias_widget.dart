@@ -1,3 +1,5 @@
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -22,8 +24,14 @@ class CategoriasWidget extends StatefulWidget {
 }
 
 Future<List<String>> fetchCategories() async {
+
+  const storage = FlutterSecureStorage();
+  final token = await storage.read(key: 'token');
+
   final response = await http.get(
-      Uri.parse('https://nestjs-pi-postgres.onrender.com/api/v1/especialidad'));
+      Uri.parse('https://nestjs-pi-postgres.onrender.com/api/v1/especialidad'),
+      headers: {'Authorization': 'Bearer $token'},
+      );
 
   if (response.statusCode == 200) {
     // Si el servidor devuelve una respuesta OK, parseamos el JSON.
@@ -40,8 +48,13 @@ Future<List<String>> fetchCategories() async {
 }
 
 Future<List<String>> fetchCategories2() async {
+
+  const storage = FlutterSecureStorage();
+  final token = await storage.read(key: 'token');
+
   final response = await http.get(
-      Uri.parse('https://nestjs-pi-postgres.onrender.com/api/v1/especialidad'));
+      Uri.parse('https://nestjs-pi-postgres.onrender.com/api/v1/especialidad'),
+      headers: {'Authorization': 'Bearer $token'},);
 
   if (response.statusCode == 200) {
     // Si el servidor devuelve una respuesta OK, parseamos el JSON.
@@ -58,8 +71,13 @@ Future<List<String>> fetchCategories2() async {
 }
 
 Future<List<String>> fetchCategories3() async {
+
+  const storage = FlutterSecureStorage();
+  final token = await storage.read(key: 'token');
+
   final response = await http.get(
-      Uri.parse('https://nestjs-pi-postgres.onrender.com/api/v1/especialidad'));
+      Uri.parse('https://nestjs-pi-postgres.onrender.com/api/v1/especialidad'),
+      headers: {'Authorization': 'Bearer $token'},);
 
   if (response.statusCode == 200) {
     // Si el servidor devuelve una respuesta OK, parseamos el JSON.
@@ -428,7 +446,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
             leading: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              padding:
+                  const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
                 borderRadius: 30.0,
@@ -445,13 +464,14 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
               ),
             ),
             title: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+              padding:
+                  const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
               child: Text(
                 'Categorias',
                 style: FlutterFlowTheme.of(context).titleLarge,
               ),
             ),
-            actions: const[],
+            actions: const [],
             centerTitle: false,
             elevation: 0.0,
           ),
@@ -466,7 +486,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                 color: FlutterFlowTheme.of(context).secondaryBackground,
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Column(
                   children: [
                     Align(
@@ -519,9 +540,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                       return Column(
                                         children: categories.map((category) {
                                           return Padding(
-                                            padding: const
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 12.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0.0, 12.0, 0.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -556,8 +576,9 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(12.0, 12.0,
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(12.0, 12.0,
                                                           12.0, 12.0),
                                                   child: Row(
                                                     mainAxisSize:
@@ -567,13 +588,13 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                     children: [
                                                       Expanded(
                                                         child: Padding(
-                                                          padding: const
-                                                              EdgeInsetsDirectional
+                                                          padding:
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                      16.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                                  16.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
                                                           child: Column(
                                                             mainAxisSize:
                                                                 MainAxisSize
@@ -631,9 +652,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                       return Column(
                                         children: categories.map((category) {
                                           return Padding(
-                                            padding: const
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 12.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0.0, 12.0, 0.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -668,8 +688,9 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(12.0, 12.0,
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(12.0, 12.0,
                                                           12.0, 12.0),
                                                   child: Row(
                                                     mainAxisSize:
@@ -679,13 +700,13 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                     children: [
                                                       Expanded(
                                                         child: Padding(
-                                                          padding: const
-                                                              EdgeInsetsDirectional
+                                                          padding:
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                      16.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                                  16.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
                                                           child: Column(
                                                             mainAxisSize:
                                                                 MainAxisSize
@@ -742,9 +763,8 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                       return Column(
                                         children: categories.map((category) {
                                           return Padding(
-                                            padding: const
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 12.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0.0, 12.0, 0.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -779,8 +799,9 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                   ),
                                                 ),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(12.0, 12.0,
+                                                  padding:
+                                                      const EdgeInsetsDirectional
+                                                          .fromSTEB(12.0, 12.0,
                                                           12.0, 12.0),
                                                   child: Row(
                                                     mainAxisSize:
@@ -790,13 +811,13 @@ class _CategoriasWidgetState extends State<CategoriasWidget>
                                                     children: [
                                                       Expanded(
                                                         child: Padding(
-                                                          padding: const
-                                                              EdgeInsetsDirectional
+                                                          padding:
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                      16.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                                  16.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
                                                           child: Column(
                                                             mainAxisSize:
                                                                 MainAxisSize
