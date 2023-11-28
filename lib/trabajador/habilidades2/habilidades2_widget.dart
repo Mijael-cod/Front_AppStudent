@@ -31,6 +31,7 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
   String _userName = '';
   List<dynamic> habilidades = []; // Declara esta lista en la clase
+  String _especialidad = ''; // Variable global
 
   final animationsMap = {
     'containerOnPageLoadAnimation1': AnimationInfo(
@@ -168,19 +169,19 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
     ),
   };
 
-  // Obtener la especialidad guardada en FlutterSecureStorage
   Future<String?> obtenerEspecialidadGuardada() async {
     try {
-      return await _storage.read(key: 'especialidad');
+      String? especialidad = await _storage.read(key: 'especialidad');
+      if (especialidad != null) {
+        _especialidad = especialidad;
+        return especialidad;
+      } else {
+        _especialidad = 'Especialidad por defecto';
+        return null;
+      }
     } catch (e) {
       print('Error al obtener la especialidad: $e');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-              'Error al obtener la especialidad. Por favor, inténtalo de nuevo.'),
-          duration: Duration(seconds: 3),
-        ),
-      );
+      _especialidad = 'Especialidad por defecto debido a un error';
       return null;
     }
   }
@@ -223,7 +224,11 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
 
         if (response.statusCode == 200) {
           final jsonData = json.decode(response.body);
-          List<dynamic> habilidades = jsonData['habilidades'];
+
+          setState(() {
+            habilidades = jsonData['habilidades'];
+          });
+
           return habilidades;
         } else {
           print('Error al cargar las habilidades: ${response.statusCode}');
@@ -318,6 +323,8 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
   }
 
   Future<void> agregarHabilidad(String habilidad) async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
     // Crear los datos para la solicitud POST
     final datos = {
       'persona': _userName,
@@ -334,6 +341,7 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
       body: json.encode(datos),
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token',
       },
     );
 
@@ -518,6 +526,11 @@ class _Habilidades2WidgetState extends State<Habilidades2Widget>
                                         agregarHabilidad(
                                           habilidadNombre,
                                         ); // Pass the index and habilidad name to agregarHabilidad
+
+                                        setState(() {
+                                          obtenerHabilidadesPorEspecialidad(
+                                              _especialidad);
+                                        });
                                       },
                                       text: '+',
                                       options: FFButtonOptions(

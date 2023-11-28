@@ -34,6 +34,7 @@ class _PerfiltrabajadorWidgetState extends State<PerfiltrabajadorWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PerfiltrabajadorModel());
+    
     // Decodificar el token y obtener el nombre
     _getUserNameFromToken();
 
@@ -135,7 +136,7 @@ class _PerfiltrabajadorWidgetState extends State<PerfiltrabajadorWidget> {
               _userName =
                   '$nombre $apellidoPaterno $apellidoMaterno'; //Los nombres
               print("este es el nombre: " + nombre);
-              getHabilidadesPorPersona(nombre);
+              /* getHabilidadesPorPersona(nombre); */
             });
           }
         }
@@ -143,7 +144,7 @@ class _PerfiltrabajadorWidgetState extends State<PerfiltrabajadorWidget> {
     }
   }
 
-  Future<List<dynamic>> getHabilidadesPorPersona(String nombrePersona) async {
+/*   Future<List<dynamic>> getHabilidadesPorPersona(String nombrePersona) async {
     const storage = FlutterSecureStorage();
     final token = await storage.read(key: 'token');
 
@@ -166,7 +167,7 @@ class _PerfiltrabajadorWidgetState extends State<PerfiltrabajadorWidget> {
     } else {
       throw Exception('No se pudo obtener el token');
     }
-  }
+  } */
 
   @override
   Widget build(BuildContext context) {

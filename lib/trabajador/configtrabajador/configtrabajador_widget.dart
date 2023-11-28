@@ -1,4 +1,5 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:proyecto/cliente/login/login_widget.dart';
 
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -281,7 +282,12 @@ class _ConfigtrabajadorWidgetState extends State<ConfigtrabajadorWidget> {
                     await storage
                         .deleteAll(); // Esto eliminará todos los valores del secureStorage
 
-                    context.pushNamed('Login');
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const LoginWidget(),
+                      ),
+                    );
                   },
                   child: Container(
                     width: double.infinity,
