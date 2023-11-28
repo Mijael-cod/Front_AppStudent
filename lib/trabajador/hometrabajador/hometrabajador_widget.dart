@@ -32,6 +32,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
   late HometrabajadorModel _model;
 
   late List<dynamic> data = []; // Inicializar con una lista vacía
+  late List<dynamic> data2 = []; // Inicializar con una lista vacía
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -231,6 +232,38 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
     }
   }
 
+
+  //Funcion para listar las solicitudes pendientes
+  Future<List<dynamic>> fetchData2(String codigoPersona) async {
+    final storage = FlutterSecureStorage();
+    final token = await storage.read(key: 'token');
+
+    final response = await http.get(
+      Uri.parse(
+          'https://nestjs-pi-postgres.onrender.com/api/v1/solicitud/completados/$codigoPersona'),
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      // La solicitud fue exitosa, analiza los datos JSON
+      final dataResult = json.decode(response.body);
+      final datita2 = List<dynamic>.from(dataResult);
+      setState(() {
+        data2 = datita2;
+      });
+      data2 = datita2;
+      print("Resul/");
+      print(data2);
+      return data2;
+    } else {
+      // Si la solicitud no fue exitosa, lanza una excepción
+      throw Exception('Error al cargar los datos');
+    }
+  }
+
+
   // Función para obtener el nombre de usuario desde el token
   Future<void> _getUserNameFromToken() async {
     try {
@@ -256,6 +289,17 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
             fetchData(codigoPersona).then((result) {
               setState(() {
                 data = result;
+              });
+            }).catchError((error) {
+              // Maneja el error, por ejemplo, muestra un mensaje de error.
+              print('Error en fetchData: $error');
+            });
+
+
+                        // Realiza una solicitud a la API con el códigoPersona
+            fetchData2(codigoPersona).then((result) {
+              setState(() {
+                data2 = result;
               });
             }).catchError((error) {
               // Maneja el error, por ejemplo, muestra un mensaje de error.
@@ -294,6 +338,16 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
     _model.dispose();
 
     super.dispose();
+  }
+
+    String getFechaInicio(Map<String, dynamic> p) {
+    DateTime dateTime = DateTime.parse(p['fechaInicio']);
+    return '${dateTime.year}-${dateTime.month}-${dateTime.day}';
+  }
+
+  String getHoraInicio(Map<String, dynamic> p) {
+    DateTime dateTime = DateTime.parse(p['fechaInicio']);
+    return '${dateTime.hour}:${dateTime.minute}:${dateTime.second}';
   }
 
   @override
@@ -533,7 +587,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                                 16.0,
                                                                 12.0),
 
-                                                                
+
                                                     child: GridView.builder(
                                                       gridDelegate:
                                                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -802,16 +856,254 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                     ),
 
                                                   ),
-                                                  Padding(
-                                                    padding: const
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                16.0,
-                                                                12.0,
-                                                                16.0,
-                                                                12.0),
-                                                    child: Container(),
+                                                 Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(16.0,
+                                                            12.0, 16.0, 12.0),
+                                                    child: GridView.builder(
+                                                      gridDelegate:
+                                                          const SliverGridDelegateWithFixedCrossAxisCount(
+                                                        crossAxisCount: 1,
+                                                        crossAxisSpacing: 20,
+                                                        mainAxisSpacing: 15,
+                                                        mainAxisExtent: 370,
+                                                      ),
+                                                      shrinkWrap: true,
+                                                      itemCount: data2.length,
+                                                      itemBuilder:
+                                                          (BuildContext context,
+                                                              index) {
+                                                        dynamic p =
+                                                            data2[index];
+                                                        int calificacion = p[
+                                                                'contratador']
+                                                            ['calificacion'];
+
+                                                        // Verificar que 'p' sea un mapa y que contenga 'mensaje'
+                                                        if (p is Map<String,
+                                                                dynamic> &&
+                                                            p.containsKey(
+                                                                'mensaje')) {
+                                                          // Verificar que 'mensaje' sea una cadena
+                                                          if (p['mensaje']
+                                                              is String) {
+                                                            print(p['mensaje']);
+
+                                                            return Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                borderRadius:
+                                                                    const BorderRadius
+                                                                        .all(
+                                                                        Radius.circular(
+                                                                            12)),
+                                                                color: Colors
+                                                                    .white,
+                                                                border:
+                                                                    Border.all(
+                                                                  width: 1,
+                                                                  color: Colors
+                                                                      .grey
+                                                                      .shade500,
+                                                                ),
+                                                              ),
+                                                              child: Column(
+                                                                children: [
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          20),
+                                                                  SizedBox(
+                                                                    width: double
+                                                                        .infinity,
+                                                                    height: 100,
+                                                                    child:
+                                                                        Center(
+                                                                      child:
+                                                                          Container(
+                                                                        width:
+                                                                            100,
+                                                                        height:
+                                                                            100,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color: Colors
+                                                                              .grey
+                                                                              .shade600,
+                                                                          borderRadius:
+                                                                              const BorderRadius.all(
+                                                                            Radius.circular(200),
+                                                                          ),
+                                                                        ),
+                                                                        child:
+                                                                            ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(200),
+                                                                          child: Image.network(
+                                                                              p['contratador']['foto'],
+                                                                              fit: BoxFit.cover),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height: 20,
+                                                                  ),
+                                                                  SizedBox(
+                                                                    width: double
+                                                                        .infinity,
+                                                                    height: 40,
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: const EdgeInsets
+                                                                          .symmetric(
+                                                                          horizontal:
+                                                                              80),
+                                                                      child: GridView.builder(
+                                                                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                                                            crossAxisCount:
+                                                                                5,
+                                                                            crossAxisSpacing:
+                                                                                0,
+                                                                            mainAxisSpacing:
+                                                                                0,
+                                                                            mainAxisExtent:
+                                                                                25,
+                                                                          ),
+                                                                          itemCount: 5,
+                                                                          itemBuilder: (BuildContext context, index) {
+                                                                            String
+                                                                                cali =
+                                                                                "assets/images/e-color.png";
+
+                                                                            if (p['contratador']['calificacion'] >=
+                                                                                (index + 1)) {
+                                                                              cali = "assets/images/e-color.png";
+                                                                            } else {
+                                                                              cali = "assets/images/e-sincolor.png";
+                                                                            }
+                                                                            print("ESTE ES EL MENSAJE $cali $index $calificacion ");
+                                                                            return Image.asset(cali,
+                                                                                width: 40);
+                                                                          }),
+                                                                    ),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height: 10,
+                                                                  ),
+                                                                  Text(
+                                                                    p['contratador']
+                                                                        [
+                                                                        'nombre'],
+                                                                    style:
+                                                                        const TextStyle(
+                                                                      fontSize:
+                                                                          20,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      decoration:
+                                                                          TextDecoration
+                                                                              .lineThrough, // Línea a través del texto
+                                                                    ),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                    height: 10,
+                                                                  ),
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
+                                                                        .symmetric(
+                                                                        horizontal:
+                                                                            80),
+                                                                    child:
+                                                                        Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height: 1,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Colors
+                                                                            .grey
+                                                                            .shade400,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          30),
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
+                                                                        .all(
+                                                                        10), // Espacio alrededor de la fila
+                                                                    child: Row(
+                                                                      mainAxisAlignment:
+                                                                          MainAxisAlignment
+                                                                              .center, // Centrar los elementos de la fila
+                                                                      children: [
+                                                                        Text(
+                                                                            '${getFechaInicio(p)}  '),
+                                                                        SizedBox(
+                                                                            width:
+                                                                                10),
+                                                                        Container(
+                                                                          alignment:
+                                                                              Alignment.centerRight, // Alinear a la derecha
+                                                                          padding: const EdgeInsets
+                                                                              .symmetric(
+                                                                              horizontal: 10,
+                                                                              vertical: 5), // Espacio interior
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                Colors.grey, // Fondo gris
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(10), // Bordes redondeados
+                                                                          ),
+                                                                          child:
+                                                                              Text(
+                                                                            'Completo',
+                                                                            style:
+                                                                                TextStyle(color: Colors.white), // Texto blanco
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  const SizedBox(
+                                                                      height:
+                                                                          30),
+                                                                  Padding(
+                                                                    padding: const EdgeInsets
+                                                                        .symmetric(
+                                                                        horizontal:
+                                                                            80),
+                                                                    child:
+                                                                        Container(
+                                                                      width: double
+                                                                          .infinity,
+                                                                      height: 1,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Colors
+                                                                            .grey
+                                                                            .shade400,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            );
+                                                          }
+                                                        }
+
+                                                        // Manejar el caso en el que 'mensaje' no está presente o no es una cadena
+                                                        return Container();
+                                                      },
+                                                    ),
                                                   ),
+
+
+
                                                 ],
                                               ),
                                             ),
