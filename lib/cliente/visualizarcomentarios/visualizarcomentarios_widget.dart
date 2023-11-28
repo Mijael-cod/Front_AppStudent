@@ -183,7 +183,7 @@ class _VisualizarcomentariosWidgetState
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Jhossep Samuel\nLlactahuaman Cabrera',
+                                          'Miguel Angel\nTrejo Gutierrez',
                                           style: FlutterFlowTheme.of(context)
                                               .titleLarge
                                               .override(
@@ -247,7 +247,7 @@ class _VisualizarcomentariosWidgetState
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                        'La clase estuvo pésima, no me gusto su camará, su computadora, demasiado lenta tenia muy baja calidad, si va a enseñar este curso debe mejorar sus dispositivos.',
                                         style: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
@@ -308,7 +308,7 @@ class _VisualizarcomentariosWidgetState
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Jhossep Samuel\nLlactahuaman Cabrera',
+                                          'Carla Nicolle \nEsquivel Lévano',
                                           style: FlutterFlowTheme.of(context)
                                               .titleLarge
                                               .override(
@@ -372,7 +372,7 @@ class _VisualizarcomentariosWidgetState
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                        'La clase estuvo genial, solamente porfavor mejora en tu espacio de clase, ya que escuchaba mucho ruido del exterior.',
                                         style: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
@@ -425,7 +425,7 @@ class _VisualizarcomentariosWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Jhossep Samuel\nLlactahuaman Cabrera',
+                                      'Maria Teresa \nCruz Otori',
                                       style: FlutterFlowTheme.of(context)
                                           .titleLarge
                                           .override(
@@ -484,7 +484,7 @@ class _VisualizarcomentariosWidgetState
                               children: [
                                 Expanded(
                                   child: Text(
-                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                    'Muy buena clase, la recomiendo para todos los que quieran aprender con esta persona, domina muy bien el Quechua.',
                                     style: FlutterFlowTheme.of(context)
                                         .labelMedium
                                         .override(
@@ -535,7 +535,7 @@ class _VisualizarcomentariosWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Jhossep Samuel\nLlactahuaman Cabrera',
+                                      'Mijael Raul\nAliaga Ricaldi',
                                       style: FlutterFlowTheme.of(context)
                                           .titleLarge
                                           .override(
@@ -594,7 +594,7 @@ class _VisualizarcomentariosWidgetState
                               children: [
                                 Expanded(
                                   child: Text(
-                                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                    'La clase estuvo genial, solamente porfavor mejora en tu espacio de clase, ya que escuchaba mucho ruido del exterior.',
                                     style: FlutterFlowTheme.of(context)
                                         .labelMedium,
                                   ),

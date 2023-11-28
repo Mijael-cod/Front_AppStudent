@@ -278,7 +278,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                           Colors.grey; // Color para estrellas vacías
                       if (index < _calificacion) {
                         iconColor =
-                            Colors.orange; // Color para estrellas llenas
+                            Color.fromARGB(194, 255, 153, 0); // Color para estrellas llenas
                       }
                       return Icon(
                         iconData,
