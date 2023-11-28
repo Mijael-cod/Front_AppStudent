@@ -53,8 +53,8 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 30.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 30.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -72,8 +72,8 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 30.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 30.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -91,8 +91,8 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 30.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 30.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -110,8 +110,8 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 30.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 30.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -129,8 +129,8 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 30.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 30.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -321,19 +321,19 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).primary,
             automaticallyImplyLeading: false,
-            actions: [],
+            actions:const [],
             flexibleSpace: FlexibleSpaceBar(
               title: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Padding(
-                    padding:
+                    padding: const
                         EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 15.0, 6.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -367,9 +367,9 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                         ),
                         Expanded(
                           child: Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: const AlignmentDirectional(0.00, 0.00),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   20.0, 30.0, 30.0, 0.0),
                               child: Text(
                                 'Hola, $_userName',
@@ -387,7 +387,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               10.0, 30.0, 0.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -397,7 +397,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                             onTap: () async {
                               context.pushNamed('calificar');
                             },
-                            child: Icon(
+                            child: const Icon(
                               Icons.star_rate,
                               color: Colors.white,
                               size: 35.0,
@@ -427,7 +427,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                   header: Container(
                     width: double.infinity,
                     height: 25.0,
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                   ),
                   content: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -435,7 +435,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                     children: [
                       Container(
                         width: double.infinity,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
                         ),
                         child: Column(
@@ -443,7 +443,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 16.0, 0.0, 12.0),
                               child: Text(
                                 'Ofertas',
@@ -456,7 +456,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 44.0),
                               child: ListView(
                                 padding: EdgeInsets.zero,
@@ -465,7 +465,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                 scrollDirection: Axis.vertical,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
                                     child: Container(
                                       width: 220.0,
@@ -480,12 +480,12 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 8.0, 0.0, 0.0),
                                         child: Column(
                                           children: [
                                             Align(
-                                              alignment: Alignment(0.0, 0),
+                                              alignment: const Alignment(0.0, 0),
                                               child: TabBar(
                                                 isScrollable: true,
                                                 labelColor:
@@ -501,13 +501,13 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                           fontFamily: 'Inter',
                                                           fontSize: 16.0,
                                                         ),
-                                                unselectedLabelStyle:
+                                                unselectedLabelStyle: const
                                                     TextStyle(),
                                                 indicatorColor:
                                                     FlutterFlowTheme.of(context)
                                                         .primary,
                                                 indicatorWeight: 2.0,
-                                                tabs: [
+                                                tabs: const[
                                                   Tab(
                                                     text: 'Pendiente',
                                                   ),
@@ -525,13 +525,15 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                     _model.tabBarController,
                                                 children: [
                                                   Padding(
-                                                    padding:
+                                                    padding: const
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 16.0,
                                                                 12.0,
                                                                 16.0,
                                                                 12.0),
+
+                                                                
                                                     child: GridView.builder(
                                                       gridDelegate:
                                                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -745,7 +747,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                                             shape:
                                                                                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                                                                           ),
-                                                                          child:
+                                                                          child: const
                                                                               Text("Aceptar"),
                                                                         ),
                                                                       ),
@@ -798,9 +800,10 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                         return Container();
                                                       },
                                                     ),
+
                                                   ),
                                                   Padding(
-                                                    padding:
+                                                    padding: const
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 16.0,
@@ -817,7 +820,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                       ),
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 12.0)),
+                                ].divide(const SizedBox(height: 12.0)),
                               ),
                             ),
                           ],
