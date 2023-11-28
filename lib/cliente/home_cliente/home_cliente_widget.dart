@@ -1403,7 +1403,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                           ),
                                                                           child:
                                                                               Text(
-                                                                            'Completo',
+                                                                            p['estado'],
                                                                             style:
                                                                                 TextStyle(color: Colors.white), // Texto blanco
                                                                           ),
