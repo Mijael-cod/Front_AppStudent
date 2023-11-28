@@ -203,10 +203,7 @@ class _EnviarsolicitudWidgetState extends State<EnviarsolicitudWidget> {
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                             ),
-                            child: Image.asset(
-                              'assets/images/blank-profile-picture-973460_1280.png',
-                              fit: BoxFit.cover,
-                            ),
+                            child: persona != null ? Image.network(persona!.foto) : Container(),
                           ),
                         ),
                       ),
