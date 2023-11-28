@@ -37,7 +37,6 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
 
   String codigoperso = '';
   String _userName = ''; // Variable para almacenar el nombre de usuario
-  String _fotoPerfil = ''; // Variable para almacenar la foto
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -304,11 +303,10 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                   personaData['nombre']; // Asegúrate de usar la clave correcta
               final apellidoPaterno = personaData['apellidoPaterno'];
               final apellidoMaterno = personaData['apellidoMaterno'];
-              final foto = personaData['foto'];
+
               setState(() {
                 _userName =
                     '$nombre'; //Aca va nombre y apellido que se mostrará
-                _fotoPerfil = '$foto';
               });
             }
           }
@@ -400,8 +398,8 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                               ),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(32.0),
-                                child: Image.network(
-                                  _fotoPerfil,
+                                child: Image.asset(
+                                  'assets/images/blank-profile-picture-973460_1280.png',
                                   width: 300.0,
                                   height: 200.0,
                                   fit: BoxFit.cover,

@@ -23,10 +23,11 @@ class PerfilWidget extends StatefulWidget {
 
 class _PerfilWidgetState extends State<PerfilWidget> {
   late PerfilModel _model;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
-  int _calificacion = 0; // Esta es la variable que almacenará la calificación
+
   String _userName = ''; // Variable para almacenar el nombre de usuario
-  String _perfilFoto = ''; // Variable para almacenar el perfil de foto xd
+
   @override
   void initState() {
     super.initState();
@@ -121,13 +122,10 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                 personaData['nombre']; // Asegúrate de usar la clave correcta
             final apellidoPaterno = personaData['apellidoPaterno'];
             final apellidoMaterno = personaData['apellidoMaterno'];
-            final foto = personaData['foto'];
+
             setState(() {
               _userName =
                   '$nombre $apellidoPaterno $apellidoMaterno'; //Los nombres
-              _calificacion = personaData['calificacion'] ??
-                  0; // Asigna la calificación o un valor predeterminado si es null
-              _perfilFoto = '$foto';
             });
           }
         }
@@ -166,8 +164,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
             leading: Padding(
-              padding:
-                  const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -185,8 +182,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
             ),
             actions: [
               Padding(
-                padding:
-                    const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 18.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 18.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -241,8 +237,8 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                   4.0, 4.0, 4.0, 4.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(50.0),
-                                child: Image.network(
-                                  _perfilFoto,
+                                child: Image.asset(
+                                  'assets/images/blank-profile-picture-973460_1280.png',
                                   width: 200.0,
                                   height: 200.0,
                                   fit: BoxFit.cover,
@@ -256,8 +252,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: Text(
                     '$_userName',
                     textAlign: TextAlign.center,
@@ -268,35 +263,30 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(5, (index) {
-                      IconData iconData = Icons.star_rounded;
-                      Color iconColor =
-                          Colors.grey; // Color para estrellas vacías
-                      if (index < _calificacion) {
-                        iconColor =
-                            Colors.orange; // Color para estrellas llenas
-                      }
-                      return Icon(
-                        iconData,
-                        color: iconColor,
-                        size: 40.0,
-                      );
-                    }),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  child: RatingBar.builder(
+                    onRatingUpdate: (newValue) =>
+                        setState(() => _model.ratingBarValue = newValue),
+                    itemBuilder: (context, index) => Icon(
+                      Icons.star_rounded,
+                      color: FlutterFlowTheme.of(context).tertiary,
+                    ),
+                    direction: Axis.horizontal,
+                    initialRating: _model.ratingBarValue ??= 3.0,
+                    unratedColor: FlutterFlowTheme.of(context).accent3,
+                    itemCount: 5,
+                    itemSize: 40.0,
+                    glowColor: FlutterFlowTheme.of(context).tertiary,
                   ),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 0.0, 0.0),
+                        padding: const
+                            EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -310,8 +300,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                   color: const Color(0xFF5998D1),
                                   borderRadius: BorderRadius.circular(32.0),
                                 ),
-                                alignment:
-                                    const AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.00, 0.00),
                                 child: Text(
                                   'Tutor de matematicas',
                                   style: FlutterFlowTheme.of(context)
@@ -327,8 +316,8 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            5.0, 0.0, 0.0, 0.0),
+                        padding: const
+                            EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -342,8 +331,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                   color: const Color(0xFF5998D1),
                                   borderRadius: BorderRadius.circular(32.0),
                                 ),
-                                alignment:
-                                    const AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.00, 0.00),
                                 child: Text(
                                   'Cuidador de mascotas',
                                   style: FlutterFlowTheme.of(context)
@@ -365,8 +353,8 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          20.0, 0.0, 0.0, 0.0),
+                      padding: const
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -425,8 +413,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   ],
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -448,9 +435,8 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              20.0, 10.0, 20.0, 20.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 10.0, 20.0, 20.0),
                                       child: TextFormField(
                                         controller:
                                             _model.nombrePerfilController,
@@ -535,9 +521,8 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              20.0, 0.0, 20.0, 20.0),
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 0.0, 20.0, 20.0),
                                       child: TextFormField(
                                         controller:
                                             _model.apellidoPPerfilController,
