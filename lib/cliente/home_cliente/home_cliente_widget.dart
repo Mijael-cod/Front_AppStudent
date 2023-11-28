@@ -18,6 +18,7 @@ import 'package:provider/provider.dart';
 import 'home_cliente_model.dart';
 export 'home_cliente_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeClienteWidget extends StatefulWidget {
   const HomeClienteWidget({Key? key}) : super(key: key);
@@ -954,28 +955,51 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     child:
                                                                         Center(
                                                                       child:
-                                                                          Container(
-                                                                        width:
-                                                                            100,
-                                                                        height:
-                                                                            100,
-                                                                        decoration:
-                                                                            BoxDecoration(
-                                                                          color: Colors
-                                                                              .grey
-                                                                              .shade600,
-                                                                          borderRadius:
-                                                                              const BorderRadius.all(
-                                                                            Radius.circular(200),
-                                                                          ),
-                                                                        ),
+                                                                          Padding(
+                                                                        padding:
+                                                                            EdgeInsets.only(right: 1), // Espacio adicional para el icono
                                                                         child:
-                                                                            ClipRRect(
-                                                                          borderRadius:
-                                                                              BorderRadius.circular(200),
-                                                                          child: Image.network(
-                                                                              p['trabajador']['foto'],
-                                                                              fit: BoxFit.cover),
+                                                                            Stack(
+                                                                          clipBehavior:
+                                                                              Clip.none, // Evita que los hijos del Stack sean recortados
+                                                                          children: [
+                                                                            Container(
+                                                                              width: 100,
+                                                                              height: 100,
+                                                                              decoration: BoxDecoration(
+                                                                                color: Colors.grey.shade600,
+                                                                                borderRadius: const BorderRadius.all(
+                                                                                  Radius.circular(200),
+                                                                                ),
+                                                                              ),
+                                                                              child: ClipRRect(
+                                                                                borderRadius: BorderRadius.circular(200),
+                                                                                child: Image.network(
+                                                                                  p['trabajador']['foto'],
+                                                                                  fit: BoxFit.cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                            Positioned(
+                                                                              right: -100,
+                                                                              child: IconButton(
+                                                                                icon: Icon(
+                                                                                  Icons.call,
+                                                                                  color: Colors.green,
+                                                                                  size: 40, // Hacer el icono más grande
+                                                                                ),
+                                                                                onPressed: () async {
+                                                                                  print('Boton presionado');
+                                                                                  const url = 'tel:966892517'; // Reemplaza 966892517 con el número que deseas marcar
+                                                                                  if (await canLaunch(url)) {
+                                                                                    await launch(url);
+                                                                                  } else {
+                                                                                    throw 'Could not launch $url';
+                                                                                  }
+                                                                                },
+                                                                              ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ),
                                                                     ),
