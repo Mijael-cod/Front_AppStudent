@@ -52,18 +52,18 @@ class _Cambiarcontra1WidgetState extends State<Cambiarcontra1Widget> {
       key: scaffoldKey,
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(88.0),
+        preferredSize: const Size.fromHeight(88.0),
         child: AppBar(
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
           leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
             child: FlutterFlowIconButton(
               borderColor: Colors.transparent,
               borderRadius: 30.0,
               borderWidth: 1.0,
               buttonSize: 60.0,
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_rounded,
                 color: Color(0xFF5998D1),
                 size: 32.0,
@@ -74,44 +74,44 @@ class _Cambiarcontra1WidgetState extends State<Cambiarcontra1Widget> {
             ),
           ),
           title: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(4.0, 25.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(4.0, 25.0, 0.0, 0.0),
             child: Text(
               'Validar Email',
               style: FlutterFlowTheme.of(context).headlineMedium,
             ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
       ),
       body: Align(
-        alignment: AlignmentDirectional(0.00, -1.00),
+        alignment: const AlignmentDirectional(0.00, -1.00),
         child: Container(
           width: double.infinity,
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 570.0,
           ),
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(18.0, 4.0, 18.0, 4.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(18.0, 4.0, 18.0, 4.0),
                 child: Text(
                   'Le enviaremos un correo electrónico con un enlace para restablecer su contraseña. Introduzca a continuación el correo electrónico asociado a su cuenta.',
                   style: FlutterFlowTheme.of(context).labelMedium,
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 0.0),
                 child: Container(
                   width: double.infinity,
                   child: TextFormField(
                     controller: _model.emailCamContraController,
                     focusNode: _model.emailCamContraFocusNode,
-                    autofillHints: [AutofillHints.email],
+                    autofillHints: const [AutofillHints.email],
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: 'Ingresar email',
@@ -152,7 +152,7 @@ class _Cambiarcontra1WidgetState extends State<Cambiarcontra1Widget> {
                       filled: true,
                       fillColor:
                           FlutterFlowTheme.of(context).secondaryBackground,
-                      contentPadding: EdgeInsetsDirectional.fromSTEB(
+                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
                           24.0, 24.0, 20.0, 24.0),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -168,9 +168,9 @@ class _Cambiarcontra1WidgetState extends State<Cambiarcontra1Widget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 0.00),
+                alignment: const AlignmentDirectional(0.00, 0.00),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       context.pushNamed('cambiarcontra2');
@@ -179,14 +179,14 @@ class _Cambiarcontra1WidgetState extends State<Cambiarcontra1Widget> {
                     options: FFButtonOptions(
                       width: 270.0,
                       height: 50.0,
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      iconPadding:
+                      iconPadding: const
                           EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).primary,
                       textStyle: FlutterFlowTheme.of(context).titleSmall,
                       elevation: 3.0,
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.transparent,
                         width: 1.0,
                       ),

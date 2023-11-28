@@ -41,8 +41,8 @@ class _CalificarWidgetState extends State<CalificarWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          begin: Offset(0.0, 30.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 30.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -93,12 +93,12 @@ class _CalificarWidgetState extends State<CalificarWidget>
         key: scaffoldKey,
         backgroundColor: Colors.white,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(88.0),
+          preferredSize: const Size.fromHeight(88.0),
           child: AppBar(
             backgroundColor: Colors.white,
             automaticallyImplyLeading: false,
             leading: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -107,7 +107,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                 onTap: () async {
                   context.safePop();
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.arrow_back,
                   color: Color(0xFF5998D1),
                   size: 30.0,
@@ -115,13 +115,13 @@ class _CalificarWidgetState extends State<CalificarWidget>
               ),
             ),
             title: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
               child: Text(
                 'Calificar',
                 style: FlutterFlowTheme.of(context).headlineMedium,
               ),
             ),
-            actions: [],
+            actions: const [],
             centerTitle: false,
             elevation: 0.0,
           ),
@@ -135,7 +135,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
             scrollDirection: Axis.vertical,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 5.0, 16.0, 12.0),
                 child: ListView(
                   padding: EdgeInsets.zero,
                   primary: false,
@@ -144,7 +144,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                         const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                       child: Container(
                         width: double.infinity,
                         height: 0.0,
@@ -157,14 +157,14 @@ class _CalificarWidgetState extends State<CalificarWidget>
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 12.0, 12.0, 12.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Align(
-                                alignment: AlignmentDirectional(0.00, -1.00),
+                                alignment: const AlignmentDirectional(0.00, -1.00),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(50.0),
                                   child: Image.network(
@@ -176,9 +176,9 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.00, 0.00),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: RatingBar.builder(
                                     onRatingUpdate: (newValue) => setState(() =>
@@ -201,9 +201,9 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.00, 0.00),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 10.0, 0.0, 0.0),
                                   child: Text(
                                     'Gerson Brian Bravo Herrera ',
@@ -219,9 +219,9 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.00, 0.00),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     'Tutor de Quechua',
@@ -240,7 +240,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                 thickness: 1.0,
                                 color: FlutterFlowTheme.of(context).alternate,
                               ),
-                              Row(
+                              const Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [],
@@ -253,7 +253,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                        const  EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                       child: Text(
                         'Hoy',
                         style: FlutterFlowTheme.of(context).labelMedium,
@@ -261,12 +261,12 @@ class _CalificarWidgetState extends State<CalificarWidget>
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(2.0, 20.0, 2.0, 3.0),
+                        const  EdgeInsetsDirectional.fromSTEB(2.0, 20.0, 2.0, 3.0),
                       child: Container(
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 3.0,
                               color: Color(0x33000000),
@@ -276,13 +276,13 @@ class _CalificarWidgetState extends State<CalificarWidget>
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 12.0, 12.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 270.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(32.0),
@@ -296,7 +296,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -314,7 +314,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                             ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 10.0),
                                         child: Text(
                                           'Tutor de Quechua',
@@ -350,7 +350,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                             .tertiary,
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Text(
                                           'May, 4th 2023',
@@ -363,7 +363,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                         children: [
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 15.0, 0.0, 12.0),
                                               child: TextFormField(
@@ -374,7 +374,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
                                                   '_model.comentarCalificaController1',
-                                                  Duration(milliseconds: 2000),
+                                                  const Duration(milliseconds: 2000),
                                                   () => setState(() {}),
                                                 ),
                                                 autofocus: true,
@@ -389,7 +389,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                       .labelLarge
                                                       .override(
                                                         fontFamily: 'Inter',
-                                                        color:
+                                                        color: const
                                                             Color(0x70929090),
                                                         fontSize: 14.0,
                                                         fontWeight:
@@ -450,7 +450,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                             20.0),
                                                   ),
                                                   filled: true,
-                                                  contentPadding:
+                                                  contentPadding: const
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(16.0, 8.0,
                                                               16.0, 12.0),
@@ -472,7 +472,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                         ],
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 15.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -483,7 +483,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                   CrossAxisAlignment.end,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 20.0, 0.0, 0.0),
                                                   child: Container(
@@ -509,21 +509,21 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                       text: 'Enviar',
                                                       options: FFButtonOptions(
                                                         height: 40.0,
-                                                        padding:
+                                                        padding: const
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     24.0,
                                                                     0.0,
                                                                     24.0,
                                                                     0.0),
-                                                        iconPadding:
+                                                        iconPadding: const
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
                                                                     0.0,
                                                                     0.0),
-                                                        color:
+                                                        color: const
                                                             Color(0xFF5998D1),
                                                         textStyle:
                                                             FlutterFlowTheme.of(
@@ -541,7 +541,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                                           .normal,
                                                                 ),
                                                         elevation: 3.0,
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color: Colors
                                                               .transparent,
                                                           width: 1.0,
@@ -556,7 +556,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                               ],
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 20.0, 0.0, 0.0),
                                               child: Container(
@@ -581,11 +581,11 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                   text: 'Eliminar',
                                                   options: FFButtonOptions(
                                                     height: 40.0,
-                                                    padding:
+                                                    padding: const
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
-                                                    iconPadding:
+                                                    iconPadding: const
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
@@ -605,7 +605,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                               FontWeight.normal,
                                                         ),
                                                     elevation: 3.0,
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -629,7 +629,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                       ),
                     ),
                     Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                       child: Text(
                         'Anteriores',
@@ -637,13 +637,13 @@ class _CalificarWidgetState extends State<CalificarWidget>
                       ),
                     ),
                     Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(2.0, 20.0, 2.0, 3.0),
                       child: Container(
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               blurRadius: 3.0,
                               color: Color(0x33000000),
@@ -653,13 +653,13 @@ class _CalificarWidgetState extends State<CalificarWidget>
                           borderRadius: BorderRadius.circular(12.0),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 12.0, 12.0, 12.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 270.0),
                                 child: ClipRRect(
                                   borderRadius: BorderRadius.circular(32.0),
@@ -673,7 +673,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -691,7 +691,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                             ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 5.0, 0.0, 10.0),
                                         child: Text(
                                           'Tutor de Quechua',
@@ -727,7 +727,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                             .tertiary,
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 4.0, 0.0, 0.0),
                                         child: Text(
                                           'May, 4th 2023',
@@ -740,7 +740,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                         children: [
                                           Expanded(
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 15.0, 0.0, 12.0),
                                               child: TextFormField(
@@ -751,7 +751,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
                                                   '_model.comentarCalificaController2',
-                                                  Duration(milliseconds: 2000),
+                                                  const Duration(milliseconds: 2000),
                                                   () => setState(() {}),
                                                 ),
                                                 autofocus: true,
@@ -766,7 +766,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                       .labelLarge
                                                       .override(
                                                         fontFamily: 'Inter',
-                                                        color:
+                                                        color: const
                                                             Color(0x70929090),
                                                         fontSize: 14.0,
                                                         fontWeight:
@@ -827,7 +827,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                             20.0),
                                                   ),
                                                   filled: true,
-                                                  contentPadding:
+                                                  contentPadding: const
                                                       EdgeInsetsDirectional
                                                           .fromSTEB(16.0, 8.0,
                                                               16.0, 12.0),
@@ -849,7 +849,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                         ],
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 15.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -860,7 +860,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                   CrossAxisAlignment.end,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 20.0, 0.0, 0.0),
                                                   child: Container(
@@ -886,21 +886,21 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                       text: 'Enviar',
                                                       options: FFButtonOptions(
                                                         height: 40.0,
-                                                        padding:
+                                                        padding: const
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     24.0,
                                                                     0.0,
                                                                     24.0,
                                                                     0.0),
-                                                        iconPadding:
+                                                        iconPadding: const
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
                                                                     0.0,
                                                                     0.0),
-                                                        color:
+                                                        color: const
                                                             Color(0xFF5998D1),
                                                         textStyle:
                                                             FlutterFlowTheme.of(
@@ -918,7 +918,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                                           .normal,
                                                                 ),
                                                         elevation: 3.0,
-                                                        borderSide: BorderSide(
+                                                        borderSide: const BorderSide(
                                                           color: Colors
                                                               .transparent,
                                                           width: 1.0,
@@ -933,7 +933,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                               ],
                                             ),
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 20.0, 0.0, 0.0),
                                               child: Container(
@@ -958,11 +958,11 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                   text: 'Eliminar',
                                                   options: FFButtonOptions(
                                                     height: 40.0,
-                                                    padding:
+                                                    padding: const
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 0.0),
-                                                    iconPadding:
+                                                    iconPadding: const
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
@@ -982,7 +982,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                                                               FontWeight.normal,
                                                         ),
                                                     elevation: 3.0,
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -1008,7 +1008,7 @@ class _CalificarWidgetState extends State<CalificarWidget>
                   ],
                 ),
               ),
-            ].divide(SizedBox(height: 12.0)),
+            ].divide(const SizedBox(height: 12.0)),
           ),
         ),
       ),
