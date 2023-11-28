@@ -538,7 +538,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                           children: [
                                                             Expanded(
                                                               child: Text(
-                                                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                                                'Quedé encantado con el trabajo, me diste mucha ayuda en esa tutoria de Quechua.',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .labelMedium
@@ -662,7 +662,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                                             .start,
                                                                     children: [
                                                                       Text(
-                                                                        'Gerson Brain \nBravo Herrera',
+                                                                        'Miguel Angel \nTrejo Gutierrez',
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .titleLarge
                                                                             .override(
@@ -762,7 +762,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                                 children: [
                                                                   Expanded(
                                                                     child: Text(
-                                                                      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                                                                      'Muchas gracias!!!, me gusto tu clase de Edición de videos.',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .labelMedium
