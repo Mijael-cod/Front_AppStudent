@@ -276,18 +276,21 @@ class _ConfigtrabajadorWidgetState extends State<ConfigtrabajadorWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    Navigator.of(context).popUntil(
+                      (route) => route.isFirst,
+                    );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginWidget(),
+                      ),
+                    );
                     final storage = FlutterSecureStorage();
                     // Elimina el token al presionar el botón
                     await storage.delete(key: 'token');
                     await storage
                         .deleteAll(); // Esto eliminará todos los valores del secureStorage
 
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const LoginWidget(),
-                      ),
-                    );
                   },
                   child: Container(
                     width: double.infinity,

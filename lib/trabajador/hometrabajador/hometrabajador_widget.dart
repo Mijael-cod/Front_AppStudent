@@ -606,7 +606,7 @@ class _HometrabajadorWidgetState extends State<HometrabajadorWidget>
                                                                           ),
                                                                         ),
                                                                         child: Image.network(
-                                                                            "https://firebasestorage.googleapis.com/v0/b/py-helpstudent-vi.appspot.com/o/usuarios%2FPERFIL.png?alt=media&token=829020d2-303b-4f96-8e4e-fb3b7e637954"),
+                                                                            p['contratador']['foto']),
                                                                       ),
                                                                     ),
                                                                   ),
