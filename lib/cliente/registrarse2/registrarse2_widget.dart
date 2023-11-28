@@ -138,7 +138,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                     Stack(
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: const AlignmentDirectional(0.00, 0.00),
                           child: Image.asset(
                             'assets/images/Rectangle_4.png',
                             width: double.infinity,
@@ -147,9 +147,9 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
+                          alignment: const AlignmentDirectional(0.00, 0.00),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 80.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -160,7 +160,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                   width: 120.0,
                                   height: 120.0,
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.asset(
@@ -168,23 +168,23 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                              ].addToStart(SizedBox(width: 130.0)),
+                              ].addToStart(const SizedBox(width: 130.0)),
                             ),
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.00, 1.00),
+                          alignment: const AlignmentDirectional(0.00, 1.00),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 220.0, 0.0, 0.0),
                             child: Container(
                               width: 300.0,
                               height: 50.0,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: Color(0xFF5998D1),
                               ),
                               child: Align(
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.00, 0.00),
                                 child: Text(
                                   'Help student',
                                   style: FlutterFlowTheme.of(context)
@@ -204,7 +204,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                       ],
                     ),
                     Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                       child: Text(
                         'Registrarse',
@@ -212,7 +212,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                       ),
                     ),
                     Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(24.0, 7.0, 24.0, 0.0),
                       child: Container(
                         width: double.infinity,
@@ -222,7 +222,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               12.0, 20.0, 8.0, 16.0),
                           child: Container(
                             width: 300.0,
@@ -250,7 +250,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                   borderRadius: BorderRadius.circular(30.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0xFF5998D1),
                                     width: 2.0,
                                   ),
@@ -293,7 +293,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                       children: [
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 35.0, 20.0, 35.0, 5.0),
                             child: Container(
                               width: 300.0,
@@ -322,7 +322,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Color(0xFF5998D1),
                                       width: 2.0,
                                     ),
@@ -364,7 +364,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                       ],
                     ),
                     Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(24.0, 1.0, 24.0, 0.0),
                       child: Container(
                         width: double.infinity,
@@ -374,7 +374,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               8.0, 10.0, 8.0, 16.0),
                           child: Container(
                             width: 300.0,
@@ -403,7 +403,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                   borderRadius: BorderRadius.circular(30.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0xFF5998D1),
                                     width: 2.0,
                                   ),
@@ -456,7 +456,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                       ),
                     ),
                     Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(24.0, 1.0, 24.0, 0.0),
                       child: Container(
                         width: double.infinity,
@@ -466,7 +466,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               8.0, 10.0, 8.0, 16.0),
                           child: Container(
                             width: 300.0,
@@ -497,7 +497,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                   borderRadius: BorderRadius.circular(30.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0xFF5998D1),
                                     width: 2.0,
                                   ),
@@ -552,7 +552,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                       ),
                     ),
                     Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(24.0, 1.0, 24.0, 0.0),
                       child: Container(
                         width: double.infinity,
@@ -565,7 +565,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                               blurRadius: 0.0,
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
-                              offset: Offset(0.0, 1.0),
+                              offset: const Offset(0.0, 1.0),
                             )
                           ],
                         ),
@@ -574,9 +574,9 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(-1.00, 0.00),
+                              alignment: const AlignmentDirectional(-1.00, 0.00),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     12.0, 5.0, 0.0, 5.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -589,7 +589,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                       // Luego, para navegar a la siguiente página (Registrarse2Widget):
                                       Navigator.of(context).push(
                                         MaterialPageRoute(
-                                          builder: (context) => LoginWidget(),
+                                          builder: (context) => const LoginWidget(),
                                         ),
                                       );
                                     } else {
@@ -605,9 +605,9 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                           context: context,
                                           builder: (BuildContext context) {
                                             return AlertDialog(
-                                              title:
+                                              title: const
                                                   Text('Contraseña muy corta'),
-                                              content: Text(
+                                              content: const Text(
                                                   'La contraseña debe tener al menos 6 caracteres.'),
                                               actions: [
                                                 TextButton(
@@ -615,7 +615,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                                     Navigator.of(context)
                                                         .pop(); // Cierra el cuadro de diálogo
                                                   },
-                                                  child: Text('OK'),
+                                                  child: const Text('OK'),
                                                 ),
                                               ],
                                             );
@@ -627,9 +627,9 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                           context: context,
                                           builder: (BuildContext context) {
                                             return AlertDialog(
-                                              title: Text(
+                                              title: const Text(
                                                   'Contraseñas incorrectas'),
-                                              content: Text(
+                                              content: const Text(
                                                   'Las contraseñas no coinciden. Por favor, verifica las contraseñas e inténtalo de nuevo.'),
                                               actions: [
                                                 TextButton(
@@ -637,7 +637,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                                     Navigator.of(context)
                                                         .pop(); // Cierra el cuadro de diálogo
                                                   },
-                                                  child: Text('OK'),
+                                                  child: const Text('OK'),
                                                 ),
                                               ],
                                             );
@@ -650,11 +650,11 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                   options: FFButtonOptions(
                                     width: 320.0,
                                     height: 44.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: Color(0xFF5998D1),
+                                    color: const Color(0xFF5998D1),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -664,7 +664,7 @@ class _Registrarse2WidgetState extends State<Registrarse2Widget> {
                                           fontWeight: FontWeight.w300,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),

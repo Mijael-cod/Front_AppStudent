@@ -956,7 +956,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                         .alternate,
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             10.0,
@@ -973,7 +973,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                         Expanded(
                                                                           child:
                                                                               Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 8.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -996,12 +996,12 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                               32.0,
                                                                           decoration:
                                                                               BoxDecoration(
-                                                                            color:
+                                                                            color: const
                                                                                 Color(0x70BFBEBE),
                                                                             borderRadius:
                                                                                 BorderRadius.circular(32.0),
                                                                           ),
-                                                                          alignment: AlignmentDirectional(
+                                                                          alignment: const AlignmentDirectional(
                                                                               0.00,
                                                                               0.00),
                                                                           child:
@@ -1018,7 +1018,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             75.0,
                                                                             40.0,
@@ -1037,17 +1037,17 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                           FFButtonOptions(
                                                                         height:
                                                                             32.0,
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             24.0,
                                                                             0.0,
                                                                             24.0,
                                                                             0.0),
-                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                        iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                        color: Color(
+                                                                        color: const Color(
                                                                             0xFF5998D1),
                                                                         textStyle: FlutterFlowTheme.of(context)
                                                                             .titleSmall
@@ -1058,7 +1058,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                             ),
                                                                         elevation:
                                                                             3.0,
-                                                                        borderSide:
+                                                                        borderSide: const
                                                                             BorderSide(
                                                                           color:
                                                                               Colors.transparent,
@@ -1078,7 +1078,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                   'containerOnPageLoadAnimation1']!),
                                                         ),
                                                         Padding(
-                                                          padding:
+                                                          padding: const
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
@@ -1107,7 +1107,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                               ),
                                                             ),
                                                             child: Padding(
-                                                              padding:
+                                                              padding: const
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
@@ -1123,7 +1123,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                         .start,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             270.0,
                                                                             5.0,
@@ -1140,7 +1140,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             100.0,
                                                                             0.0,
@@ -1159,7 +1159,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                       ),
                                                                       child:
                                                                           Align(
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             0.00,
                                                                             -1.00),
                                                                         child:
@@ -1193,13 +1193,13 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment:
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           10.0,
                                                                           0.0,
@@ -1233,14 +1233,14 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                  Align(
-                                                                    alignment:
+                                                                  Align( 
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           10.0,
                                                                           0.0,
@@ -1256,13 +1256,13 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment:
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -1289,7 +1289,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                         .alternate,
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             10.0,
@@ -1306,7 +1306,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                         Expanded(
                                                                           child:
                                                                               Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 8.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -1329,12 +1329,12 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                               32.0,
                                                                           decoration:
                                                                               BoxDecoration(
-                                                                            color:
+                                                                            color: const
                                                                                 Color(0x70BFBEBE),
                                                                             borderRadius:
                                                                                 BorderRadius.circular(32.0),
                                                                           ),
-                                                                          alignment: AlignmentDirectional(
+                                                                          alignment: const AlignmentDirectional(
                                                                               0.00,
                                                                               0.00),
                                                                           child:
@@ -1351,7 +1351,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             75.0,
                                                                             40.0,
@@ -1370,17 +1370,17 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                           FFButtonOptions(
                                                                         height:
                                                                             32.0,
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             24.0,
                                                                             0.0,
                                                                             24.0,
                                                                             0.0),
-                                                                        iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                                                        iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             0.0,
                                                                             0.0,
                                                                             0.0),
-                                                                        color: Color(
+                                                                        color: const Color(
                                                                             0xFF5998D1),
                                                                         textStyle: FlutterFlowTheme.of(context)
                                                                             .titleSmall
@@ -1391,7 +1391,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                             ),
                                                                         elevation:
                                                                             3.0,
-                                                                        borderSide:
+                                                                        borderSide: const
                                                                             BorderSide(
                                                                           color:
                                                                               Colors.transparent,
@@ -1414,7 +1414,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                     ),
                                                   ),
                                                   Padding(
-                                                    padding:
+                                                    padding: const
                                                         EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 16.0,
@@ -1429,7 +1429,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                           Axis.vertical,
                                                       children: [
                                                         Padding(
-                                                          padding:
+                                                          padding: const
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
@@ -1458,7 +1458,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                               ),
                                                             ),
                                                             child: Padding(
-                                                              padding:
+                                                              padding: const
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
@@ -1474,7 +1474,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                         .start,
                                                                 children: [
                                                                   Align(
-                                                                    alignment:
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             -1.00),
@@ -1496,13 +1496,13 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment:
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           10.0,
                                                                           0.0,
@@ -1537,13 +1537,13 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment:
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           10.0,
                                                                           0.0,
@@ -1563,13 +1563,13 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment:
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -1606,7 +1606,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                       Expanded(
                                                                         child:
                                                                             Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               8.0,
                                                                               0.0,
                                                                               0.0,
@@ -1633,7 +1633,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                           borderRadius:
                                                                               BorderRadius.circular(32.0),
                                                                         ),
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                         child:
@@ -1657,7 +1657,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                   'containerOnPageLoadAnimation3']!),
                                                         ),
                                                         Padding(
-                                                          padding:
+                                                          padding: const
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
@@ -1686,7 +1686,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                               ),
                                                             ),
                                                             child: Padding(
-                                                              padding:
+                                                              padding: const
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
@@ -1702,7 +1702,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                         .start,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             100.0,
                                                                             0.0,
@@ -1721,7 +1721,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                       ),
                                                                       child:
                                                                           Align(
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             0.00,
                                                                             -1.00),
                                                                         child:
@@ -1755,13 +1755,13 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment:
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           10.0,
                                                                           0.0,
@@ -1796,13 +1796,13 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment:
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           10.0,
                                                                           0.0,
@@ -1822,13 +1822,13 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment:
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -1866,7 +1866,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                       Expanded(
                                                                         child:
                                                                             Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               8.0,
                                                                               0.0,
                                                                               0.0,
@@ -1894,7 +1894,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                           borderRadius:
                                                                               BorderRadius.circular(32.0),
                                                                         ),
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                         child:
@@ -1919,7 +1919,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                   'containerOnPageLoadAnimation4']!),
                                                         ),
                                                         Padding(
-                                                          padding:
+                                                          padding: const
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
@@ -1948,7 +1948,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                               ),
                                                             ),
                                                             child: Padding(
-                                                              padding:
+                                                              padding: const
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
@@ -1964,7 +1964,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                         .start,
                                                                 children: [
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             100.0,
                                                                             0.0,
@@ -1983,7 +1983,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                       ),
                                                                       child:
                                                                           Align(
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             0.00,
                                                                             -1.00),
                                                                         child:
@@ -2017,13 +2017,13 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment:
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           10.0,
                                                                           0.0,
@@ -2058,13 +2058,13 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment:
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           10.0,
                                                                           0.0,
@@ -2084,13 +2084,13 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                     ),
                                                                   ),
                                                                   Align(
-                                                                    alignment:
+                                                                    alignment: const
                                                                         AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                     child:
                                                                         Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                                                           0.0,
                                                                           4.0,
                                                                           0.0,
@@ -2128,7 +2128,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                       Expanded(
                                                                         child:
                                                                             Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               8.0,
                                                                               0.0,
                                                                               0.0,
@@ -2156,7 +2156,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                                                           borderRadius:
                                                                               BorderRadius.circular(32.0),
                                                                         ),
-                                                                        alignment: AlignmentDirectional(
+                                                                        alignment: const AlignmentDirectional(
                                                                             0.00,
                                                                             0.00),
                                                                         child:
@@ -2191,7 +2191,7 @@ class _HomeClienteWidgetState extends State<HomeClienteWidget>
                                       ),
                                     ),
                                   ),
-                                ].divide(SizedBox(height: 12.0)),
+                                ].divide(const SizedBox(height: 12.0)),
                               ),
                             ),
                           ],

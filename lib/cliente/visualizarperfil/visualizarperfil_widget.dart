@@ -88,18 +88,18 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(88.0),
+          preferredSize:const Size.fromHeight(88.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
             leading: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 60.0,
-                icon: Icon(
+                icon: const Icon(
                   Icons.arrow_back_rounded,
                   color: Color(0xFF5998D1),
                   size: 33.0,
@@ -109,7 +109,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                 },
               ),
             ),
-            actions: [],
+            actions: const[],
             centerTitle: false,
             elevation: 0.0,
           ),
@@ -125,7 +125,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
+                        alignment: const AlignmentDirectional(0.00, 1.00),
                         child: Material(
                           color: Colors.transparent,
                           elevation: 0.0,
@@ -144,7 +144,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   4.0, 4.0, 4.0, 4.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(50.0),
@@ -163,7 +163,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: Text(
                     '${persona?.nombre} \n${persona?.apellidoPaterno} ${persona?.apellidoMaterno}',
                     textAlign: TextAlign.center,
@@ -174,7 +174,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: RatingBar.builder(
                     onRatingUpdate: (newValue) =>
                         setState(() => _model.ratingBarValue1 = newValue),
@@ -191,27 +191,27 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding:
+                        padding: const
                             EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   5.0, 10.0, 0.0, 0.0),
                               child: Container(
                                 width: 170.0,
                                 height: 30.0,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFF5998D1),
+                                  color: const Color(0xFF5998D1),
                                   borderRadius: BorderRadius.circular(32.0),
                                 ),
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.00, 0.00),
                                 child: Text(
                                   'Tutor de matematicas',
                                   style: FlutterFlowTheme.of(context)
@@ -227,22 +227,22 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                         ),
                       ),
                       Padding(
-                        padding:
+                        padding: const
                             EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   5.0, 10.0, 0.0, 0.0),
                               child: Container(
                                 width: 170.0,
                                 height: 30.0,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFF5998D1),
+                                  color: const Color(0xFF5998D1),
                                   borderRadius: BorderRadius.circular(32.0),
                                 ),
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.00, 0.00),
                                 child: Text(
                                   'Cuidador de mascotas',
                                   style: FlutterFlowTheme.of(context)
@@ -264,22 +264,22 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 5.0, 10.0, 0.0, 0.0),
                             child: Container(
                               width: 170.0,
                               height: 30.0,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF5998D1),
+                              decoration:  BoxDecoration(
+                                color: const Color(0xFF5998D1),
                                 borderRadius: BorderRadius.circular(32.0),
                               ),
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: const AlignmentDirectional(0.00, 0.00),
                               child: Text(
                                 'Editor de videos',
                                 style: FlutterFlowTheme.of(context)
@@ -298,16 +298,16 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               9.0, 10.0, 0.0, 0.0),
                           child: Container(
                             width: 170.0,
                             height: 30.0,
                             decoration: BoxDecoration(
-                              color: Color(0xFF5998D1),
+                              color: const Color(0xFF5998D1),
                               borderRadius: BorderRadius.circular(32.0),
                             ),
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: const AlignmentDirectional(0.00, 0.00),
                             child: Text(
                               'Cuidador de niños',
                               style: FlutterFlowTheme.of(context)
@@ -324,7 +324,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                   ],
                 ),
                 Padding(
-                  padding:
+                  padding: const
                       EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
@@ -355,12 +355,12 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: Container(
                           width: double.infinity,
@@ -369,7 +369,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                 .secondaryBackground,
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 8.0, 8.0, 8.0),
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -384,7 +384,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding:
+                                            padding: const
                                                 EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 12.0, 0.0, 0.0),
                                             child: Container(
@@ -395,7 +395,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
-                                                boxShadow: [
+                                                boxShadow: const [
                                                   BoxShadow(
                                                     blurRadius: 4.0,
                                                     color: Color(0x33000000),
@@ -406,7 +406,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                     BorderRadius.circular(12.0),
                                               ),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         2.0, 2.0, 2.0, 2.0),
                                                 child: SingleChildScrollView(
@@ -415,7 +415,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                         MainAxisSize.max,
                                                     children: [
                                                       Padding(
-                                                        padding:
+                                                        padding: const
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
@@ -450,7 +450,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                                       ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           4.0,
@@ -471,7 +471,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                                     direction: Axis
                                                                         .horizontal,
                                                                     rating: 5.0,
-                                                                    unratedColor:
+                                                                    unratedColor: const
                                                                         Color(
                                                                             0xFF95A1AC),
                                                                     itemCount:
@@ -483,7 +483,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                               ],
                                                             ),
                                                             Padding(
-                                                              padding:
+                                                              padding: const
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
@@ -509,7 +509,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                                   height: 50.0,
                                                                   clipBehavior:
                                                                       Clip.antiAlias,
-                                                                  decoration:
+                                                                  decoration: const
                                                                       BoxDecoration(
                                                                     shape: BoxShape
                                                                         .circle,
@@ -525,7 +525,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                         ),
                                                       ),
                                                       Padding(
-                                                        padding:
+                                                        padding: const
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     16.0,
@@ -559,10 +559,10 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                               ),
                                             ),
                                           ),
-                                        ].divide(SizedBox(height: 8.0)),
+                                        ].divide(const SizedBox(height: 8.0)),
                                       ),
                                     ),
-                                  ].divide(SizedBox(width: 8.0)),
+                                  ].divide(const SizedBox(width: 8.0)),
                                 ),
                               ],
                             ),
@@ -574,7 +574,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 12.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
@@ -582,7 +582,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                       .secondaryBackground,
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -598,7 +598,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 12.0, 0.0, 0.0),
                                                   child: Container(
@@ -610,7 +610,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                       color: FlutterFlowTheme
                                                               .of(context)
                                                           .secondaryBackground,
-                                                      boxShadow: [
+                                                      boxShadow: const[
                                                         BoxShadow(
                                                           blurRadius: 4.0,
                                                           color:
@@ -624,7 +624,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                               12.0),
                                                     ),
                                                     child: Padding(
-                                                      padding:
+                                                      padding: const
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   2.0,
@@ -638,7 +638,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                               MainAxisSize.max,
                                                           children: [
                                                             Padding(
-                                                              padding:
+                                                              padding: const
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
@@ -671,7 +671,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                                             ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             4.0,
                                                                             0.0,
@@ -688,7 +688,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                                               Axis.horizontal,
                                                                           rating:
                                                                               5.0,
-                                                                          unratedColor:
+                                                                          unratedColor: const
                                                                               Color(0xFF95A1AC),
                                                                           itemCount:
                                                                               5,
@@ -699,7 +699,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                                     ],
                                                                   ),
                                                                   Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -718,7 +718,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                                       ),
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             2.0,
                                                                             2.0,
                                                                             2.0,
@@ -731,7 +731,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                                               50.0,
                                                                           clipBehavior:
                                                                               Clip.antiAlias,
-                                                                          decoration:
+                                                                          decoration: const
                                                                               BoxDecoration(
                                                                             shape:
                                                                                 BoxShape.circle,
@@ -748,7 +748,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                               ),
                                                             ),
                                                             Padding(
-                                                              padding:
+                                                              padding: const
                                                                   EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
@@ -783,10 +783,10 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(SizedBox(height: 8.0)),
+                                              ].divide(const SizedBox(height: 8.0)),
                                             ),
                                           ),
-                                        ].divide(SizedBox(width: 8.0)),
+                                        ].divide(const SizedBox(width: 8.0)),
                                       ),
                                     ],
                                   ),
@@ -800,16 +800,16 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(-1.00, 0.00),
+                            alignment: const AlignmentDirectional(-1.00, 0.00),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   80.0, 20.0, 0.0, 0.0),
                               child: FFButtonWidget(
                                 onPressed: () async {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) =>
-                                          EnviarsolicitudWidget(),
+                                          const EnviarsolicitudWidget(),
                                     ),
                                   );
                                 },
@@ -817,9 +817,9 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                 options: FFButtonOptions(
                                   width: 200.0,
                                   height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 0.0, 0.0),
                                   color: FlutterFlowTheme.of(context).primary,
                                   textStyle: FlutterFlowTheme.of(context)
@@ -829,7 +829,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                                         color: Colors.white,
                                       ),
                                   elevation: 3.0,
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Colors.transparent,
                                     width: 1.0,
                                   ),
@@ -841,7 +841,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                         ],
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 12.0),
                         child: Container(
                           width: double.infinity,
@@ -851,7 +851,7 @@ class _VisualizarperfilWidgetState extends State<VisualizarperfilWidget> {
                           ),
                         ),
                       ),
-                    ].divide(SizedBox(height: 12.0)),
+                    ].divide(const SizedBox(height: 12.0)),
                   ),
                 ),
               ],

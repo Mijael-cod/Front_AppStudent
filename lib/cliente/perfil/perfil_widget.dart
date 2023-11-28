@@ -159,12 +159,12 @@ class _PerfilWidgetState extends State<PerfilWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         appBar: PreferredSize(
-          preferredSize: Size.fromHeight(88.0),
+          preferredSize: const Size.fromHeight(88.0),
           child: AppBar(
             backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
             automaticallyImplyLeading: false,
             leading: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
@@ -173,7 +173,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                 onTap: () async {
                   context.pushNamed('HomeCliente');
                 },
-                child: Icon(
+                child: const Icon(
                   Icons.arrow_back,
                   color: Color(0xFF5998D1),
                   size: 30.0,
@@ -182,7 +182,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
             ),
             actions: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 18.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 18.0, 0.0),
                 child: InkWell(
                   splashColor: Colors.transparent,
                   focusColor: Colors.transparent,
@@ -191,7 +191,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   onTap: () async {
                     context.pushNamed('configcliente');
                   },
-                  child: Icon(
+                  child: const Icon(
                     Icons.settings_outlined,
                     color: Color(0xFF5998D1),
                     size: 32.0,
@@ -214,7 +214,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
+                        alignment: const AlignmentDirectional(0.00, 1.00),
                         child: Material(
                           color: Colors.transparent,
                           elevation: 0.0,
@@ -233,7 +233,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                               ),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   4.0, 4.0, 4.0, 4.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(50.0),
@@ -252,7 +252,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: Text(
                     '$_userName',
                     textAlign: TextAlign.center,
@@ -263,7 +263,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: RatingBar.builder(
                     onRatingUpdate: (newValue) =>
                         setState(() => _model.ratingBarValue = newValue),
@@ -280,27 +280,27 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
-                        padding:
+                        padding: const
                             EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   5.0, 10.0, 0.0, 0.0),
                               child: Container(
                                 width: 170.0,
                                 height: 30.0,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFF5998D1),
+                                  color: const Color(0xFF5998D1),
                                   borderRadius: BorderRadius.circular(32.0),
                                 ),
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.00, 0.00),
                                 child: Text(
                                   'Tutor de matematicas',
                                   style: FlutterFlowTheme.of(context)
@@ -316,22 +316,22 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                         ),
                       ),
                       Padding(
-                        padding:
+                        padding: const
                             EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   5.0, 10.0, 0.0, 0.0),
                               child: Container(
                                 width: 170.0,
                                 height: 30.0,
                                 decoration: BoxDecoration(
-                                  color: Color(0xFF5998D1),
+                                  color: const Color(0xFF5998D1),
                                   borderRadius: BorderRadius.circular(32.0),
                                 ),
-                                alignment: AlignmentDirectional(0.00, 0.00),
+                                alignment: const AlignmentDirectional(0.00, 0.00),
                                 child: Text(
                                   'Cuidador de mascotas',
                                   style: FlutterFlowTheme.of(context)
@@ -353,22 +353,22 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding:
+                      padding: const
                           EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 5.0, 10.0, 0.0, 0.0),
                             child: Container(
                               width: 170.0,
                               height: 30.0,
                               decoration: BoxDecoration(
-                                color: Color(0xFF5998D1),
+                                color: const Color(0xFF5998D1),
                                 borderRadius: BorderRadius.circular(32.0),
                               ),
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: const AlignmentDirectional(0.00, 0.00),
                               child: Text(
                                 'Editor de videos',
                                 style: FlutterFlowTheme.of(context)
@@ -387,7 +387,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               9.0, 10.0, 0.0, 0.0),
                           child: Container(
                             width: 170.0,
@@ -396,7 +396,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                               color: Color(0xFF5998D1),
                               borderRadius: BorderRadius.circular(32.0),
                             ),
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: const AlignmentDirectional(0.00, 0.00),
                             child: Text(
                               'Cuidador de niños',
                               style: FlutterFlowTheme.of(context)
@@ -413,7 +413,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                   ],
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -424,7 +424,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               8.0, 8.0, 8.0, 8.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -435,7 +435,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 10.0, 20.0, 20.0),
                                       child: TextFormField(
                                         controller:
@@ -468,7 +468,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                 BorderRadius.circular(20.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Color(0xFF5998D1),
                                               width: 2.0,
                                             ),
@@ -514,14 +514,14 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                       ),
                                     ),
                                   ),
-                                ].divide(SizedBox(width: 8.0)),
+                                ].divide(const SizedBox(width: 8.0)),
                               ),
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Expanded(
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 20.0),
                                       child: TextFormField(
                                         controller:
@@ -555,7 +555,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                                 BorderRadius.circular(20.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Color(0xFF5998D1),
                                               width: 2.0,
                                             ),
@@ -605,7 +605,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 0.0),
                                   child: TextFormField(
                                     controller:
@@ -635,7 +635,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                             BorderRadius.circular(20.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0xFF5998D1),
                                           width: 2.0,
                                         ),
@@ -679,7 +679,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.emailPerfilController,
@@ -708,7 +708,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                             BorderRadius.circular(20.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0xFF5998D1),
                                           width: 2.0,
                                         ),
@@ -752,7 +752,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.telefonoPerfilController,
@@ -781,7 +781,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                             BorderRadius.circular(20.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0xFF5998D1),
                                           width: 2.0,
                                         ),
@@ -825,7 +825,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       20.0, 0.0, 20.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.sexoPerfilController,
@@ -854,7 +854,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                                             BorderRadius.circular(20.0),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0xFF5998D1),
                                           width: 2.0,
                                         ),
@@ -900,7 +900,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 12.0),
                         child: Container(
                           width: double.infinity,
@@ -910,7 +910,7 @@ class _PerfilWidgetState extends State<PerfilWidget> {
                           ),
                         ),
                       ),
-                    ].divide(SizedBox(height: 12.0)),
+                    ].divide(const SizedBox(height: 12.0)),
                   ),
                 ),
               ],

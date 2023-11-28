@@ -52,17 +52,17 @@ class _VisualizarcomentariosWidgetState
       key: scaffoldKey,
       backgroundColor: Colors.white,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(88.0),
+        preferredSize: const Size.fromHeight(88.0),
         child: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
           leading: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
             child: FlutterFlowIconButton(
               borderColor: Colors.transparent,
               borderRadius: 30.0,
               buttonSize: 46.0,
-              icon: Icon(
+              icon: const Icon(
                 Icons.arrow_back_rounded,
                 color: Color(0xFF5998D1),
                 size: 32.0,
@@ -72,7 +72,7 @@ class _VisualizarcomentariosWidgetState
               },
             ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
@@ -87,7 +87,7 @@ class _VisualizarcomentariosWidgetState
                 width: double.infinity,
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       blurRadius: 3.0,
                       color: Color(0x39000000),
@@ -99,7 +99,7 @@ class _VisualizarcomentariosWidgetState
                   ),
                 ),
                 child: Padding(
-                  padding:
+                  padding: const
                       EdgeInsetsDirectional.fromSTEB(12.0, 16.0, 12.0, 24.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
@@ -113,7 +113,7 @@ class _VisualizarcomentariosWidgetState
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
                                 child: Text(
                                   '4.6',
@@ -126,7 +126,7 @@ class _VisualizarcomentariosWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     4.0, 0.0, 0.0, 12.0),
                                 child: Icon(
                                   Icons.star_rounded,
@@ -147,13 +147,13 @@ class _VisualizarcomentariosWidgetState
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding:
+                    padding: const
                         EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 0.96,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 4.0,
                             color: Color(0x33000000),
@@ -163,14 +163,14 @@ class _VisualizarcomentariosWidgetState
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
-                        padding:
+                        padding: const
                             EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 2.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 12.0, 16.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -192,7 +192,7 @@ class _VisualizarcomentariosWidgetState
                                               ),
                                         ),
                                         Padding(
-                                          padding:
+                                          padding: const
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 4.0),
                                           child: RatingBarIndicator(
@@ -205,7 +205,7 @@ class _VisualizarcomentariosWidgetState
                                             ),
                                             direction: Axis.horizontal,
                                             rating: 5.0,
-                                            unratedColor: Color(0xFF95A1AC),
+                                            unratedColor: const Color(0xFF95A1AC),
                                             itemCount: 5,
                                             itemSize: 24.0,
                                           ),
@@ -221,13 +221,13 @@ class _VisualizarcomentariosWidgetState
                                             BorderRadius.circular(40.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             2.0, 2.0, 2.0, 2.0),
                                         child: Container(
                                           width: 50.0,
                                           height: 50.0,
                                           clipBehavior: Clip.antiAlias,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
@@ -240,7 +240,7 @@ class _VisualizarcomentariosWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 4.0, 16.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -272,13 +272,13 @@ class _VisualizarcomentariosWidgetState
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
-                    padding:
+                    padding: const
                         EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 0.96,
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             blurRadius: 4.0,
                             color: Color(0x33000000),
@@ -288,14 +288,14 @@ class _VisualizarcomentariosWidgetState
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
-                        padding:
+                        padding: const
                             EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 2.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 12.0, 16.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -317,7 +317,7 @@ class _VisualizarcomentariosWidgetState
                                               ),
                                         ),
                                         Padding(
-                                          padding:
+                                          padding: const
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 4.0),
                                           child: RatingBarIndicator(
@@ -330,7 +330,7 @@ class _VisualizarcomentariosWidgetState
                                             ),
                                             direction: Axis.horizontal,
                                             rating: 5.0,
-                                            unratedColor: Color(0xFF95A1AC),
+                                            unratedColor: const Color(0xFF95A1AC),
                                             itemCount: 5,
                                             itemSize: 24.0,
                                           ),
@@ -346,13 +346,13 @@ class _VisualizarcomentariosWidgetState
                                             BorderRadius.circular(40.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             2.0, 2.0, 2.0, 2.0),
                                         child: Container(
                                           width: 50.0,
                                           height: 50.0,
                                           clipBehavior: Clip.antiAlias,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.asset(
@@ -365,7 +365,7 @@ class _VisualizarcomentariosWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 4.0, 16.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -393,12 +393,12 @@ class _VisualizarcomentariosWidgetState
                 ],
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.96,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 4.0,
                         color: Color(0x33000000),
@@ -408,13 +408,13 @@ class _VisualizarcomentariosWidgetState
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 2.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 2.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -434,7 +434,7 @@ class _VisualizarcomentariosWidgetState
                                           ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 4.0),
                                       child: RatingBarIndicator(
                                         itemBuilder: (context, index) => Icon(
@@ -444,7 +444,7 @@ class _VisualizarcomentariosWidgetState
                                         ),
                                         direction: Axis.horizontal,
                                         rating: 5.0,
-                                        unratedColor: Color(0xFF95A1AC),
+                                        unratedColor: const Color(0xFF95A1AC),
                                         itemCount: 5,
                                         itemSize: 24.0,
                                       ),
@@ -458,13 +458,13 @@ class _VisualizarcomentariosWidgetState
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         2.0, 2.0, 2.0, 2.0),
                                     child: Container(
                                       width: 50.0,
                                       height: 50.0,
                                       clipBehavior: Clip.antiAlias,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
                                       child: Image.asset(
@@ -477,7 +477,7 @@ class _VisualizarcomentariosWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 4.0, 16.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -503,12 +503,12 @@ class _VisualizarcomentariosWidgetState
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 24.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 24.0),
                 child: Container(
                   width: MediaQuery.sizeOf(context).width * 0.96,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         blurRadius: 4.0,
                         color: Color(0x33000000),
@@ -518,13 +518,13 @@ class _VisualizarcomentariosWidgetState
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 2.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 2.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -544,7 +544,7 @@ class _VisualizarcomentariosWidgetState
                                           ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 4.0, 0.0, 4.0),
                                       child: RatingBarIndicator(
                                         itemBuilder: (context, index) => Icon(
@@ -554,7 +554,7 @@ class _VisualizarcomentariosWidgetState
                                         ),
                                         direction: Axis.horizontal,
                                         rating: 5.0,
-                                        unratedColor: Color(0xFF95A1AC),
+                                        unratedColor: const Color(0xFF95A1AC),
                                         itemCount: 5,
                                         itemSize: 24.0,
                                       ),
@@ -568,13 +568,13 @@ class _VisualizarcomentariosWidgetState
                                     borderRadius: BorderRadius.circular(40.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         2.0, 2.0, 2.0, 2.0),
                                     child: Container(
                                       width: 50.0,
                                       height: 50.0,
                                       clipBehavior: Clip.antiAlias,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
                                       child: Image.asset(
@@ -587,7 +587,7 @@ class _VisualizarcomentariosWidgetState
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 4.0, 16.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
